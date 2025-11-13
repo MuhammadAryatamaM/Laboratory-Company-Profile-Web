@@ -1,3 +1,4 @@
+```text
 Web_Profile_PBL/
 │
 ├── 📁 assets/                  <-- File statis (CSS, JS, Gambar)
@@ -14,7 +15,7 @@ Web_Profile_PBL/
 │   ├── 📄 antiinjection.php    <-- Keamanan
 │   └── 📄 message_send.php     <-- Mengirim pesan dari Contact Us
 │
-│   ├── 📁 layouts/             <-- Potongan tampilan Public
+├── 📁 layouts/                 <-- Potongan tampilan Public
 │   ├── 📄 header.php           <-- Navbar & Head
 │   └── 📄 footer.php           <-- Footer & Script JS
 │
@@ -62,5 +63,5 @@ Web_Profile_PBL/
         │   └── 📄 aksi.php     <-- (CONTROLLER) Proses Insert/Update/Delete
         │
         └── 📁 message/
-        
             └── 📄 index.php    <-- (VIEW) Tampilan Message
+```
