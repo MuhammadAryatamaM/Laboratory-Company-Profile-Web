@@ -1,4 +1,4 @@
-nama-proyek/
+Web_Profile_PBL/
 │
 ├── 📁 assets/                  <-- File statis (CSS, JS, Gambar)
 │   ├── 📁 css/                 <-- style.css, bootstrap.min.css
@@ -61,5 +61,6 @@ nama-proyek/
         │   ├── 📄 edit.php     <-- (VIEW) Form Edit
         │   └── 📄 aksi.php     <-- (CONTROLLER) Proses Insert/Update/Delete
         │
-        └── 📁 message/          
+        └── 📁 message/
+        
             └── 📄 index.php    <-- (VIEW) Tampilan Message
