@@ -1,4 +1,3 @@
-
 // Initialize jQuery UI components
 const $ = window.jQuery // Declare the $ variable
 $(document).ready(() => {
@@ -64,4 +63,13 @@ $(document).ready(() => {
       }
     })
   })
+
+  document.querySelectorAll('.upload-area, .upload-area-product').forEach(uploadArea => {
+    uploadArea.addEventListener('click', function () {
+      const fileInput = this.querySelector('input[type="file"]');
+      if (fileInput) {
+        fileInput.click();
+      }
+    });
+  });
 })

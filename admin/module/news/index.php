@@ -78,36 +78,49 @@
   </div>
 </main>
 
-<!-- News Modal -->
+<!-- News Modal - Edit Only -->
 <div class="modal fade" id="newsModal" tabindex="-1">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add/Edit News</h5>
+        <!-- Changed title to "Edit News" since it's only for editing -->
+        <h5 class="modal-title">Edit News</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <form>
         <div class="modal-body">
           <div class="mb-3">
-            <label class="form-label">Title</label>
-            <input type="text" class="form-control" placeholder="Enter news title">
+            <label class="form-label">Title <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" placeholder="Enter news title" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Description</label>
-            <textarea class="form-control" rows="5" placeholder="Enter news content"></textarea>
+            <label class="form-label">Description <span class="text-danger">*</span></label>
+            <textarea class="form-control" rows="5" placeholder="Enter news content" required></textarea>
           </div>
+          <!-- Added image upload field for editing -->
           <div class="mb-3">
-            <label class="form-label">Author</label>
-            <input type="text" class="form-control" placeholder="Enter author name">
+            <label class="form-label">Image</label>
+            <div class="upload-area border-2 border-dashed rounded-3 p-3 text-center" style="cursor: pointer; border-color: #d1d5db; background: #f9fafb;">
+              <i class="fas fa-image text-muted mb-2 d-block" style="font-size: 24px;"></i>
+              <p class="mb-0 small">Upload Image</p>
+              <small class="text-muted d-block mt-1 file-name-display" style="display: none;"></small>
+              <input type="file" class="form-control d-none upload-image-input" accept="image/*">
+            </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label">Date</label>
-            <input type="date" class="form-control">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Author <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" placeholder="Enter author name" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Date <span class="text-danger">*</span></label>
+              <input type="date" class="form-control" required>
+            </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
         </div>
       </form>
     </div>
@@ -129,3 +142,26 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.querySelectorAll('.upload-area').forEach(uploadArea => {
+    uploadArea.addEventListener('click', function() {
+      const fileInput = this.querySelector('.upload-image-input');
+      if (fileInput) {
+        fileInput.click();
+      }
+    });
+
+    const fileInput = uploadArea.querySelector('.upload-image-input');
+    if (fileInput) {
+      fileInput.addEventListener('change', function() {
+        if (this.files.length > 0) {
+          const fileName = this.files[0].name;
+          const fileNameDisplay = uploadArea.querySelector('.file-name-display');
+          fileNameDisplay.textContent = 'Selected: ' + fileName;
+          fileNameDisplay.style.display = 'block';
+        }
+      });
+    }
+  });
+</script>

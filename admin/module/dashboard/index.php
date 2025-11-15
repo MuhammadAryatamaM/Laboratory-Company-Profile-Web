@@ -6,9 +6,10 @@
 
     <!-- Stats Cards -->
     <div class="row mb-4">
+      <!-- Make stat cards clickable and add proper click handlers, remove for Total Visitor -->
       <div class="col-md-3 mb-3">
-        <div class="stat-card-new">
-          <div class="stat-icon-box" style="background: #4f46e5;">
+        <div class="stat-card-new" onclick="window.location.href='?page=news'" style="border: 1px solid #e5e7eb; border-radius: 12px; padding: 32px; min-height: 200px;">
+          <div class="stat-icon-box" style="background: #4f46e5; margin-bottom: 24px;">
             <i class="fas fa-newspaper"></i>
           </div>
           <h3 class="stat-label">Total News</h3>
@@ -16,8 +17,8 @@
         </div>
       </div>
       <div class="col-md-3 mb-3">
-        <div class="stat-card-new">
-          <div class="stat-icon-box" style="background: #7c3aed;">
+        <div class="stat-card-new" onclick="window.location.href='?page=product'" style="border: 1px solid #e5e7eb; border-radius: 12px; padding: 32px; min-height: 200px;">
+          <div class="stat-icon-box" style="background: #7c3aed; margin-bottom: 24px;">
             <i class="fas fa-box"></i>
           </div>
           <h3 class="stat-label">Total Product</h3>
@@ -25,17 +26,18 @@
         </div>
       </div>
       <div class="col-md-3 mb-3">
-        <div class="stat-card-new">
-          <div class="stat-icon-box" style="background: #06b6d4;">
+        <div class="stat-card-new" onclick="window.location.href='?page=teams'" style="border: 1px solid #e5e7eb; border-radius: 12px; padding: 32px; min-height: 200px;">
+          <div class="stat-icon-box" style="background: #06b6d4; margin-bottom: 24px;">
             <i class="fas fa-users"></i>
           </div>
           <h3 class="stat-label">Total Team Members</h3>
           <p class="stat-value">42</p>
         </div>
       </div>
+      <!-- Total Visitor card without click handler as per requirements -->
       <div class="col-md-3 mb-3">
-        <div class="stat-card-new">
-          <div class="stat-icon-box" style="background: #a855f7;">
+        <div class="stat-card-new" style="border: 1px solid #e5e7eb; border-radius: 12px; padding: 32px; min-height: 200px; cursor: default;">
+          <div class="stat-icon-box" style="background: #a855f7; margin-bottom: 24px;">
             <i class="fas fa-eye"></i>
           </div>
           <h3 class="stat-label">Total Visitor</h3>

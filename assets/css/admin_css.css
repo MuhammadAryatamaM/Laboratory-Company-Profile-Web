@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -30,8 +31,8 @@ body {
   position: fixed;
   left: 0;
   top: 60px;
-  width: 460px !important;
-  min-height: 100vh;
+  width: 260px !important;
+  height: calc(100vh - 60px);
   background: #fff;
   border-right: 1px solid var(--border-color);
   overflow-y: auto;
@@ -242,7 +243,7 @@ body {
 
 /* Enhanced message card styling with visible borders and rounded corners */
 .message-card {
-  padding: 20px;
+  padding: 32px;
   border-radius: 16px;
   background: white;
   border: 2px solid var(--border-color);
@@ -393,15 +394,21 @@ body {
   }
 }
 
-/* Upload Area */
-.upload-area {
+/* Update upload area styling with visible border and better styling */
+.upload-area,
+.upload-area-product {
+  border: 2px dashed #d1d5db !important;
+  background: #f9fafb;
+  padding: 24px 16px !important;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.upload-area:hover {
-  background-color: #f0f9ff;
+.upload-area:hover,
+.upload-area-product:hover {
   border-color: var(--primary-color) !important;
+  background-color: #eff6ff;
 }
 
 /* Avatar */
@@ -415,39 +422,57 @@ body {
   background: white;
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  padding: 24px;
+  padding: 32px;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  min-height: 200px;
 }
 
 .stat-card-new:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
 }
 
 .stat-icon-box {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 28px;
-  margin-bottom: 16px;
+  font-size: 32px;
+  margin-bottom: 24px;
 }
 
 .stat-label {
   font-size: 14px;
   color: var(--text-muted);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   font-weight: 500;
 }
 
 .stat-value {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: bold;
   color: #111827;
   margin: 0;
+}
+
+.stat-card-new::after {
+  content: '→';
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  font-size: 24px;
+  color: var(--primary-color);
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.stat-card-new:hover::after {
+  opacity: 1;
 }

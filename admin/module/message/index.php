@@ -27,7 +27,7 @@
     <div class="row">
       <!-- Contact Us Message (Unread) -->
       <div class="col-md-6 mb-3">
-        <div class="message-card message-unread" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#messageModal" data-message-type="contact" data-message-name="Alice Johnson" data-message-email="alice.johnson@email.com" data-message-date="11/9/2025" data-message-text="Hi, I would like to know more about your pricing plans for enterprise customers. Could you provide detailed information?" data-is-read="false">
+        <div class="message-card message-unread" style="cursor: pointer; border: 2px solid #3b82f6; border-radius: 12px; background-color: #f0f9ff; padding: 32px;" data-bs-toggle="modal" data-bs-target="#messageModal" data-message-type="contact" data-message-name="Alice Johnson" data-message-email="alice.johnson@email.com" data-message-date="11/9/2025" data-message-text="Hi, I would like to know more about your pricing plans for enterprise customers. Could you provide detailed information?" data-is-read="false">
           <div class="d-flex justify-content-between align-items-start mb-2">
             <div>
               <h5 class="text-danger"><span class="message-name">Alice Johnson</span> <span class="badge bg-danger new-badge">New</span></h5>
@@ -42,7 +42,7 @@
 
       <!-- Guestbook Message (Unread) -->
       <div class="col-md-6 mb-3">
-        <div class="message-card message-unread" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#messageModal" data-message-type="guestbook" data-message-name="Bob Smith" data-message-email="bob.smith@email.com" data-message-institution="Tech Solutions Inc." data-message-phone="+1 (555) 123-4567" data-message-date="11/8/2025" data-message-text="Great website! Really impressed with your services. Keep up the good work!" data-is-read="false">
+        <div class="message-card message-unread" style="cursor: pointer; border: 2px solid #3b82f6; border-radius: 12px; background-color: #f0f9ff; padding: 32px;" data-bs-toggle="modal" data-bs-target="#messageModal" data-message-type="guestbook" data-message-name="Bob Smith" data-message-email="bob.smith@email.com" data-message-institution="Tech Solutions Inc." data-message-phone="+1 (555) 123-4567" data-message-date="11/8/2025" data-message-text="Great website! Really impressed with your services. Keep up the good work!" data-is-read="false">
           <div class="d-flex justify-content-between align-items-start mb-2">
             <div>
               <h5 class="text-danger"><span class="message-name">Bob Smith</span> <span class="badge bg-danger new-badge">New</span></h5>
@@ -57,7 +57,7 @@
 
       <!-- Contact Us Message (Unread) -->
       <div class="col-md-6 mb-3">
-        <div class="message-card message-unread" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#messageModal" data-message-type="contact" data-message-name="Carol White" data-message-email="carol.white@email.com" data-message-date="11/7/2025" data-message-text="I represent a company that would like to explore partnership opportunities with your organization. Can we discuss this further?" data-is-read="false">
+        <div class="message-card message-unread" style="cursor: pointer; border: 2px solid #3b82f6; border-radius: 12px; background-color: #f0f9ff; padding: 32px;" data-bs-toggle="modal" data-bs-target="#messageModal" data-message-type="contact" data-message-name="Carol White" data-message-email="carol.white@email.com" data-message-date="11/7/2025" data-message-text="I represent a company that would like to explore partnership opportunities with your organization. Can we discuss this further?" data-is-read="false">
           <div class="d-flex justify-content-between align-items-start mb-2">
             <div>
               <h5 class="text-danger"><span class="message-name">Carol White</span> <span class="badge bg-danger new-badge">New</span></h5>
@@ -72,7 +72,7 @@
 
       <!-- Contact Us Message (Read - black text) -->
       <div class="col-md-6 mb-3">
-        <div class="message-card message-read" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#messageModal" data-message-type="contact" data-message-name="David Brown" data-message-email="david.brown@email.com" data-message-date="11/6/2025" data-message-text="I am experiencing issues with your platform. The login page is not loading properly. Please assist." data-is-read="true">
+        <div class="message-card message-read" style="cursor: pointer; border: 2px solid #e5e7eb; border-radius: 12px; padding: 32px;" data-bs-toggle="modal" data-bs-target="#messageModal" data-message-type="contact" data-message-name="David Brown" data-message-email="david.brown@email.com" data-message-date="11/6/2025" data-message-text="I am experiencing issues with your platform. The login page is not loading properly. Please assist." data-is-read="true">
           <div class="d-flex justify-content-between align-items-start mb-2">
             <div>
               <h5 class="text-dark"><span class="message-name">David Brown</span></h5>
@@ -87,7 +87,7 @@
 
       <!-- Guestbook Message (Read - black text) -->
       <div class="col-md-6 mb-3">
-        <div class="message-card message-read" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#messageModal" data-message-type="guestbook" data-message-name="Emma Davis" data-message-email="emma.davis@email.com" data-message-institution="Creative Agency Co." data-message-phone="+1 (555) 987-6543" data-message-date="11/5/2025" data-message-text="Wonderful experience using your products. Thank you for excellent customer service!" data-is-read="true">
+        <div class="message-card message-read" style="cursor: pointer; border: 2px solid #e5e7eb; border-radius: 12px; padding: 32px;" data-bs-toggle="modal" data-bs-target="#messageModal" data-message-type="guestbook" data-message-name="Emma Davis" data-message-email="emma.davis@email.com" data-message-institution="Creative Agency Co." data-message-phone="+1 (555) 987-6543" data-message-date="11/5/2025" data-message-text="Wonderful experience using your products. Thank you for excellent customer service!" data-is-read="true">
           <div class="d-flex justify-content-between align-items-start mb-2">
             <div>
               <h5 class="text-dark"><span class="message-name">Emma Davis</span></h5>
@@ -125,6 +125,8 @@
             <p class="fw-600" id="modalMessageEmail">alice.johnson@email.com</p>
           </div>
         </div>
+
+        <!-- Institution and Phone now properly aligned in grid -->
         <div class="row mb-4" id="guestbookFields" style="display: none;">
           <div class="col-md-6">
             <label class="text-muted small">Institution</label>
