@@ -6,7 +6,7 @@ $page_title = '';
 <?php include 'template/header.php'; ?>
 <?php include 'template/navbar.php'; ?>
 
-<div class="wrapper d-flex">
+<div class="wrapper">
   <!-- Sidebar -->
   <?php include 'template/sidebar.php'; ?>
 

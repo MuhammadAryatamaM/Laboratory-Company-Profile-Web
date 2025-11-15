@@ -1,48 +1,62 @@
 <?php $page_title = 'Dashboard'; ?>
-<main class="main-content">
-  <div class="container-fluid">
+
+<main class="main-content">  <div class="container-fluid">
     <h1 class="mb-4">Dashboard</h1>
     <p class="text-muted mb-4">Welcome back! Here's what's happening with your CMS.</p>
 
     <!-- Stats Cards -->
     <div class="row mb-4">
-      <!-- Make stat cards clickable and add proper click handlers, remove for Total Visitor -->
       <div class="col-md-3 mb-3">
-        <div class="stat-card-new" onclick="window.location.href='?page=news'" style="border: 1px solid #e5e7eb; border-radius: 12px; padding: 32px; min-height: 200px;">
-          <div class="stat-icon-box" style="background: #4f46e5; margin-bottom: 24px;">
-            <i class="fas fa-newspaper"></i>
+        <a href="?page=news" class="stat-card-link">
+          <div class="stat-card card h-100">
+            <div class="stat-icon" style="background: #4f46e5;">
+              <i class="fas fa-newspaper"></i>
+            </div>
+            <div class="stat-content">
+              <h3>Total News</h3>
+              <p class="stat-number">248</p>
+            </div>
           </div>
-          <h3 class="stat-label">Total News</h3>
-          <p class="stat-value">248</p>
-        </div>
+        </a>
       </div>
       <div class="col-md-3 mb-3">
-        <div class="stat-card-new" onclick="window.location.href='?page=product'" style="border: 1px solid #e5e7eb; border-radius: 12px; padding: 32px; min-height: 200px;">
-          <div class="stat-icon-box" style="background: #7c3aed; margin-bottom: 24px;">
-            <i class="fas fa-box"></i>
+        <a href="?page=products" class="stat-card-link">
+          <div class="stat-card card h-100">
+            <div class="stat-icon" style="background: #7c3aed;">
+              <i class="fas fa-box"></i>
+            </div>
+            <div class="stat-content">
+              <h3>Total Product</h3>
+              <p class="stat-number">156</p>
+            </div>
           </div>
-          <h3 class="stat-label">Total Product</h3>
-          <p class="stat-value">156</p>
-        </div>
+        </a>
       </div>
       <div class="col-md-3 mb-3">
-        <div class="stat-card-new" onclick="window.location.href='?page=teams'" style="border: 1px solid #e5e7eb; border-radius: 12px; padding: 32px; min-height: 200px;">
-          <div class="stat-icon-box" style="background: #06b6d4; margin-bottom: 24px;">
-            <i class="fas fa-users"></i>
+        <a href="?page=teams" class="stat-card-link">
+          <div class="stat-card card h-100">
+            <div class="stat-icon" style="background: #06b6d4;">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-content">
+              <h3>Total Team Members</h3>
+              <p class="stat-number">42</p>
+            </div>
           </div>
-          <h3 class="stat-label">Total Team Members</h3>
-          <p class="stat-value">42</p>
-        </div>
+        </a>
       </div>
-      <!-- Total Visitor card without click handler as per requirements -->
       <div class="col-md-3 mb-3">
-        <div class="stat-card-new" style="border: 1px solid #e5e7eb; border-radius: 12px; padding: 32px; min-height: 200px; cursor: default;">
-          <div class="stat-icon-box" style="background: #a855f7; margin-bottom: 24px;">
-            <i class="fas fa-eye"></i>
+        <a href="#" id="visitor-stats-trigger" class="stat-card-link">
+          <div class="stat-card card h-100">
+            <div class="stat-icon" style="background: #a855f7;">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="stat-content">
+              <h3>Total Visitor</h3>
+              <p class="stat-number">12.4K</p>
+            </div>
           </div>
-          <h3 class="stat-label">Total Visitor</h3>
-          <p class="stat-value">12.4K</p>
-        </div>
+        </a>
       </div>
     </div>
 
@@ -94,4 +108,60 @@
       </div>
     </div>
   </div>
+
+  <!-- Visitor Stats Modal -->
+  <div id="visitor-stats-modal" title="Visitor Statistics">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Past 7 Days
+        <span class="badge bg-primary rounded-pill">1,234</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Past 28 Days
+        <span class="badge bg-primary rounded-pill">5,678</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Past 60 Days
+        <span class="badge bg-primary rounded-pill">12,345</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Past 365 Days
+        <span class="badge bg-primary rounded-pill">145,678</span>
+      </li>
+    </ul>
+  </div>
 </main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  // Initialize the dialog
+  $("#visitor-stats-modal").dialog({
+    autoOpen: false,
+    modal: true,
+    width: 500,
+    show: {
+      effect: "fade",
+      duration: 200 // Shorter animation
+    },
+    hide: {
+      effect: "fade",
+      duration: 200 // Shorter animation
+    },
+    closeOnEscape: true // Close on ESC key
+  });
+
+  // Open the dialog on click
+  $("#visitor-stats-trigger").on("click", function(e) {
+    e.preventDefault();
+    $("#visitor-stats-modal").dialog("open");
+  });
+
+  // Close dialog when clicking outside the modal (on the overlay)
+  $(document).on('click', '.ui-widget-overlay', function() {
+    $("#visitor-stats-modal").dialog('close');
+  });
+});
+</script>
+

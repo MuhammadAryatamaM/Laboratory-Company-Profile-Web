@@ -13,6 +13,7 @@
 
     <div class="row">
       <div class="col-md-4 mb-4">
+        <!-- Added hover transition effects to news cards -->
         <div class="card news-card h-100">
           <div class="news-image"></div>
           <div class="card-body d-flex flex-column">

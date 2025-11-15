@@ -21,7 +21,7 @@
           </button>
         </div>
         <div class="row align-items-center">
-          <div class="col-md-3">
+          <div class="col-md-3 d-flex justify-content-center">
             <div class="avatar-lg mb-3">
               <div style="width: 100px; height: 100px; background: #bfdbfe; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px;">
                 <i class="fas fa-user"></i>

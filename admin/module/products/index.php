@@ -11,8 +11,10 @@
       </a>
     </div>
 
+    <!-- Fixed card alignment with equal heights -->
     <div class="row">
       <div class="col-md-4 mb-4">
+        <!-- Removed inline transition style, using CSS-only styling -->
         <div class="card product-card h-100">
           <div class="product-image"></div>
           <div class="card-body d-flex flex-column">
@@ -89,6 +91,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
+        <!-- Changed title to "Edit Product" since it's only for editing -->
         <h5 class="modal-title">Edit Product</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>

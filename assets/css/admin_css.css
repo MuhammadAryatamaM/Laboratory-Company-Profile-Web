@@ -120,8 +120,20 @@ body {
   padding: 24px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   transition: all 0.3s ease;
+}
+
+a.stat-card-link, a.stat-card-link:hover {
+  text-decoration: none;
+}
+
+a.stat-card-link .stat-content h3 {
+  color: var(--text-muted);
+}
+
+a.stat-card-link .stat-number {
+  color: #111827;
 }
 
 .stat-card:hover {
@@ -130,25 +142,25 @@ body {
 }
 
 .stat-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 12px;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .stat-content h3 {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--text-muted);
   margin-bottom: 8px;
   font-weight: 500;
 }
 
 .stat-number {
-  font-size: 28px;
+  font-size: 36px;
   font-weight: bold;
   color: #111827;
   margin: 0;
@@ -384,10 +396,6 @@ body {
     padding: 20px;
   }
 
-  .stat-card {
-    flex-direction: column;
-    text-align: center;
-  }
 
   .navbar {
     top: 60px;
@@ -417,62 +425,4 @@ body {
   justify-content: center;
 }
 
-/* New dashboard stat card design matching original - icon box on top left */
-.stat-card-new {
-  background: white;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 32px;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  cursor: pointer;
-  min-height: 200px;
-}
 
-.stat-card-new:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-  transform: translateY(-4px);
-}
-
-.stat-icon-box {
-  width: 70px;
-  height: 70px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 32px;
-  margin-bottom: 24px;
-}
-
-.stat-label {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-  font-weight: 500;
-}
-
-.stat-value {
-  font-size: 32px;
-  font-weight: bold;
-  color: #111827;
-  margin: 0;
-}
-
-.stat-card-new::after {
-  content: '→';
-  position: absolute;
-  top: 32px;
-  right: 32px;
-  font-size: 24px;
-  color: var(--primary-color);
-  opacity: 0.3;
-  transition: opacity 0.3s ease;
-}
-
-.stat-card-new:hover::after {
-  opacity: 1;
-}
