@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - InLET Laboratory</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/css/produk.css">
 </head>
 <body>
     <!-- Header -->
@@ -45,7 +45,7 @@
             array(
                 'id' => 1,
                 'name' => 'Viat Map Application',
-                'image' => 'images/prodct1.png',
+                'image' => '../assets/img/prodct1.png',
                 'description' => 'VIAT-map (Visual Arguments Toulmin) Application to help Reading Comprehension by using Toulmin Arguments Concept. We are trying to emphasise the logic behind a written text by adding the claim, ground and warrant following the Toulmin Argument Concept.',
                 'features' => array(
                     array('icon' => '📊', 'text' => 'Visual Argument Mapping'),
@@ -58,7 +58,7 @@
             array(
                 'id' => 2,
                 'name' => 'PseudoLearn Application',
-                'image' => 'assets/img/product2.png',
+                'image' => '../assets/img/prodct2.png',
                 'description' => 'Sebuah media pembelajaran rekonstruksi algoritma pseudocode dengan menggunakan pendekatan Element Fill-in-Blank Problems di dalam pemrograman java.',
                 'features' => array(
                     array('icon' => '🧠', 'text' => 'Algorithm Learning'),
@@ -71,7 +71,7 @@
             array(
                 'id' => 3,
                 'name' => 'Codeasy',
-                'image' => 'images/prodct3.png',
+                'image' => '../assets/img/prodct3.png',
                 'description' => 'Codeasy adalah platform belajar Data Science berbasis Machine Learning yang membantu kamu menguasai Python dan Business Intelligence melalui sistem penilaian otomatis dan analisis kognitif cerdas berbasis Taksonomi Bloom',
                 'features' => array(
                     array('icon' => '🤖', 'text' => 'Machine Learning Based'),

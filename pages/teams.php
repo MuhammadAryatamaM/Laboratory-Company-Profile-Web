@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Teams - InLET Laboratory</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/css/teams.css">
 </head>
 <body>
     <!-- Header -->
@@ -34,7 +34,7 @@
 
     <!-- Hero Banner -->
     <section class="hero-banner">
-        <img src="images/gallery14.png" alt="InLET Laboratory Team">
+        <img src="../assets/img/gallery14.png" alt="InLET Laboratory Team">
     </section>
 
     <!-- Main Content -->
@@ -46,7 +46,7 @@
         // Data Kepala Laboratorium
         $head_of_lab = array(
             'name' => 'Dr. Eng. Banni Satria Andoko, S.Kom.',
-            'photo' => 'images/Banni.jpeg',
+            'photo' => '../assets/img/Banni.jpeg',
             'nip' => '198108062201021002',
             'email' => '-',
             'phone' => '081350889181'
@@ -56,42 +56,42 @@
         $team_members = array(
             array(
                 'name' => 'Vivin Ayu Lestari, S.Pd., M.Kom.',
-                'photo' => 'images/vivin.jpeg',
+                'photo' => '../assets/img/vivin.jpeg',
                 'nip' => '199106212019032020',
                 'email' => 'vivin@polinema.ac.id',
                 'phone' => '082143984396'
             ),
             array(
                 'name' => 'Agung Nugroho Pramudhita, S.T., M.T.',
-                'photo' => 'images/agung.jpeg',
+                'photo' => '../assets/img/Agung.jpeg',
                 'nip' => '198108092010121002',
                 'email' => 'agung.pramudhita@polinema.ac.id',
                 'phone' => '081334699967'
             ),
             array(
                 'name' => 'Budi Harijanto, ST., M.MKom.',
-                'photo' => 'images/budi.png',
+                'photo' => '../assets/img/budi.png',
                 'nip' => '196201051990031002',
                 'email' => 'budi.hijet@gmail.com',
                 'phone' => '-'
             ),
             array(
                 'name' => 'Irsyad Arif Mashudi, S.Kom., M.Kom',
-                'photo' => 'images/irsyad.png',
+                'photo' => '../assets/img/irsyad.png',
                 'nip' => '198902012019031009',
                 'email' => 'irsyad.arif@polinema.ac.id',
                 'phone' => '-'
             ),
             array(
                 'name' => 'Dr. Indra Dharma Wijaya, ST., M.MT.',
-                'photo' => 'images/indra.png',
+                'photo' => '../assets/img/indra.png',
                 'nip' => '197305102008011010',
                 'email' => 'indra.dharma@polinema.ac.id',
                 'phone' => '-'
             ),
             array(
                 'name' => 'Usman Nurhasan, S.Kom., MT.',
-                'photo' => 'images/usman.png',
+                'photo' => '../assets/img/usman.png',
                 'nip' => '198609232015041001',
                 'email' => 'usmannurhasan@polinema.ac.id',
                 'phone' => '-'

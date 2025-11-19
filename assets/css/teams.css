@@ -1,0 +1,438 @@
+/* ========================================
+   RESET & GLOBAL STYLES
+======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #e6f4f9;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.logo-text h1 {
+    font-size: 18px;
+    color: #1e40af;
+    font-weight: 700;
+    line-height: 1.2;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.logo-text p {
+    font-size: 11px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #334155;
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s;
+    position: relative;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+nav a:hover,
+nav a.active {
+    color: #2563eb;
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #2563eb;
+    border-radius: 2px;
+}
+
+/* ========================================
+   HERO BANNER
+======================================== */
+.hero-banner {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    background: #1e40af;
+}
+
+.hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ========================================
+   MAIN CONTENT
+======================================== */
+.teams-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.page-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #1e293b;
+    text-align: left;
+    margin-bottom: 50px;
+    font-family: 'Georgia', serif;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1e293b;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Georgia', serif;
+}
+
+/* ========================================
+   HEAD OF LABORATORY SECTION
+======================================== */
+.head-section {
+    margin-bottom: 80px;
+}
+
+.head-card {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   PROFILE CARDS
+======================================== */
+.profile-card {
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.profile-photo {
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid #e2e8f0;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.info-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 15px;
+    align-items: start;
+}
+
+.info-label {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 15px;
+    font-family: 'Georgia', serif;
+}
+
+.info-value {
+    color: #475569;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* ========================================
+   TEAM GRID
+======================================== */
+.team-section {
+    margin-bottom: 60px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.single-card {
+    grid-column: 1 / -1;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+footer {
+    background: linear-gradient(135deg, #475569, #334155);
+    color: white;
+    padding: 60px 20px 30px;
+    margin-top: 80px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-about h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-logo-icon {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.footer-logo-text h3 {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-logo-text p {
+    font-size: 10px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-about p {
+    color: #cbd5e1;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section h4 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 600;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 12px;
+}
+
+.footer-section a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+.contact-icon {
+    flex-shrink: 0;
+    font-size: 18px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+@media (max-width: 1024px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    .hero-banner {
+        height: 250px;
+    }
+
+    .page-title {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .profile-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .profile-photo {
+        margin: 0 auto 20px;
+    }
+
+    .info-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        text-align: center;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .teams-container {
+        padding: 40px 15px;
+    }
+
+    .hero-banner {
+        height: 200px;
+    }
+
+    .page-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .info-label,
+    .info-value {
+        font-size: 14px;
+    }
+}
