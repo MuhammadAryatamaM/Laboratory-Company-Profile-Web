@@ -1,6 +1,30 @@
 <?php
 $page_title = 'Login';
 ?>
+<?php
+session_start();
+include "../config/koneksi.php"; 
+
+if(isset($_SESSION['status']) && $_SESSION['status'] == "login"){
+    header("location:index.php");
+    exit();
+}
+
+if(isset($_POST['login'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Cek Login Sederhana
+    // Nanti ganti pakai database  
+    if($username == 'admin' && $password == '123'){
+        $_SESSION['username'] = $username;
+        $_SESSION['status'] = "login";
+        header("location:index.php");
+    } else {
+        $error = "Username atau Password salah!";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -104,7 +128,14 @@ $page_title = 'Login';
       <p>Enter your credentials to access the admin panel</p>
     </div>
 
-    <form method="POST" action="index.php">
+    <form method="POST" action="">
+      
+      <?php if(isset($error)) { ?>
+          <div class="alert alert-danger text-center mb-3" role="alert">
+              <?php echo $error; ?>
+          </div>
+      <?php } ?>
+
       <div class="mb-3">
         <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
         <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
@@ -115,7 +146,7 @@ $page_title = 'Login';
         <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
       </div>
 
-      <button type="submit" class="btn btn-login btn-primary w-100">
+      <button type="submit" name="login" class="btn btn-login btn-primary w-100">
         <i class="fas fa-sign-in-alt"></i> Login
       </button>
     </form>
