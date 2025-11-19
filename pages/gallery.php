@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InLET Laboratory</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../assets/css/gallery.cs>
 </head>
 <body>
     <header>
@@ -29,26 +29,26 @@
                 <?php
                 // Daftar gambar gallery
                 $galleryImages = [
-                    'gallery1.png',
-                    'gallery1.png', 
-                    'gallery3.png',
-                    'gallery4.png',
-                    'gallery5.png',
-                    'gallery6.png',
-                    'gallery7.png',
-                    'gallery8.png',
-                    'gallery9.png',
-                    'gallery10.png',
-                    'gallery11.png',
-                    'gallery12.png',
-                    'gallery13.png',
-                    'gallery14.png'
+                    '../assets/img/gallery1.png',
+                    '../assets/img/gallery2.png',
+                    '../assets/img/gallery3.png',
+                    '../assets/img/gallery4.png',
+                    '../assets/img/gallery5.png',
+                    '../assets/img/gallery6.png',
+                    '../assets/img/gallery7.png',
+                    '../assets/img/gallery8.png',
+                    '../assets/img/gallery9.png',
+                    '../assets/img/gallery10.png',
+                    '../assets/img/gallery11.png',
+                    '../assets/img/gallery12.png',
+                    '../assets/img/gallery13.png',
+                    '../assets/img/gallery14.png'
                 ];
 
                 // Loop untuk menampilkan setiap gambar
                 foreach ($galleryImages as $image) {
                     echo '<div class="gallery-item">';
-                    echo '<img src="images/' . $image . '" alt="Gallery Image">';
+                    echo '<img src="' . $image . '" alt="Gallery Image">';
                     echo '</div>';
                 }
                 ?>
