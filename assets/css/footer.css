@@ -7,7 +7,6 @@
     padding: 28px 70px 12px;
 }
 
-/* MAIN 3-COLUMN LAYOUT */
 .inlet-footer-inner {
     display: flex;
     justify-content: space-between;
@@ -19,7 +18,6 @@
 .footer-links   { flex: 0 0 20%; }
 .footer-contact { flex: 0 0 38%; }
 
-/* TITLES */
 .footer-title {
     font-size: 25px;
     font-weight: 700;
@@ -27,13 +25,12 @@
     color: #F8F4C7;
 }
 
-/* LEFT: ABOUT */
 .footer-logo-wrapper {
     margin-bottom: 16px;
 }
 
 .footer-logo {
-    width: 250px;          /* ukuran logo seperti versi awal */
+    width: 250px;
     height: auto;
     display: block;
 }
@@ -41,10 +38,9 @@
 .footer-about-text {
     font-size: 17px;
     line-height: 1.5;
-    max-width: 530px;      /* batasi lebar teks biar bungkusnya rapi */
+    max-width: 530px;
 }
 
-/* CENTER: QUICK LINKS */
 .footer-links-grid {
     display: flex;
     gap: 60px;
@@ -69,7 +65,6 @@
     opacity: .7;
 }
 
-/* RIGHT: CONTACT */
 .footer-contact-grid {
     display: grid;
     grid-template-columns: auto minmax(220px, 1fr);
@@ -110,17 +105,15 @@
     line-height: 1.4;
 }
 
-/* DESKTOP: divider cuma Quick Links + Contact */
 .footer-divider {
     height: 2px;
     background-color: #E9D9A6;
-    width: 62.5%;       /* area Quick Links + Contact */
-    margin-left: 36.5%; /* mulai setelah About */
-    margin-top: -40px;  /* tarik naik mendekati Products */
+    width: 62.5%;
+    margin-left: 36.5%;
+    margin-top: -40px;
     margin-bottom: 10px;
 }
 
-/* COPYRIGHT: center di bawah garis */
 .footer-copy {
     font-size: 17px;
     color: #F4F2F3;
@@ -131,7 +124,6 @@
     margin-bottom: 10px;
 }
 
-/* RESPONSIVE */
 @media (max-width: 992px) {
     .inlet-footer {
         padding: 24px 20px 12px;
@@ -151,7 +143,6 @@
         row-gap: 12px;
     }
 
-    /* garis & copy full width di mobile */
     .footer-divider {
         width: 100%;
         margin-left: 0;
