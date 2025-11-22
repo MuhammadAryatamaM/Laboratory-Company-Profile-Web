@@ -1,5 +1,5 @@
 <?php
-    $root = "/WEB_PROFILE_PBL/";
+    $root = "/Web_Profile_PBL/";
     $current_page = basename($_SERVER["SCRIPT_NAME"]);
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
                 <a class="navbar-brand d-flex align-items-center" href="<?php echo $root; ?>index.php">
                     <img src="<?php echo $root; ?>assets/img/Logo.png" class="inlet-logo" alt="InLET Logo">
                 </a>
-
+                
                 <!-- Hamburger -->
                 <button class="navbar-toggler custom-toggler"
                         type="button"

@@ -1,7 +1,6 @@
 <?php
-if (!isset($root)) {
-    $root = "/WEB_PROFILE_PBL/";
-}
+    $root = "/Web_Profile_PBL/";
+    $current_page = basename($_SERVER["SCRIPT_NAME"]);
 ?>
 
 <footer class="inlet-footer">
