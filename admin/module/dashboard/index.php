@@ -1,6 +1,35 @@
-<?php $page_title = 'Dashboard'; ?>
+<?php
+$page_title = 'Dashboard';
 
-<main class="main-content">  <div class="container-fluid">
+// --- FETCHING DATA ---
+try {
+  // 1. Fetch Dashboard Summary Stats
+  $stmt_summary = $pdo->query("SELECT * FROM v_dashboard_summary LIMIT 1");
+  $summary = $stmt_summary->fetch(PDO::FETCH_ASSOC);
+
+  // 2. Fetch Visitor Stats
+  $stmt_visitors = $pdo->query("SELECT * FROM v_visitor_stats LIMIT 1");
+  $visitor_stats = $stmt_visitors->fetch(PDO::FETCH_ASSOC);
+
+  // 3. Fetch Recent News
+  $stmt_news = $pdo->query("SELECT * FROM v_recent_news");
+  $recent_news = $stmt_news->fetchAll(PDO::FETCH_ASSOC);
+
+  // 4. Fetch Recent Products
+  $stmt_products = $pdo->query("SELECT * FROM v_recent_products");
+  $recent_products = $stmt_products->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  // On error, set sensible defaults to avoid breaking the page
+  $summary = ['total_news' => 'N/A', 'total_product' => 'N/A', 'total_team_members' => 'N/A', 'total_visitor' => 'N/A'];
+  $visitor_stats = ['visitors_last_7_days' => 'N/A', 'visitors_last_28_days' => 'N/A', 'visitors_last_60_days' => 'N/A', 'visitors_last_365_days' => 'N/A'];
+  $recent_news = [];
+  $recent_products = [];
+  echo "<div class='alert alert-danger'>Failed to fetch dashboard data: " . $e->getMessage() . "</div>";
+}
+?>
+
+<main class="main-content">
+  <div class="container-fluid">
     <h1 class="mb-4">Dashboard</h1>
     <p class="text-muted mb-4">Welcome back! Here's what's happening with your CMS.</p>
 
@@ -14,7 +43,7 @@
             </div>
             <div class="stat-content">
               <h3>Total News</h3>
-              <p class="stat-number">248</p>
+              <p class="stat-number"><?php echo htmlspecialchars($summary['total_news']); ?></p>
             </div>
           </div>
         </a>
@@ -27,7 +56,7 @@
             </div>
             <div class="stat-content">
               <h3>Total Product</h3>
-              <p class="stat-number">156</p>
+              <p class="stat-number"><?php echo htmlspecialchars($summary['total_product']); ?></p>
             </div>
           </div>
         </a>
@@ -40,7 +69,7 @@
             </div>
             <div class="stat-content">
               <h3>Total Team Members</h3>
-              <p class="stat-number">42</p>
+              <p class="stat-number"><?php echo htmlspecialchars($summary['total_team_members']); ?></p>
             </div>
           </div>
         </a>
@@ -53,7 +82,7 @@
             </div>
             <div class="stat-content">
               <h3>Total Visitor</h3>
-              <p class="stat-number">12.4K</p>
+              <p class="stat-number"><?php echo htmlspecialchars($summary['total_visitor']); ?></p>
             </div>
           </div>
         </a>
@@ -68,18 +97,16 @@
             <a href="index.php?page=news" class="text-primary">View All</a>
           </div>
           <div class="card-body">
-            <div class="recent-item mb-3">
-              <h6>New Product Launch Announcement</h6>
-              <p class="text-muted small">11/5/2025</p>
-            </div>
-            <div class="recent-item mb-3">
-              <h6>Company Reaches 10,000 Customers</h6>
-              <p class="text-muted small">11/1/2025</p>
-            </div>
-            <div class="recent-item">
-              <h6>Partnership with Global Tech Leader</h6>
-              <p class="text-muted small">10/28/2025</p>
-            </div>
+            <?php if (!empty($recent_news)) : ?>
+              <?php foreach ($recent_news as $news_item) : ?>
+                <div class="recent-item mb-3">
+                  <h6><?php echo htmlspecialchars($news_item['title']); ?></h6>
+                  <p class="text-muted small"><?php echo htmlspecialchars($news_item['publish_date']); ?> by <?php echo htmlspecialchars($news_item['author_name']); ?></p>
+                </div>
+              <?php endforeach; ?>
+            <?php else : ?>
+              <p class="text-muted">No recent news found.</p>
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -91,18 +118,15 @@
             <a href="index.php?page=product" class="text-primary">View All</a>
           </div>
           <div class="card-body">
-            <div class="recent-item mb-3">
-              <h6>Premium Wireless Headphones</h6>
-              <p class="text-muted small">Electronics • Audio</p>
-            </div>
-            <div class="recent-item mb-3">
-              <h6>Smart Fitness Watch</h6>
-              <p class="text-muted small">Wearables • Fitness</p>
-            </div>
-            <div class="recent-item">
-              <h6>Ergonomic Office Chair</h6>
-              <p class="text-muted small">Furniture • Office</p>
-            </div>
+            <?php if (!empty($recent_products)) : ?>
+              <?php foreach ($recent_products as $product_item) : ?>
+                <div class="recent-item mb-3">
+                  <h6><?php echo htmlspecialchars($product_item['product_name']); ?></h6>
+                </div>
+              <?php endforeach; ?>
+            <?php else : ?>
+              <p class="text-muted">No recent products found.</p>
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -114,19 +138,19 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Past 7 Days
-        <span class="badge bg-primary rounded-pill">1,234</span>
+        <span class="badge bg-primary rounded-pill"><?php echo htmlspecialchars($visitor_stats['visitors_last_7_days']); ?></span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Past 28 Days
-        <span class="badge bg-primary rounded-pill">5,678</span>
+        <span class="badge bg-primary rounded-pill"><?php echo htmlspecialchars($visitor_stats['visitors_last_28_days']); ?></span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Past 60 Days
-        <span class="badge bg-primary rounded-pill">12,345</span>
+        <span class="badge bg-primary rounded-pill"><?php echo htmlspecialchars($visitor_stats['visitors_last_60_days']); ?></span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Past 365 Days
-        <span class="badge bg-primary rounded-pill">145,678</span>
+        <span class="badge bg-primary rounded-pill"><?php echo htmlspecialchars($visitor_stats['visitors_last_365_days']); ?></span>
       </li>
     </ul>
   </div>
@@ -135,33 +159,32 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <script>
-$(function() {
-  // Initialize the dialog
-  $("#visitor-stats-modal").dialog({
-    autoOpen: false,
-    modal: true,
-    width: 500,
-    show: {
-      effect: "fade",
-      duration: 200 // Shorter animation
-    },
-    hide: {
-      effect: "fade",
-      duration: 200 // Shorter animation
-    },
-    closeOnEscape: true // Close on ESC key
-  });
+  $(function() {
+    // Initialize the dialog
+    $("#visitor-stats-modal").dialog({
+      autoOpen: false,
+      modal: true,
+      width: 500,
+      show: {
+        effect: "fade",
+        duration: 200
+      },
+      hide: {
+        effect: "fade",
+        duration: 200
+      },
+      closeOnEscape: true // Close on ESC key
+    });
 
-  // Open the dialog on click
-  $("#visitor-stats-trigger").on("click", function(e) {
-    e.preventDefault();
-    $("#visitor-stats-modal").dialog("open");
-  });
+    // Open the dialog on click
+    $("#visitor-stats-trigger").on("click", function(e) {
+      e.preventDefault();
+      $("#visitor-stats-modal").dialog("open");
+    });
 
-  // Close dialog when clicking outside the modal (on the overlay)
-  $(document).on('click', '.ui-widget-overlay', function() {
-    $("#visitor-stats-modal").dialog('close');
+    // Close dialog when clicking outside the modal
+    $(document).on('click', '.ui-widget-overlay', function() {
+      $("#visitor-stats-modal").dialog('close');
+    });
   });
-});
 </script>
-
