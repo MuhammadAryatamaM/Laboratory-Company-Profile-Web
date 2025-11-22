@@ -7,27 +7,8 @@
     <link rel="stylesheet" href="../assets/css/gallery.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">InLET Laboratory</a>
-            <ul class="nav-menu">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Research</a></li>
-                <li><a href="#">Teams</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#" class="active">Gallery</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+    <?php include '../layouts/header.php'; ?>
+    <link rel="stylesheet" href="<?php echo $root; ?>assets/css/header.css">
 
     <!-- Gallery Section -->
     <section class="gallery-section">
@@ -64,49 +45,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section footer-about">
-                    <h3>About InLET</h3>
-                    <p>InLET Laboratory is a leading research facility dedicated to innovation and technological advancement in various scientific fields.</p>
-                </div>
-                <div class="footer-section footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Research</a></li>
-                        <li><a href="#">Teams</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section footer-contact">
-                    <h3>Contact</h3>
-                    <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <span>Portland, Nogot, Malang</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📧</span>
-                        <span>info@inlet-lab.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📞</span>
-                        <span>+62 123 456 789</span>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>InLET Laboratory, Portland, Nogot, Malang — All Rights Reserved</p>
-            </div>
-        </div>
-    </footer>
+    <?php include '../layouts/footer.php'; ?>
+    <link rel="stylesheet" href="<?php echo $root; ?>assets/css/footer.css">
 
-    <script src="script.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>
