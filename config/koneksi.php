@@ -1,15 +1,17 @@
 <?php
+$host = 'aws-1-ap-southeast-2.pooler.supabase.com';
+$port = '5432';
+$dbname = 'postgres';
+$user = 'postgres.lizrjrpjysvnbsmppfjm';
+$password = 'paradichlorobenzene';
 
-$server = "localhost";
-$username = "root";
-$password = "";
-$database = ""; //db belum
+$dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password";
 
-//menyimpan hasil panggilan
-$koneksi = mysqli_connect($server, $username, $password, $database);
-
-//cek error kayak password salah atau tidak
-if (mysqli_connect_errno()) {
-    echo "Koneksi database gagal: " . mysqli_connect_error();
+try {
+  $pdo = new PDO($dsn);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+  echo "Koneksi database gagal: " . $e->getMessage();
+  exit();
 }
-?>
+$koneksi = $pdo;
