@@ -3,26 +3,52 @@ $page_title = 'Login';
 ?>
 <?php
 session_start();
-include "../config/koneksi.php"; 
+include "../config/koneksi.php";
 
-if(isset($_SESSION['status']) && $_SESSION['status'] == "login"){
-    header("location:index.php");
-    exit();
+if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
+  header("location:index.php");
+  exit();
 }
 
-if(isset($_POST['login'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+if (isset($_POST['login'])) {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
 
-    // Cek Login Sederhana
-    // Nanti ganti pakai database  
-    if($username == 'admin' && $password == '123'){
-        $_SESSION['username'] = $username;
-        $_SESSION['status'] = "login";
-        header("location:index.php");
+  try {
+    // Fetch user from admin table
+    $stmt = $pdo->prepare("SELECT * FROM admin WHERE username = :username");
+    $stmt->bindParam(':username', $username);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Verify password
+    if ($user && password_verify($password, $user['password_hash'])) {
+      // Fetch team member details
+      $stmt_member = $pdo->prepare("SELECT member_id, position FROM team_member WHERE admin_id = :admin_id");
+      $stmt_member->bindParam(':admin_id', $user['admin_id'], PDO::PARAM_INT);
+      $stmt_member->execute();
+      $team_member = $stmt_member->fetch(PDO::FETCH_ASSOC);
+
+      // Set session variables
+      $_SESSION['admin_id'] = $user['admin_id'];
+      $_SESSION['username'] = $user['username'];
+
+      if ($team_member) {
+        $_SESSION['member_id'] = $team_member['member_id'];
+        $_SESSION['role'] = $team_member['position'];
+      } else {
+        $_SESSION['role'] = 'superadmin';
+      }
+
+      $_SESSION['status'] = "login";
+      header("location:index.php");
+      exit();
     } else {
-        $error = "Username atau Password salah!";
+      $error = "Username atau Password salah!";
     }
+  } catch (PDOException $e) {
+    $error = "Database error: " . $e->getMessage();
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -129,11 +155,11 @@ if(isset($_POST['login'])){
     </div>
 
     <form method="POST" action="">
-      
-      <?php if(isset($error)) { ?>
-          <div class="alert alert-danger text-center mb-3" role="alert">
-              <?php echo $error; ?>
-          </div>
+
+      <?php if (isset($error)) { ?>
+        <div class="alert alert-danger text-center mb-3" role="alert">
+          <?php echo $error; ?>
+        </div>
       <?php } ?>
 
       <div class="mb-3">
