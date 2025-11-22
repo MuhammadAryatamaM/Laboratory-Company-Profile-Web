@@ -1,4 +1,6 @@
 <?php
+session_start();
+include '../config/koneksi.php';
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 $page_title = '';
 ?>
@@ -32,10 +34,18 @@ $page_title = '';
           include 'module/products/create.php';
           break;
         case 'teams':
-          include 'module/teams/index.php';
-          break;
-        case 'teams-add':
-          include 'module/teams/create.php';
+          $act = isset($_GET['act']) ? $_GET['act'] : 'index';
+          switch ($act) {
+            case 'create':
+              include 'module/teams/create.php';
+              break;
+            case 'edit':
+              include 'module/teams/edit.php';
+              break;
+            default:
+              include 'module/teams/index.php';
+              break;
+          }
           break;
         case 'gallery':
           include 'module/gallery/index.php';
