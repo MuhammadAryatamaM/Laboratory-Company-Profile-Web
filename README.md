@@ -44,6 +44,9 @@ Web_Profile_PBL/
         │   ├── 📄 index.php    <-- (VIEW) Tampilan Settings
         │   └── 📄 aksi.php     <-- (CONTROLLER) Proses Update
         │
+        ├── 📁 dashboard/
+        │   └── 📄 index.php    <-- (VIEW) Tampilan Dashboard
+        │
         ├── 📁 news/
         │   ├── 📄 index.php    <-- (VIEW) Tampilan News
         │   ├── 📄 create.php   <-- (VIEW) Form Tambah
@@ -61,6 +64,10 @@ Web_Profile_PBL/
         │   ├── 📄 create.php   <-- (VIEW) Form Tambah
         │   ├── 📄 edit.php     <-- (VIEW) Form Edit
         │   └── 📄 aksi.php     <-- (CONTROLLER) Proses Insert/Update/Delete
+        │
+        ├── 📁 gallery/
+        │   ├── 📄 index.php    <-- (VIEW) Tampilan Gallery
+        │   └── 📄 aksi.php     <-- (CONTROLLER) Proses Delete
         │
         └── 📁 message/
             └── 📄 index.php    <-- (VIEW) Tampilan Message
