@@ -1,0 +1,769 @@
+/* ================== GLOBAL HOME PAGE ================== */
+body.home-page {
+    background-color: #EEFBFF;
+    overflow-x: hidden; /* supaya page tidak scroll horizontal */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ====================== HERO ======================= */
+
+.hero-inlet {
+    position: relative;
+    width: 100%;
+    height: 634px;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 634px;
+    object-fit: fill;
+    object-position: left center;
+    filter: brightness(0.95);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 634px;
+    background: linear-gradient(
+        to right,
+        rgba(84, 119, 146, 0.85) 55%,
+        rgba(84, 119, 146, 0.40) 68%,
+        rgba(84, 119, 146, 0.10) 80%,
+        rgba(84, 119, 146, 0.00) 95%
+    );
+}
+
+.hero-bg,
+.hero-overlay {
+    will-change: transform;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    max-width: 750px;
+    color: #ffffff;
+}
+
+.hero-content h1 {
+    font-family: "Merriweather", serif;
+    font-size: 58px;
+    line-height: 1.12;
+    font-weight: 400;
+    margin-bottom: 28px;
+}
+
+.subtitle {
+    font-family: "Inter", sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.desc {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    line-height: 1.75;
+    margin-bottom: 36px;
+}
+
+.more {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.25s ease;
+}
+
+.more:hover {
+    opacity: 0.9;
+}
+
+.arrow {
+    transition: transform 0.25s ease;
+}
+
+.more:hover .arrow {
+    transform: translateX(6px);
+}
+
+/* ====================== STATS ======================= */
+
+.inlet-stats {
+    width: 100%;
+    padding: 1px 0;
+    background: linear-gradient(180deg, #D7F4FF 20%, #547792 75%);
+}
+
+.stats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: 100px;
+}
+
+.stat-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    margin: 5px 0;
+    opacity: 0.9;
+}
+
+.stat-text {
+    font-family: "Bree Serif", serif;
+    font-size: 20px;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+.stat-text span {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* ====================== ABOUT ======================= */
+
+.about-section {
+    padding: 70px 0;
+}
+
+.about-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 0 60px;
+}
+
+.about-left {
+    flex: 1.1;
+}
+
+.about-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about-title {
+    font-family: "Markazi Text", serif;
+    font-size: 54px;
+    font-weight: 600;
+    color: #213448;
+    margin-bottom: 20px;
+}
+
+.about-text {
+    font-family: "Inika", serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #213448;
+    margin-bottom: 20px;
+}
+
+.about-list {
+    font-family: "Inika", serif;
+    font-size: 20px;
+    color: #213448;
+    margin-bottom: 28px;
+    padding-left: 20px;
+}
+
+.about-btn {
+    font-family: "Markazi Text", serif;
+    font-size: 17px;
+    background-color: #213448;
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.about-btn:hover {
+    background-color: #2B4961;
+    transform: translateY(-2px);
+}
+
+.about-img {
+    width: 550px;
+    max-width: 550px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+/* ==================== VISI & MISI ==================== */
+
+.vm-section {
+    padding: 120px 0;
+}
+
+.vm-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 80px;
+    display: flex;
+    gap: 70px;
+    justify-content: center;
+}
+
+.vm-card {
+    position: relative;
+    flex: 1;
+}
+
+.vm-label {
+    position: absolute;
+    top: -65px;
+    left: 0;
+    padding: 1px 40px;
+    font-family: "Bree Serif", serif;
+    font-size: 42px;
+    border: 2px solid #000;
+    border-radius: 18px 18px 0 0;
+    border-bottom: none;
+    z-index: 2;
+}
+
+.vm-content {
+    border: 2px solid #000;
+    padding: 20px;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+}
+
+.vm-content-visi p {
+    margin: 0;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    line-height: 1.55;
+    color: #213448;
+}
+
+.vm-content-misi ol {
+    margin: 0;
+    padding-left: 26px;
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    line-height: 1.55;
+    color: #213448;
+}
+
+/* ================= RESEARCH FOCUS ================= */
+
+.research-section {
+    padding: 20px 0;
+}
+
+.research-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Heading */
+.research-title {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: 50px;
+    text-align: center;
+    color: #213448;
+}
+
+.research-title-underline {
+    width: 160px;
+    height: 3px;
+    background-color: #213448;
+    margin: 5px auto 18px;
+}
+
+.research-subtitle {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+    color: #213448;
+    max-width: 720px;
+    margin: 0 auto 48px;
+}
+
+/* Grid card */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 50px;
+}
+
+.research-card {
+    display: flex;
+    background-color: #213448; /* background judul + deskripsi */
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(10, 34, 54, 0.35);
+}
+
+/* Text area */
+.research-card-text {
+    flex: 1;
+    padding: 10px 15px 30px;  /* top kecil → judul agak naik */
+    color: #F5F7FA;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.research-card-title {
+    font-family: "Markazi Text", serif;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    width: 370px;
+}
+
+.research-card-desc {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Icon area */
+.research-card-icon {
+    width: 250px;
+    min-height: 200px;
+    background-color: #94B4C1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.research-card-icon img {
+    max-width: 140px;
+    height: auto;
+}
+
+/* Card 2 & 4: ikon di kiri, teks di kanan */
+.research-grid .research-card:nth-child(2),
+.research-grid .research-card:nth-child(4) {
+    flex-direction: row-reverse;
+}
+
+/* ================= RESEARCH ROAD MAP ================= */
+
+.inlet-roadmap {
+    background-color: #EEFBFF;      /* warna background home yang kamu minta */
+    padding: 150px 0;
+}
+
+.inlet-roadmap-inner {
+    width: 100%;
+    padding-left: 0;     /* benar-benar mepet kiri */
+    padding-right: 80px; /* kasih ruang teks */
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+
+/* LEFT IMAGE */
+.roadmap-image-wrapper {
+    flex: 1 1 60%;
+}
+
+.roadmap-image {
+    width: 90%;
+    height: auto;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    border-radius: 0 35px 35px 0;
+}
+
+/* RIGHT TEXT */
+.roadmap-content {
+    flex: 1 1 45%;
+}
+
+.roadmap-title {
+    font-family: "Merriweather", "Playfair Display", serif;
+    font-size: 40px;
+    font-weight: 400;
+    color: #213448;
+    margin-bottom: 24px;
+}
+
+.roadmap-text {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #213448;
+}
+
+/* ================= TEAM SECTION ================= */
+
+.team-section {
+    padding: 80px 0 100px;
+    background-color: #EEFBFF;
+}
+
+.team-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 10px 0 0;  /* kiri agak mepet, kanan agak lega */
+}
+
+/* Heading Our Team */
+.team-heading {
+    position: relative;
+    text-align: center;
+}
+
+.team-title {
+    font-family: "Playfair Display", serif;
+    font-size: 50px;
+    font-weight: 400;
+    color: #213448;
+}
+
+.team-line {
+    width: 140px;
+    height: 3px;
+    background-color: #94B4C1;
+    margin: 8px auto 0;
+}
+
+/* View More */
+.team-viewmore {
+    position: absolute;
+    right: -50px;        /* agak ke kanan */
+    top: 34px;           /* sedikit di bawah Our Team */
+    font-family: "Poppins", sans-serif;
+    font-size: 25px;
+    color: #213448;
+    text-decoration: none;
+    padding: 5px 25px;
+    border-radius: 5px;
+    border: 2px solid #213448;
+    display: inline-block;
+    transition: 0.25s ease;
+}
+
+/* Hover akademik, halus */
+.team-viewmore:hover {
+    background-color: rgba(33, 52, 72, 0.06);
+    color: #213448;
+    border-color: #213448;
+}
+
+/* Layout: 2 kolom */
+.team-layout {
+    margin-top: 60px;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Kiri: Head of Lab */
+.team-head {
+    flex: 0 0 250px;   /* lebar fix */
+    margin-left: -40px;
+}
+
+/* Judul kecil */
+.team-subtitle {
+    font-family: "Bree Serif", serif;
+    font-size: 28px;
+    color: #213448;
+    margin-bottom: 28px;
+}
+
+.team-subtitle-left {
+    text-align: left;
+}
+
+.team-subtitle-center {
+    text-align: center;
+    margin-left: -50px;   /* posisinya sudah cocok dengan desain kamu */
+}
+
+/* Card head */
+.head-card {
+    text-align: center;
+}
+
+/* Foto bulat (dipakai semua) */
+.team-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 16px;
+}
+
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Nama */
+.team-name {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.35;
+    color: #213448;
+    width: 250px;              /* paksa 2 baris */
+    margin: 0 auto 6px;
+}
+
+.head-name {
+    width: 260px;              /* sedikit lebih lebar utk nama panjang Banni */
+    margin: 0 auto 6px;
+}
+
+/* Sosmed */
+.team-social {
+    display: flex;               /* biar ikon sejajar horizontal */
+    justify-content: center;
+    gap: 15px;                   /* jarak antar ikon */
+}
+
+.team-social a {
+
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.team-social img {
+    width: 45px;                 /* atur besar icon */
+    height: 45px;
+    object-fit: contain;
+}
+
+
+/* Kanan: Laboratory Team */
+.team-lab {
+    flex: 1 1 auto;   /* izinkan dia melebar */
+    min-width: 0;     /* SUPER PENTING: biar scroll HORIZONTAL bisa jalan */
+    margin-left: 80px;
+}
+
+/* Area scroll (container yang di-scroll) */
+.team-lab-scroll {
+    margin-top: 6px;
+     width: 1100px;
+    overflow-x: auto;
+    padding-bottom: 25px;
+    scrollbar-width: thin;          /* Firefox: scrollbar tipis */
+}
+
+/* Scrollbar WebKit (Chrome, Safari) */
+.team-lab-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.team-lab-scroll::-webkit-scrollbar-thumb {
+    background: #94B4C1;
+    border-radius: 999px;
+}
+
+.team-lab-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Track berisi semua kartu */
+.team-lab-track {
+    display: flex;
+    gap: 70px;
+    flex-wrap: nowrap;
+    width: 1670px;     /* 6 kartu + 5 gap → AGUNG DIJAMIN MUAT */
+}
+
+/* Card dosen Lab */
+.team-card {
+    text-align: center;
+    width: 220px;      /* sama dengan width nama */
+    flex: 0 0 220px;   /* jangan dishrink */
+}
+
+/* ================= PRODUCTS SECTION ================= */
+
+.products-section {
+    padding: 80px 0 90px;
+    background-color: #EEFBFF;
+}
+
+.products-container {
+    width: 1180px;
+    margin: 0 auto;
+}
+
+/* Heading */
+.products-heading {
+    margin-bottom: 36px;
+}
+
+.products-title {
+    font-family: "Playfair Display", serif;
+    font-size: 50px;
+    font-weight: 400;
+    color: #213448;
+}
+
+.products-line {
+    width: 140px;
+    height: 3px;
+    background-color: #94B4C1;
+    margin-top: 10px;
+}
+
+/* ROW */
+.products-row {
+    display: flex;
+    gap: 52px;
+    margin-bottom: 32px;
+}
+
+/* CARD GENERAL */
+.product-card {
+    width: 600px;            /* FIXED WIDTH */
+    height: 210px;           /* FIXED HEIGHT */
+    background-color: #23374A;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.20);
+    border-radius: 4px;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Thumbnail kiri */
+.product-thumb {
+    width: 260px;
+    background: #F2F2F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Konten */
+.product-content {
+    flex: 1;
+    padding: 22px 26px 22px 24px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-family: "Bree Serif", serif;
+    font-size: 24px;
+    margin: 0 0 10px;
+}
+
+.product-desc {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    color: #E5EDF3;
+}
+
+/* Get it now - TANPA GARIS BAWAH */
+.product-cta {
+    font-family: "Inter", sans-serif;
+    color: #B7D7E8;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.product-cta-arrow {
+    transition: transform 0.25s ease;
+}
+
+.product-cta:hover {
+    color: #F4D35E;
+}
+
+.product-cta:hover .product-cta-arrow {
+    transform: translateX(4px);
+}
+
+/* ===== CENTER CARD UNTUK JUMLAH = 3 ===== */
+.products-row-bottom.center-one {
+    justify-content: center;
+}
+
+/* SEE MORE */
+.products-see-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+.products-see-more {
+    font-family: "Bree Serif", serif;
+    font-size: 22px;
+    color: #213448;
+    padding: 12px 40px;
+    border: 2px solid #213448;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.products-see-more:hover {
+    background: #213448;
+    color: #EEFBFF;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
