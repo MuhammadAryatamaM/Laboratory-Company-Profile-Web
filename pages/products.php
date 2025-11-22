@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/header.css">
 
     <?php
-        // Data Produk - TAMBAHKAN FIELD 'image' DI SINI
         $products = [
             [
                 'logo_type' => 'viat',
