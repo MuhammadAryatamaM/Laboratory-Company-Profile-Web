@@ -1,9 +1,33 @@
+<?php
+include "../config/koneksi.php"; // Include your database connection
+
+$page_title = 'Our Teams - InLET Laboratory';
+
+$head_of_lab = null;
+$team_members = [];
+
+try {
+    // Fetch the head of the lab
+    $stmt_head = $pdo->prepare("SELECT * FROM team_member WHERE position = 'Kepala Laboratorium' LIMIT 1");
+    $stmt_head->execute();
+    $head_of_lab = $stmt_head->fetch(PDO::FETCH_ASSOC);
+
+    // Fetch other team members
+    $stmt_members = $pdo->prepare("SELECT * FROM team_member WHERE position != 'Kepala Laboratorium' ORDER BY full_name");
+    $stmt_members->execute();
+    $team_members = $stmt_members->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    echo "Database error: " . $e->getMessage();
+    // You might want to handle this more gracefully in a production environment
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Teams - InLET Laboratory</title>
+    <title><?php echo $page_title; ?></title>
     <link rel="stylesheet" href="../assets/css/teams.css">
 </head>
 <body>
@@ -42,123 +66,87 @@
         <!-- Page Title -->
         <h1 class="page-title">Our Teams</h1>
 
-        <?php
-        // Data Kepala Laboratorium
-        $head_of_lab = array(
-            'name' => 'Dr. Eng. Banni Satria Andoko, S.Kom.',
-            'photo' => '../assets/img/Banni.jpeg',
-            'nip' => '198108062201021002',
-            'email' => '-',
-            'phone' => '081350889181'
-        );
-
-        // Data Tim Laboratorium
-        $team_members = array(
-            array(
-                'name' => 'Vivin Ayu Lestari, S.Pd., M.Kom.',
-                'photo' => '../assets/img/vivin.jpeg',
-                'nip' => '199106212019032020',
-                'email' => 'vivin@polinema.ac.id',
-                'phone' => '082143984396'
-            ),
-            array(
-                'name' => 'Agung Nugroho Pramudhita, S.T., M.T.',
-                'photo' => '../assets/img/Agung.jpeg',
-                'nip' => '198108092010121002',
-                'email' => 'agung.pramudhita@polinema.ac.id',
-                'phone' => '081334699967'
-            ),
-            array(
-                'name' => 'Budi Harijanto, ST., M.MKom.',
-                'photo' => '../assets/img/budi.png',
-                'nip' => '196201051990031002',
-                'email' => 'budi.hijet@gmail.com',
-                'phone' => '-'
-            ),
-            array(
-                'name' => 'Irsyad Arif Mashudi, S.Kom., M.Kom',
-                'photo' => '../assets/img/irsyad.png',
-                'nip' => '198902012019031009',
-                'email' => 'irsyad.arif@polinema.ac.id',
-                'phone' => '-'
-            ),
-            array(
-                'name' => 'Dr. Indra Dharma Wijaya, ST., M.MT.',
-                'photo' => '../assets/img/indra.png',
-                'nip' => '197305102008011010',
-                'email' => 'indra.dharma@polinema.ac.id',
-                'phone' => '-'
-            ),
-            array(
-                'name' => 'Usman Nurhasan, S.Kom., MT.',
-                'photo' => '../assets/img/usman.png',
-                'nip' => '198609232015041001',
-                'email' => 'usmannurhasan@polinema.ac.id',
-                'phone' => '-'
-            )
-        );
-        ?>
-
+        <?php if ($head_of_lab) : ?>
         <!-- Head of Laboratory Section -->
         <section class="head-section">
             <h2 class="section-title">Head of Laboratory</h2>
             <div class="profile-card head-card">
                 <div class="profile-photo">
-                    <img src="<?php echo $head_of_lab['photo']; ?>" alt="<?php echo $head_of_lab['name']; ?>">
+                    <img src="../assets/uploads/<?php echo $head_of_lab['photo_url']; ?>" alt="<?php echo $head_of_lab['full_name']; ?>">
                 </div>
                 <div class="profile-info">
                     <div class="info-item">
                         <span class="info-label">Nama</span>
-                        <span class="info-value"><?php echo $head_of_lab['name']; ?></span>
+                        <span class="info-value"><?php echo htmlspecialchars($head_of_lab['full_name']); ?></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Posisi</span>
+                        <span class="info-value"><?php echo htmlspecialchars($head_of_lab['position']); ?></span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">NIP</span>
-                        <span class="info-value"><?php echo $head_of_lab['nip']; ?></span>
+                        <span class="info-value"><?php echo htmlspecialchars($head_of_lab['nip']); ?></span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Email</span>
-                        <span class="info-value"><?php echo $head_of_lab['email']; ?></span>
+                        <span class="info-value"><?php echo htmlspecialchars($head_of_lab['email']); ?></span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">No. HP</span>
-                        <span class="info-value"><?php echo $head_of_lab['phone']; ?></span>
+                        <span class="info-value"><?php echo htmlspecialchars($head_of_lab['phone_number']); ?></span>
+                    </div>
+                    <div class="info-item social-links">
+                        <?php if ($head_of_lab['facebook_url']) : ?><a href="<?php echo htmlspecialchars($head_of_lab['facebook_url']); ?>" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a><?php endif; ?>
+                        <?php if ($head_of_lab['instagram_url']) : ?><a href="<?php echo htmlspecialchars($head_of_lab['instagram_url']); ?>" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a><?php endif; ?>
+                        <?php if ($head_of_lab['google_scholar_url']) : ?><a href="<?php echo htmlspecialchars($head_of_lab['google_scholar_url']); ?>" target="_blank" class="social-icon"><i class="fas fa-graduation-cap"></i></a><?php endif; ?>
                     </div>
                 </div>
             </div>
         </section>
+        <?php endif; ?>
 
         <!-- Laboratory Team Section -->
         <section class="team-section">
             <h2 class="section-title">Laboratory Team</h2>
             <div class="team-grid">
-                <?php
-                // Loop untuk menampilkan setiap anggota tim
-                foreach ($team_members as $member) {
-                    echo '<div class="profile-card">';
-                    echo '    <div class="profile-photo">';
-                    echo '        <img src="' . $member['photo'] . '" alt="' . $member['name'] . '">';
-                    echo '    </div>';
-                    echo '    <div class="profile-info">';
-                    echo '        <div class="info-item">';
-                    echo '            <span class="info-label">Nama</span>';
-                    echo '            <span class="info-value">' . $member['name'] . '</span>';
-                    echo '        </div>';
-                    echo '        <div class="info-item">';
-                    echo '            <span class="info-label">NIP</span>';
-                    echo '            <span class="info-value">' . $member['nip'] . '</span>';
-                    echo '        </div>';
-                    echo '        <div class="info-item">';
-                    echo '            <span class="info-label">Email</span>';
-                    echo '            <span class="info-value">' . $member['email'] . '</span>';
-                    echo '        </div>';
-                    echo '        <div class="info-item">';
-                    echo '            <span class="info-label">No. HP</span>';
-                    echo '            <span class="info-value">' . $member['phone'] . '</span>';
-                    echo '        </div>';
-                    echo '    </div>';
-                    echo '</div>';
-                }
-                ?>
+                <?php if (!empty($team_members)) : ?>
+                    <?php foreach ($team_members as $member) : ?>
+                        <div class="profile-card">
+                            <div class="profile-photo">
+                                <img src="../assets/uploads/<?php echo $member['photo_url']; ?>" alt="<?php echo $member['full_name']; ?>">
+                            </div>
+                            <div class="profile-info">
+                                <div class="info-item">
+                                    <span class="info-label">Nama</span>
+                                    <span class="info-value"><?php echo htmlspecialchars($member['full_name']); ?></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Posisi</span>
+                                    <span class="info-value"><?php echo htmlspecialchars($member['position']); ?></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">NIP</span>
+                                    <span class="info-value"><?php echo htmlspecialchars($member['nip']); ?></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Email</span>
+                                    <span class="info-value"><?php echo htmlspecialchars($member['email']); ?></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">No. HP</span>
+                                    <span class="info-value"><?php echo htmlspecialchars($member['phone_number']); ?></span>
+                                </div>
+                                <div class="info-item social-links">
+                                    <?php if ($member['facebook_url']) : ?><a href="<?php echo htmlspecialchars($member['facebook_url']); ?>" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a><?php endif; ?>
+                                    <?php if ($member['instagram_url']) : ?><a href="<?php echo htmlspecialchars($member['instagram_url']); ?>" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a><?php endif; ?>
+                                    <?php if ($member['google_scholar_url']) : ?><a href="<?php echo htmlspecialchars($member['google_scholar_url']); ?>" target="_blank" class="social-icon"><i class="fas fa-graduation-cap"></i></a><?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>No other team members found.</p>
+                <?php endif; ?>
             </div>
         </section>
     </main>
