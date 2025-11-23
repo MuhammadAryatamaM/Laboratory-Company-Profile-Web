@@ -6,7 +6,7 @@
 
 <div class="home-wrapper">
     <!-- Hero -->
-    <section class="hero-inlet">
+    <section class="hero-inlet" id="hero">
         <img src="<?php echo $root; ?>assets/img/home/Hero1.png" class="hero-bg" alt="InLET">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -325,7 +325,7 @@
     </section>
 
     <!-- Product -->
-    <section class="products-section">
+    <section class="products-section" id="products">
         <div class="products-container">
             <div class="products-heading">
                 <h2 class="products-title">Products</h2>
@@ -530,7 +530,7 @@
         <div class="contact-guest-container">
 
             <!-- CONTACT US -->
-            <div class="form-column">
+            <div class="form-column" id="contact">
                 <h2 class="form-heading">Contact Us</h2>
 
                 <form class="form-card contact-form reveal" data-reveal-delay="0" action="#" method="post">
@@ -558,7 +558,7 @@
             </div>
 
             <!-- GUEST BOOK -->
-            <div class="form-column">
+            <div class="form-column" id="guest">
                 <h2 class="form-heading">Guest Book</h2>
 
                 <form class="form-card guest-form reveal" data-reveal-delay="150" action="#" method="post">
