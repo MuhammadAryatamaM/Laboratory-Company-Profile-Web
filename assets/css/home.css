@@ -1,15 +1,12 @@
-/* ================== GLOBAL HOME PAGE ================== */
-body.home-page {
+.home-wrapper {
     background-color: #EEFBFF;
-    overflow-x: hidden; /* supaya page tidak scroll horizontal */
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-/* ====================== HERO ======================= */
-
+/* Hero */
 .hero-inlet {
     position: relative;
     width: 100%;
@@ -43,8 +40,7 @@ html {
     );
 }
 
-.hero-bg,
-.hero-overlay {
+.hero-bg, .hero-overlay {
     will-change: transform;
 }
 
@@ -54,6 +50,12 @@ html {
     left: 50px;
     max-width: 750px;
     color: #ffffff;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+body.loaded .hero-content {
+    opacity: 1;
 }
 
 .hero-content h1 {
@@ -102,8 +104,7 @@ html {
     transform: translateX(6px);
 }
 
-/* ====================== STATS ======================= */
-
+/* Stats */
 .inlet-stats {
     width: 100%;
     padding: 1px 0;
@@ -147,8 +148,7 @@ html {
     font-weight: 600;
 }
 
-/* ====================== ABOUT ======================= */
-
+/* About */
 .about-section {
     padding: 70px 0;
 }
@@ -223,8 +223,7 @@ html {
     object-fit: cover;
 }
 
-/* ==================== VISI & MISI ==================== */
-
+/* Visi dan Misi */
 .vm-section {
     padding: 120px 0;
 }
@@ -282,8 +281,7 @@ html {
     color: #213448;
 }
 
-/* ================= RESEARCH FOCUS ================= */
-
+/* Research Focus */
 .research-section {
     padding: 20px 0;
 }
@@ -294,7 +292,6 @@ html {
     padding: 0 20px;
 }
 
-/* Heading */
 .research-title {
     font-family: "Playfair Display", serif;
     font-weight: 400;
@@ -321,7 +318,6 @@ html {
     margin: 0 auto 48px;
 }
 
-/* Grid card */
 .research-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -330,16 +326,15 @@ html {
 
 .research-card {
     display: flex;
-    background-color: #213448; /* background judul + deskripsi */
+    background-color: #213448;
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 16px 40px rgba(10, 34, 54, 0.35);
 }
 
-/* Text area */
 .research-card-text {
     flex: 1;
-    padding: 10px 15px 30px;  /* top kecil → judul agak naik */
+    padding: 10px 15px 30px;
     color: #F5F7FA;
     display: flex;
     flex-direction: column;
@@ -364,7 +359,6 @@ html {
     margin: 0;
 }
 
-/* Icon area */
 .research-card-icon {
     width: 250px;
     min-height: 200px;
@@ -379,30 +373,25 @@ html {
     height: auto;
 }
 
-/* Card 2 & 4: ikon di kiri, teks di kanan */
 .research-grid .research-card:nth-child(2),
 .research-grid .research-card:nth-child(4) {
     flex-direction: row-reverse;
 }
 
-/* ================= RESEARCH ROAD MAP ================= */
-
+/* Road Map */
 .inlet-roadmap {
-    background-color: #EEFBFF;      /* warna background home yang kamu minta */
     padding: 150px 0;
 }
 
 .inlet-roadmap-inner {
     width: 100%;
-    padding-left: 0;     /* benar-benar mepet kiri */
-    padding-right: 80px; /* kasih ruang teks */
+    padding-left: 0;
+    padding-right: 80px;
     display: flex;
     align-items: center;
     gap: 50px;
 }
 
-
-/* LEFT IMAGE */
 .roadmap-image-wrapper {
     flex: 1 1 60%;
 }
@@ -415,7 +404,6 @@ html {
     border-radius: 0 35px 35px 0;
 }
 
-/* RIGHT TEXT */
 .roadmap-content {
     flex: 1 1 45%;
 }
@@ -435,26 +423,24 @@ html {
     color: #213448;
 }
 
-/* ================= TEAM SECTION ================= */
-
+/* Team */
 .team-section {
     padding: 80px 0 100px;
-    background-color: #EEFBFF;
 }
 
 .team-container {
     max-width: 1300px;
     margin: 0 auto;
-    padding: 0 10px 0 0;  /* kiri agak mepet, kanan agak lega */
+    padding: 0 10px 0 0;
 }
 
-/* Heading Our Team */
 .team-heading {
     position: relative;
     text-align: center;
 }
 
-.team-title {
+.team-title, .products-title,
+.gallery-title, .partner-title {
     font-family: "Playfair Display", serif;
     font-size: 50px;
     font-weight: 400;
@@ -468,43 +454,66 @@ html {
     margin: 8px auto 0;
 }
 
-/* View More */
-.team-viewmore {
-    position: absolute;
-    right: -50px;        /* agak ke kanan */
-    top: 34px;           /* sedikit di bawah Our Team */
-    font-family: "Poppins", sans-serif;
-    font-size: 25px;
+.team-viewmore, .gallery-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 34px;
+    border-radius: 10px;
+    border: 2px solid #213448;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
     color: #213448;
     text-decoration: none;
-    padding: 5px 25px;
-    border-radius: 5px;
-    border: 2px solid #213448;
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.team-viewmore {
+    position: absolute;
+    right: -50px;
+    top: 34px;
+}
+
+.team-viewmore::after {
+    content: "\2192";
     display: inline-block;
-    transition: 0.25s ease;
+    transition: transform 0.3s ease;
 }
 
-/* Hover akademik, halus */
-.team-viewmore:hover {
-    background-color: rgba(33, 52, 72, 0.06);
-    color: #213448;
-    border-color: #213448;
+.gallery-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
 
-/* Layout: 2 kolom */
+.team-viewmore:hover, .gallery-more-btn:hover {
+    background-color: #213448;
+    color: #FFFFFF;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    transform: translateY(-2px);
+}
+
+.team-viewmore:hover::after,
+.gallery-more-btn:hover .gallery-arrow {
+    transform: translateX(6px);
+}
+
 .team-layout {
-    margin-top: 60px;
+    margin-top: 55px;
     display: flex;
     align-items: flex-start;
 }
 
-/* Kiri: Head of Lab */
 .team-head {
-    flex: 0 0 250px;   /* lebar fix */
+    flex: 0 0 250px;
     margin-left: -40px;
 }
 
-/* Judul kecil */
 .team-subtitle {
     font-family: "Bree Serif", serif;
     font-size: 28px;
@@ -518,15 +527,13 @@ html {
 
 .team-subtitle-center {
     text-align: center;
-    margin-left: -50px;   /* posisinya sudah cocok dengan desain kamu */
+    margin-left: -50px;
 }
 
-/* Card head */
 .head-card {
     text-align: center;
 }
 
-/* Foto bulat (dipakai semua) */
 .team-photo {
     width: 150px;
     height: 150px;
@@ -541,34 +548,29 @@ html {
     object-fit: cover;
 }
 
-/* Nama */
 .team-name {
     font-family: "Inter", sans-serif;
+    text-align: center;
     font-weight: 600;
     font-size: 18px;
     line-height: 1.35;
     color: #213448;
-    width: 250px;              /* paksa 2 baris */
-    margin: 0 auto 6px;
+    width: 260px;
+    margin: 0 -20px 6px;
 }
 
 .head-name {
-    width: 260px;              /* sedikit lebih lebar utk nama panjang Banni */
+    width: 260px;
     margin: 0 auto 6px;
 }
 
-/* Sosmed */
 .team-social {
-    display: flex;               /* biar ikon sejajar horizontal */
+    display: flex;
     justify-content: center;
-    gap: 15px;                   /* jarak antar ikon */
+    gap: 15px;
 }
 
 .team-social a {
-
-    width: auto;
-    height: auto;
-    border-radius: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -576,29 +578,25 @@ html {
 }
 
 .team-social img {
-    width: 45px;                 /* atur besar icon */
+    width: 45px;
     height: 45px;
     object-fit: contain;
 }
 
-
-/* Kanan: Laboratory Team */
 .team-lab {
-    flex: 1 1 auto;   /* izinkan dia melebar */
-    min-width: 0;     /* SUPER PENTING: biar scroll HORIZONTAL bisa jalan */
+    flex: 1 1 auto;
+    min-width: 0;
     margin-left: 80px;
 }
 
-/* Area scroll (container yang di-scroll) */
 .team-lab-scroll {
     margin-top: 6px;
-     width: 1100px;
+    width: 1100px;
     overflow-x: auto;
     padding-bottom: 25px;
-    scrollbar-width: thin;          /* Firefox: scrollbar tipis */
+    scrollbar-width: thin;
 }
 
-/* Scrollbar WebKit (Chrome, Safari) */
 .team-lab-scroll::-webkit-scrollbar {
     height: 6px;
 }
@@ -612,71 +610,57 @@ html {
     background: transparent;
 }
 
-/* Track berisi semua kartu */
 .team-lab-track {
     display: flex;
     gap: 70px;
     flex-wrap: nowrap;
-    width: 1670px;     /* 6 kartu + 5 gap → AGUNG DIJAMIN MUAT */
+    width: 1670px;
 }
 
-/* Card dosen Lab */
 .team-card {
     text-align: center;
-    width: 220px;      /* sama dengan width nama */
-    flex: 0 0 220px;   /* jangan dishrink */
+    width: 220px;
+    flex: 0 0 220px;
 }
 
-/* ================= PRODUCTS SECTION ================= */
-
+/* Product */
 .products-section {
     padding: 80px 0 90px;
-    background-color: #EEFBFF;
 }
 
 .products-container {
-    width: 1180px;
+    width: 1300px;
     margin: 0 auto;
 }
 
-/* Heading */
 .products-heading {
-    margin-bottom: 36px;
-}
-
-.products-title {
-    font-family: "Playfair Display", serif;
-    font-size: 50px;
-    font-weight: 400;
-    color: #213448;
+    margin-bottom: 20px;
 }
 
 .products-line {
-    width: 140px;
+    width: 120px;
     height: 3px;
     background-color: #94B4C1;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-bottom: 30px;
 }
 
-/* ROW */
 .products-row {
     display: flex;
     gap: 52px;
     margin-bottom: 32px;
 }
 
-/* CARD GENERAL */
 .product-card {
-    width: 600px;            /* FIXED WIDTH */
-    height: 210px;           /* FIXED HEIGHT */
+    width: 650px;
+    height: 240px;
     background-color: #23374A;
-    box-shadow: 0 10px 22px rgba(0,0,0,0.20);
-    border-radius: 4px;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.20);
     display: flex;
     overflow: hidden;
 }
 
-/* Thumbnail kiri */
 .product-thumb {
     width: 260px;
     background: #F2F2F2;
@@ -691,10 +675,9 @@ html {
     object-fit: cover;
 }
 
-/* Konten */
 .product-content {
     flex: 1;
-    padding: 22px 26px 22px 24px;
+    padding: 10px 26px 22px 24px;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -715,7 +698,6 @@ html {
     color: #E5EDF3;
 }
 
-/* Get it now - TANPA GARIS BAWAH */
 .product-cta {
     font-family: "Inter", sans-serif;
     color: #B7D7E8;
@@ -731,19 +713,17 @@ html {
 }
 
 .product-cta:hover {
-    color: #F4D35E;
+    color: #F8F4C7;
 }
 
 .product-cta:hover .product-cta-arrow {
     transform: translateX(4px);
 }
 
-/* ===== CENTER CARD UNTUK JUMLAH = 3 ===== */
 .products-row-bottom.center-one {
     justify-content: center;
 }
 
-/* SEE MORE */
 .products-see-more-wrap {
     display: flex;
     justify-content: center;
@@ -756,7 +736,7 @@ html {
     color: #213448;
     padding: 12px 40px;
     border: 2px solid #213448;
-    border-radius: 999px;
+    border-radius: 20px;
     text-decoration: none;
     transition: 0.2s ease;
 }
@@ -765,5 +745,390 @@ html {
     background: #213448;
     color: #EEFBFF;
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* News */
+.news-section {
+    padding: 80px 0 90px;
+}
+
+.news-box {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 30px 60px 30px;
+    border: 4px solid #547792;
+}
+
+.news-heading {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 44px;
+    line-height: 1.2;
+    color: #213448;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.news-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 350px);
+    justify-content: space-between;
+    column-gap: 40px;
+}
+
+.news-card {
+    width: 350px;
+    text-align: center;
+}
+
+.news-img-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.news-img-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.news-heading-block {
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.news-title {
+    font-family: "Bree Serif", serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.25;
+    color: #256195;
+    margin: 0;
+    text-align: center;
+}
+
+.news-title-line {
+    width: 55%;
+    height: 2px;
+    background-color: #000000;
+}
+
+.news-desc {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #213448;
+    margin: 0;
+}
+
+.news-btn-wrap {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.news-more-btn {
+    padding: 10px 40px;
+    border: 2px solid #213448;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #213448;
+    text-decoration: none;
+    background-color: transparent;
+    transition: 0.25s;
+}
+
+.news-more-btn:hover {
+    background-color: #213448;
+    color: #EEFBFF;
+}
+
+/* Gallery */
+.gallery-section {
+    padding: 80px 0 100px;
+}
+
+.gallery-container, .partner-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gallery-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.gallery-title {
+    margin-bottom: 10px;
+}
+
+.gallery-line {
+    width: 100px;
+    height: 3px;
+    background-color: #94B4C1;
+    margin: 0 auto;
+    border-radius: 999px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 30px;
+}
+
+.gallery-item {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03);
+}
+
+.gallery-more-wrapper {
+    text-align: center;
+}
+
+/* Partner */
+.partner-section {
+    padding: 30px 0 100px;
+}
+
+.partner-heading {
+    margin-bottom: 45px;
+}
+
+.partner-title {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.partner-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.partner-item img {
+    max-height: 90px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.08));
+    transition: transform 0.3s ease;
+}
+
+.partner-item img:hover {
+    transform: scale(1.04);
+}
+
+/* Contact dan Guest Book */
+.contact-guest-section {
+    padding: 80px 0 100px;
+}
+
+.contact-guest-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.form-column {
+    flex: 1;
+}
+
+.form-heading {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    text-align: center;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.form-card {
+    border: 3px solid #111;
+    border-radius: 15px;
+    padding: 40px 40px 20px;
+    background: transparent;
+}
+
+.form-group {
+    margin-bottom: 32px;
+}
+
+.form-label {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 6px;
+    color: #111;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #111;
+    background: transparent;
+    outline: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 4px 0;
+}
+
+.form-input {
+    height: 20px;
+}
+
+.form-textarea {
+    height: 50px;
+    resize: none;
+    padding-top: 6px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-bottom-color: #547792;
+}
+
+.form-row-2 {
+    display: flex;
+    gap: 40px;
+}
+
+.form-btn-wrapper {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 30px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: #213448;
+    color: #fff;
+    font-family: "Bree Serif", serif;
+    font-size: 25px;
+    transition: 0.25s ease;
+}
+
+.btn-icon {
+    transition: transform 0.25s ease;
+}
+
+.submit-btn:hover {
+    background-color: #2f5675;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+.submit-btn:hover .btn-icon {
+    transform: translateX(4px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Reveal Scroll Animasi */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.6s ease-out,
+        transform 0.6s ease-out;
+    will-change: opacity, transform;
+}
+
+.reveal-from-left {
+    transform: translateX(-32px);
+}
+
+.reveal-from-right {
+    transform: translateX(32px);
+}
+
+.reveal-fade {
+    transform: none;
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #EEFBFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader-dot {
+    width: 14px;
+    height: 14px;
+    margin: 0 6px;
+    background: #213448;
+    border-radius: 50%;
+    animation: loaderBounce 0.6s infinite alternate;
+}
+
+.loader-dot:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.loader-dot:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes loaderBounce {
+    to {
+        transform: translateY(-12px);
+        opacity: 0.5;
+    }
+}
+
+#preloader.hide {
+    opacity: 0;
+    visibility: hidden;
 }

@@ -1,0 +1,850 @@
+/* Layar 1300px */
+@media (max-width: 1300px) {
+    .products-container,
+    .news-box,
+    .gallery-container,
+    .partner-container,
+    .contact-guest-container,
+    .team-container,
+    .research-container,
+    .about-container,
+    .vm-container,
+    .inlet-roadmap-inner {
+        max-width: 100%;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .team-lab-scroll {
+        width: 100%;
+    }
+}
+/*Tablet dan Laptop kecil */
+@media (max-width: 1024px) {
+
+    .hero-inlet {
+        height: 560px;
+    }
+
+    .hero-content {
+        left: 40px;
+        max-width: 600px;
+    }
+
+    .hero-content h1 {
+        font-size: 46px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+    }
+
+    .desc {
+        font-size: 16px;
+    }
+
+    .inlet-stats {
+        padding: 14px 0 18px;
+    }
+
+    .stats-container {
+        max-width: 1000px;
+        padding: 0 24px;
+        gap: 12px;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+    }
+
+    .stat-box {
+        flex: 1 1 0;
+    }
+
+    .stat-icon {
+        width: 46px;
+        height: 46px;
+        margin-bottom: 4px;
+    }
+
+    .stat-text {
+        font-size: 15px;
+    }
+
+    .stat-text span {
+        font-size: 17px;
+    }
+
+    .about-container {
+        padding-left: 30px;
+        padding-right: 30px;
+        gap: 40px;
+    }
+
+    .about-img {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .vm-container {
+        padding-left: 30px;
+        padding-right: 30px;
+        gap: 40px;
+    }
+
+    .vm-content {
+        min-height: 320px;
+    }
+
+    .vm-content-visi p,
+    .vm-content-misi ol {
+        font-size: 20px;
+    }
+
+    .research-grid {
+        gap: 32px;
+    }
+
+    .research-card-title {
+        font-size: 26px;
+        width: auto;
+    }
+
+    .research-card-icon {
+        width: 210px;
+    }
+
+    .inlet-roadmap-inner {
+        padding-right: 30px;
+        gap: 32px;
+    }
+
+    .roadmap-title {
+        font-size: 34px;
+    }
+
+    .roadmap-text {
+        font-size: 18px;
+    }
+
+    .team-heading {
+        padding-right: 20px;
+    }
+
+    .team-viewmore {
+        right: 20px;
+        top: 30px;
+    }
+
+    .team-lab {
+        margin-left: 40px;
+    }
+
+    .team-lab-scroll {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
+    }
+
+    .team-lab-track {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 32px;
+        width: max-content;
+    }
+
+    .team-card {
+        flex: 0 0 220px;
+        width: 220px;
+    }
+
+    .products-row {
+        gap: 32px;
+    }
+
+    .product-card {
+        width: 100%;
+    }
+
+    .news-box {
+        padding: 24px 32px;
+    }
+
+    .news-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-content: center;
+        column-gap: 24px;
+        row-gap: 30px;
+    }
+
+    .news-card {
+        width: 100%;
+    }
+
+    .contact-guest-container {
+        gap: 24px;
+    }
+
+    .form-card {
+        padding: 32px 28px 20px;
+    }
+
+    .form-row-2 {
+        gap: 24px;
+    }
+}
+
+/*Tablet potrait dan hp besar */
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .hero-inlet {
+        height: auto;
+        min-height: 520px;
+    }
+
+    .hero-bg,
+    .hero-overlay {
+        height: 100%;
+    }
+
+    .hero-bg {
+        object-fit: cover;
+    }
+
+    .hero-overlay {
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        margin: 90px 20px 40px;
+        left: 0;
+        top: 0;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+        line-height: 1.25;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        margin-bottom: 18px;
+    }
+
+    .desc {
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 26px;
+    }
+
+    .more {
+        font-size: 16px;
+        justify-content: center;
+    }
+
+    .inlet-stats {
+        padding: 14px 0 18px;
+    }
+
+    .stats-container {
+        padding: 0 16px;
+        gap: 8px;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+    }
+
+    .stat-box {
+        flex: 1 1 0;
+    }
+
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 4px;
+    }
+
+    .stat-text {
+        font-size: 13px;
+        letter-spacing: 0.2px;
+    }
+
+    .stat-text span {
+        font-size: 15px;
+    }
+
+    .about-section {
+        padding: 60px 0 40px;
+    }
+
+    .about-container {
+        flex-direction: column;
+        padding: 0 24px;
+        gap: 24px;
+    }
+
+    .about-title {
+        font-size: 38px;
+        text-align: center;
+    }
+
+    .about-text {
+        font-size: 16px;
+        text-align: justify;
+    }
+
+    .about-list {
+        font-size: 18px;
+    }
+
+    .about-right {
+        justify-content: center;
+    }
+
+    .about-img {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .about-btn {
+        font-size: 16px;
+    }
+
+    .vm-section {
+        padding: 80px 0 60px;
+    }
+
+    .vm-container {
+        flex-direction: column;
+        padding: 0 24px;
+        gap: 40px;
+    }
+
+    .vm-card {
+        margin-bottom: 10px;
+    }
+
+    .vm-label {
+        font-size: 32px;
+        top: -52px;
+        padding: 6px 28px;
+    }
+
+    .vm-content {
+        min-height: auto;
+        padding: 28px 20px 24px;
+    }
+
+    .vm-content-visi p,
+    .vm-content-misi ol {
+        font-size: 18px;
+    }
+
+    .vm-card + .vm-card {
+        margin-top: 12px;
+    }
+
+    .research-section {
+        padding: 40px 0;
+    }
+
+    .research-container {
+        padding: 0 24px;
+    }
+
+    .research-title {
+        font-size: 36px;
+    }
+
+    .research-subtitle {
+        font-size: 16px;
+        margin-bottom: 32px;
+    }
+
+    .research-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .research-card {
+        flex-direction: column;
+    }
+
+    .research-grid .research-card:nth-child(2),
+    .research-grid .research-card:nth-child(4) {
+        flex-direction: column;
+    }
+
+    .research-card-text {
+        padding: 18px 20px 22px;
+    }
+
+    .research-card-title {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .research-card-desc {
+        font-size: 14px;
+    }
+
+    .research-card-icon {
+        width: 100%;
+        min-height: 150px;
+    }
+
+    .inlet-roadmap {
+        padding: 70px 0 50px;
+    }
+
+    .inlet-roadmap-inner {
+        flex-direction: column;
+        padding: 0 24px;
+        gap: 24px;
+    }
+
+    .roadmap-image-wrapper {
+        width: 100%;
+    }
+
+    .roadmap-image {
+        width: 100%;
+        border-radius: 18px;
+    }
+
+    .roadmap-content {
+        text-align: center;
+    }
+
+    .roadmap-title {
+        font-size: 32px;
+    }
+
+    .roadmap-text {
+        font-size: 16px;
+    }
+
+    .team-section {
+        padding: 60px 0 80px;
+    }
+
+    .team-container {
+        padding: 0 20px;
+    }
+
+    .team-heading {
+        position: static;
+        margin-bottom: 28px;
+        text-align: center;
+    }
+
+    .team-title {
+        font-size: 36px;
+        margin-bottom: 6px;
+    }
+
+    .team-line {
+        margin-bottom: 12px;
+    }
+
+    .team-viewmore {
+        position: static;
+        margin-top: 14px;
+        display: inline-flex;
+        justify-content: center;
+    }
+
+    .team-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        margin-top: 34px;
+    }
+
+    .team-head {
+        margin-left: 0 !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .team-subtitle-left {
+        text-align: center !important;
+        font-size: 24px;
+        margin-bottom: 18px;
+    }
+
+    .head-card {
+        margin: 0 auto;
+        opacity: 1 !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .head-card .team-photo {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 14px;
+    }
+
+    .head-card .team-photo img {
+        filter: none !important;
+        opacity: 1 !important;
+    }
+
+    .head-name {
+        width: auto !important;
+        text-align: center !important;
+        margin: 0 auto 10px;
+        font-size: 17px;
+    }
+
+    .team-lab {
+        width: 100%;
+        margin-left: 0 !important;
+    }
+
+    .team-subtitle-center {
+        text-align: center !important;
+        margin-left: 0 !important;
+        font-size: 24px;
+        margin-bottom: 18px;
+    }
+
+    .team-lab-scroll {
+        width: 100% !important;
+        padding-bottom: 14px;
+        overflow-x: auto;
+        scrollbar-width: thin;
+        scroll-snap-type: x mandatory;
+    }
+
+    .team-lab-scroll::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .team-lab-scroll::-webkit-scrollbar-thumb {
+        border-radius: 999px;
+        background: #94B4C1;
+    }
+
+    .team-lab-track {
+        display: flex;
+        gap: 24px !important;
+        width: max-content !important;
+        flex-wrap: nowrap;
+        padding: 5px calc(50% - 95px);
+    }
+
+    .team-card {
+        width: 190px !important;
+        flex: 0 0 190px !important;
+        text-align: center;
+        scroll-snap-align: center;
+        transition:
+            transform 0.3s ease,
+            opacity 0.3s ease,
+            box-shadow 0.3s ease;
+        will-change: transform, opacity;
+        opacity: 0.6;
+    }
+
+    .team-card .team-photo {
+        width: 130px;
+        height: 130px;
+        margin: 0 auto 12px;
+    }
+
+    .team-name {
+        width: 180px !important;
+        margin: 0 auto 10px;
+        font-size: 15.5px;
+        line-height: 1.35;
+    }
+
+    .team-social {
+        gap: 12px;
+    }
+
+    .team-social img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .team-card.team-card-center {
+        opacity: 1;
+        transform: scale(1.05);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+    }
+
+    .products-section {
+        padding: 60px 0 70px;
+    }
+
+    .products-container {
+        width: 100%;
+        padding: 0 24px;
+    }
+
+    .products-title {
+        font-size: 38px;
+    }
+
+    .products-line {
+        margin-left: 0;
+    }
+
+    .products-row {
+        flex-direction: column;
+        margin-bottom: 24px;
+        gap: 24px;
+    }
+
+    .product-card {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .product-thumb {
+        width: 100%;
+        height: 190px;
+    }
+
+    .product-thumb img {
+        height: 100%;
+    }
+
+    .product-content {
+        padding: 16px 18px 20px;
+    }
+
+    .product-name {
+        font-size: 20px;
+    }
+
+    .product-desc {
+        font-size: 13px;
+    }
+
+    .products-see-more-wrap {
+        margin-top: 32px;
+    }
+
+    .products-see-more {
+        width: 100%;
+        max-width: 260px;
+        text-align: center;
+    }
+
+    .news-section {
+        padding: 60px 0 70px;
+    }
+
+    .news-box {
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 20px 18px 24px;
+    }
+
+    .news-heading {
+        font-size: 32px;
+        margin-bottom: 22px;
+    }
+
+    .news-cards {
+        grid-template-columns: 1fr;
+        row-gap: 28px;
+        justify-content: center;
+    }
+
+    .news-card {
+        width: 100%;
+        max-width: 380px;
+        margin: 0 auto;
+    }
+
+    .news-heading-block {
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .news-title {
+        font-size: 24px;
+    }
+
+    .news-desc {
+        font-size: 14px;
+    }
+
+    .news-btn-wrap {
+        margin-top: 28px;
+    }
+
+    .news-more-btn {
+        width: 100%;
+        max-width: 240px;
+        text-align: center;
+    }
+
+    .gallery-section {
+        padding: 60px 0 70px;
+    }
+
+    .gallery-container {
+        padding: 0 24px;
+    }
+
+    .gallery-title {
+        font-size: 38px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .gallery-item img {
+        height: 200px;
+    }
+
+    .partner-section {
+        padding: 40px 0 70px;
+    }
+
+    .partner-container {
+        padding: 0 24px;
+    }
+
+    .partner-grid {
+        gap: 28px;
+    }
+
+    .partner-item img {
+        max-height: 70px;
+    }
+
+    .contact-guest-section {
+        padding: 60px 0 80px;
+    }
+
+    .contact-guest-container {
+        flex-direction: column;
+        padding: 0 24px;
+    }
+
+    .form-heading {
+        font-size: 32px;
+    }
+
+    .form-card {
+        padding: 28px 20px 18px;
+    }
+
+    .form-row-2 {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-label {
+        font-size: 18px;
+    }
+
+    .form-input,
+    .form-textarea {
+        font-size: 16px;
+    }
+
+    .submit-btn {
+        font-size: 20px;
+        padding: 8px 22px;
+    }
+}
+
+/* Hp kecil */
+@media (max-width: 576px) {
+
+    .hero-content {
+        margin-top: 80px;
+    }
+
+    .hero-content h1 {
+        font-size: 30px;
+    }
+
+    .subtitle {
+        font-size: 17px;
+    }
+
+    .desc {
+        font-size: 14px;
+    }
+
+    .stats-container {
+        padding: 0 10px;
+        gap: 6px;
+    }
+
+    .stat-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .stat-text {
+        font-size: 12px;
+    }
+
+    .stat-text span {
+        font-size: 14px;
+    }
+
+    .vm-label {
+        font-size: 28px;
+        padding: 4px 20px;
+    }
+
+    .research-title {
+        font-size: 32px;
+    }
+
+    .team-title,
+    .products-title,
+    .gallery-title,
+    .partner-title {
+        font-size: 32px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-guest-container {
+        padding: 0 18px;
+    }
+
+    .team-card {
+        width: 170px !important;
+        flex: 0 0 170px !important;
+    }
+
+    .team-card .team-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .team-name {
+        width: 160px !important;
+        font-size: 14.5px;
+    }
+}
