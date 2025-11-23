@@ -1,0 +1,44 @@
+/* Road Map */
+.inlet-roadmap {
+    padding: 150px 0;
+}
+
+.inlet-roadmap-inner {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 80px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.roadmap-image-wrapper {
+    flex: 1 1 60%;
+}
+
+.roadmap-image {
+    width: 90%;
+    height: auto;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    border-radius: 0 35px 35px 0;
+}
+
+.roadmap-content {
+    flex: 1 1 45%;
+}
+
+.roadmap-title {
+    font-family: "Merriweather", "Playfair Display", serif;
+    font-size: 40px;
+    font-weight: 400;
+    color: #213448;
+    margin-bottom: 24px;
+}
+
+.roadmap-text {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #213448;
+}

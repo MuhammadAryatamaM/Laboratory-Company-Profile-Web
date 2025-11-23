@@ -1,0 +1,96 @@
+/* Research Focus */
+.research-section {
+    padding: 20px 0;
+}
+
+.research-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.research-title {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: 50px;
+    text-align: center;
+    color: #213448;
+}
+
+.research-title-underline {
+    width: 160px;
+    height: 3px;
+    background-color: #213448;
+    margin: 5px auto 18px;
+}
+
+.research-subtitle {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+    color: #213448;
+    max-width: 720px;
+    margin: 0 auto 48px;
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 50px;
+}
+
+.research-card {
+    display: flex;
+    background-color: #213448;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(10, 34, 54, 0.35);
+}
+
+.research-card-text {
+    flex: 1;
+    padding: 10px 15px 30px;
+    color: #F5F7FA;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.research-card-title {
+    font-family: "Markazi Text", serif;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    width: 370px;
+}
+
+.research-card-desc {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.research-card-icon {
+    width: 250px;
+    min-height: 200px;
+    background-color: #94B4C1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.research-card-icon img {
+    max-width: 140px;
+    height: auto;
+}
+
+.research-grid .research-card:nth-child(2),
+.research-grid .research-card:nth-child(4) {
+    flex-direction: row-reverse;
+}

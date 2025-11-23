@@ -1,0 +1,173 @@
+/*Tablet dan Laptop kecil */
+@media (max-width: 1024px) {
+
+    .hero-inlet {
+        height: 560px;
+    }
+
+    .hero-content {
+        left: 40px;
+        max-width: 600px;
+    }
+
+    .hero-content h1 {
+        font-size: 46px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+    }
+
+    .desc {
+        font-size: 16px;
+    }
+
+    .inlet-stats {
+        padding: 14px 0 18px;
+    }
+
+    .stats-container {
+        max-width: 1000px;
+        padding: 0 24px;
+        gap: 12px;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+    }
+
+    .stat-box {
+        flex: 1 1 0;
+    }
+
+    .stat-icon {
+        width: 46px;
+        height: 46px;
+        margin-bottom: 4px;
+    }
+
+    .stat-text {
+        font-size: 15px;
+    }
+
+    .stat-text span {
+        font-size: 17px;
+    }
+
+    .about-container {
+        padding-left: 30px;
+        padding-right: 30px;
+        gap: 40px;
+    }
+
+    .about-img {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .vm-container {
+        padding-left: 30px;
+        padding-right: 30px;
+        gap: 40px;
+    }
+
+    .vm-content {
+        min-height: 320px;
+    }
+
+    .vm-content-visi p,
+    .vm-content-misi ol {
+        font-size: 20px;
+    }
+
+    .research-grid {
+        gap: 32px;
+    }
+
+    .research-card-title {
+        font-size: 26px;
+        width: auto;
+    }
+
+    .research-card-icon {
+        width: 210px;
+    }
+
+    .inlet-roadmap-inner {
+        padding-right: 30px;
+        gap: 32px;
+    }
+
+    .roadmap-title {
+        font-size: 34px;
+    }
+
+    .roadmap-text {
+        font-size: 18px;
+    }
+
+    .team-heading {
+        padding-right: 20px;
+    }
+
+    .team-viewmore {
+        right: 20px;
+        top: 30px;
+    }
+
+    .team-lab {
+        margin-left: 40px;
+    }
+
+    .team-lab-scroll {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
+    }
+
+    .team-lab-track {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 32px;
+        width: max-content;
+    }
+
+    .team-card {
+        flex: 0 0 220px;
+        width: 220px;
+    }
+
+    .products-row {
+        gap: 32px;
+    }
+
+    .product-card {
+        width: 100%;
+    }
+
+    .news-box {
+        padding: 24px 32px;
+    }
+
+    .news-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-content: center;
+        column-gap: 24px;
+        row-gap: 30px;
+    }
+
+    .news-card {
+        width: 100%;
+    }
+
+    .contact-guest-container {
+        gap: 24px;
+    }
+
+    .form-card {
+        padding: 32px 28px 20px;
+    }
+
+    .form-row-2 {
+        gap: 24px;
+    }
+}

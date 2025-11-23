@@ -1,0 +1,124 @@
+/* Product */
+.products-section {
+    padding: 80px 0 90px;
+}
+
+.products-container {
+    width: 1300px;
+    margin: 0 auto;
+}
+
+.products-heading {
+    margin-bottom: 20px;
+}
+
+.products-line {
+    width: 120px;
+    height: 3px;
+    background-color: #94B4C1;
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+.products-row {
+    display: flex;
+    gap: 52px;
+    margin-bottom: 32px;
+}
+
+.product-card {
+    width: 650px;
+    height: 240px;
+    background-color: #23374A;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.20);
+    display: flex;
+    overflow: hidden;
+}
+
+.product-thumb {
+    width: 260px;
+    background: #F2F2F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-content {
+    flex: 1;
+    padding: 10px 26px 22px 24px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-family: "Bree Serif", serif;
+    font-size: 24px;
+    margin: 0 0 10px;
+}
+
+.product-desc {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    color: #E5EDF3;
+}
+
+.product-cta {
+    font-family: "Inter", sans-serif;
+    color: #B7D7E8;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.product-cta-arrow {
+    transition: transform 0.25s ease;
+}
+
+.product-cta:hover {
+    color: #F8F4C7;
+}
+
+.product-cta:hover .product-cta-arrow {
+    transform: translateX(4px);
+}
+
+.products-row-bottom.center-one {
+    justify-content: center;
+}
+
+.products-see-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+.products-see-more {
+    font-family: "Bree Serif", serif;
+    font-size: 22px;
+    color: #213448;
+    padding: 12px 40px;
+    border: 2px solid #213448;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.products-see-more:hover {
+    background: #213448;
+    color: #EEFBFF;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}

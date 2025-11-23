@@ -1,0 +1,118 @@
+/* Contact dan Guest Book */
+.contact-guest-section {
+    padding: 80px 0 100px;
+}
+
+.contact-guest-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.form-column {
+    flex: 1;
+}
+
+.form-heading {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    text-align: center;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.form-card {
+    border: 3px solid #111;
+    border-radius: 15px;
+    padding: 40px 40px 20px;
+    background: transparent;
+}
+
+.form-group {
+    margin-bottom: 32px;
+}
+
+.form-label {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 6px;
+    color: #111;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #111;
+    background: transparent;
+    outline: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 4px 0;
+}
+
+.form-input {
+    height: 20px;
+}
+
+.form-textarea {
+    height: 50px;
+    resize: none;
+    padding-top: 6px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-bottom-color: #547792;
+}
+
+.form-row-2 {
+    display: flex;
+    gap: 40px;
+}
+
+.form-btn-wrapper {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 30px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: #213448;
+    color: #fff;
+    font-family: "Bree Serif", serif;
+    font-size: 25px;
+    transition: 0.25s ease;
+}
+
+.btn-icon {
+    transition: transform 0.25s ease;
+}
+
+.submit-btn:hover {
+    background-color: #2f5675;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+.submit-btn:hover .btn-icon {
+    transform: translateX(4px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}

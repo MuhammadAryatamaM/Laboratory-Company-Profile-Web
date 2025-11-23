@@ -1,0 +1,74 @@
+/* About */
+.about-section {
+    padding: 70px 0;
+}
+
+.about-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 0 60px;
+}
+
+.about-left {
+    flex: 1.1;
+}
+
+.about-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about-title {
+    font-family: "Markazi Text", serif;
+    font-size: 54px;
+    font-weight: 600;
+    color: #213448;
+    margin-bottom: 20px;
+}
+
+.about-text {
+    font-family: "Inika", serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #213448;
+    margin-bottom: 20px;
+}
+
+.about-list {
+    font-family: "Inika", serif;
+    font-size: 20px;
+    color: #213448;
+    margin-bottom: 28px;
+    padding-left: 20px;
+}
+
+.about-btn {
+    font-family: "Markazi Text", serif;
+    font-size: 17px;
+    background-color: #213448;
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.about-btn:hover {
+    background-color: #2B4961;
+    transform: translateY(-2px);
+}
+
+.about-img {
+    width: 550px;
+    max-width: 550px;
+    border-radius: 16px;
+    object-fit: cover;
+}

@@ -1,0 +1,25 @@
+/* Layar 1300px */
+@media (max-width: 1300px) {
+    .products-container,
+    .news-box,
+    .gallery-container,
+    .partner-container,
+    .contact-guest-container,
+    .team-container,
+    .research-container,
+    .about-container,
+    .vm-container,
+    .inlet-roadmap-inner {
+        max-width: 100%;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .team-lab-scroll {
+        width: 100%;
+    }
+}
