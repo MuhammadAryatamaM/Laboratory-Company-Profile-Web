@@ -1,11 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InLET Laboratory - Gallery</title>
-    <link rel="stylesheet" href="../assets/css/gallery.css">
-</head>
 <body>
     <?php include '../layouts/header.php'; ?>
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/header.css">
