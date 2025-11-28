@@ -1,173 +1,214 @@
-/*Tablet dan Laptop kecil */
-@media (max-width: 1024px) {
+/* =============== TEAM SECTION =============== */
 
-    .hero-inlet {
-        height: 560px;
-    }
+.team-section {
+    padding: 80px 0 100px;
+    background-color: #EEFBFF;
+}
 
-    .hero-content {
-        left: 40px;
-        max-width: 600px;
-    }
+.team-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 24px;          /* kiri-kanan simetris */
+}
 
-    .hero-content h1 {
-        font-size: 46px;
-    }
+/* Heading Our Team */
+.team-heading {
+    position: relative;
+    text-align: center;
+}
 
-    .subtitle {
-        font-size: 20px;
-    }
+.team-title {
+    font-family: "Playfair Display", serif;
+    font-size: 50px;
+    font-weight: 400;
+    color: #213448;
+}
 
-    .desc {
-        font-size: 16px;
-    }
+.team-line {
+    width: 140px;
+    height: 3px;
+    background-color: #94B4C1;
+    margin: 8px auto 0;
+}
 
-    .inlet-stats {
-        padding: 14px 0 18px;
-    }
+/* View More button */
+.team-viewmore {
+    position: absolute;
+    right: 24px;              /* tidak nempel kanan */
+    top: 34px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 34px;
+    border-radius: 10px;
+    border: 2px solid #213448;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #213448;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
 
-    .stats-container {
-        max-width: 1000px;
-        padding: 0 24px;
-        gap: 12px;
-        justify-content: space-between;
-        flex-wrap: nowrap;
-    }
+.team-viewmore::after {
+    content: "\2192";
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
 
-    .stat-box {
-        flex: 1 1 0;
-    }
+.team-viewmore:hover {
+    background-color: #213448;
+    color: #FFFFFF;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    transform: translateY(-2px);
+}
 
-    .stat-icon {
-        width: 46px;
-        height: 46px;
-        margin-bottom: 4px;
-    }
+.team-viewmore:hover::after {
+    transform: translateX(6px);
+}
 
-    .stat-text {
-        font-size: 15px;
-    }
+/* Layout kiri-kanan */
+.team-layout {
+    margin-top: 55px;
+    display: flex;
+    align-items: flex-start;
+}
 
-    .stat-text span {
-        font-size: 17px;
-    }
+/* Kolom Head of Laboratory */
+.team-head {
+    flex: 0 0 250px;
+    /* ❌ tidak pakai margin-left negatif lagi */
+}
 
-    .about-container {
-        padding-left: 30px;
-        padding-right: 30px;
-        gap: 40px;
-    }
+.team-subtitle {
+    font-family: "Bree Serif", serif;
+    font-size: 28px;
+    color: #213448;
+    margin-bottom: 28px;
+}
 
-    .about-img {
-        width: 100%;
-        max-width: 420px;
-    }
+.team-subtitle-left {
+    text-align: left;
+}
 
-    .vm-container {
-        padding-left: 30px;
-        padding-right: 30px;
-        gap: 40px;
-    }
+.head-card {
+    text-align: center;
+}
 
-    .vm-content {
-        min-height: 320px;
-    }
+/* Foto & nama */
+.team-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 16px;
+}
 
-    .vm-content-visi p,
-    .vm-content-misi ol {
-        font-size: 20px;
-    }
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    .research-grid {
+.team-name {
+    font-family: "Inter", sans-serif;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.35;
+    color: #213448;
+    width: 260px;
+    margin: 0 auto 6px;
+}
+
+.team-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.team-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-social img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+/* Kolom Laboratory Team */
+.team-lab {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-left: 48px;        /* jarak dari Head of Lab */
+}
+
+/* Scroll horizontal cards */
+.team-lab-scroll {
+    margin-top: 6px;
+    width: 100%;              /* ❗ bukan 1100px lagi, jadi tidak overflow */
+    overflow-x: auto;
+    padding-bottom: 25px;
+    scrollbar-width: thin;
+}
+
+.team-lab-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.team-lab-scroll::-webkit-scrollbar-thumb {
+    background: #94B4C1;
+    border-radius: 999px;
+}
+
+.team-lab-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.team-lab-track {
+    display: flex;
+    gap: 70px;
+    flex-wrap: nowrap;
+    width: max-content;       /* lebar mengikuti isi, aman di Safari & Chrome */
+}
+
+.team-card {
+    text-align: center;
+    width: 220px;
+    flex: 0 0 220px;
+}
+
+/* ========== Breakpoint sederhana (tablet & bawah) ========== */
+@media (max-width: 992px) {
+    .team-layout {
+        flex-direction: column;
+        align-items: center;
         gap: 32px;
     }
 
-    .research-card-title {
-        font-size: 26px;
-        width: auto;
+    .team-head {
+        text-align: center;
     }
 
-    .research-card-icon {
-        width: 210px;
-    }
-
-    .inlet-roadmap-inner {
-        padding-right: 30px;
-        gap: 32px;
-    }
-
-    .roadmap-title {
-        font-size: 34px;
-    }
-
-    .roadmap-text {
-        font-size: 18px;
-    }
-
-    .team-heading {
-        padding-right: 20px;
-    }
-
-    .team-viewmore {
-        right: 20px;
-        top: 30px;
+    .team-subtitle-left {
+        text-align: center;
     }
 
     .team-lab {
-        margin-left: 40px;
-    }
-
-    .team-lab-scroll {
-        width: 100%;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scrollbar-width: thin;
-    }
-
-    .team-lab-track {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 32px;
-        width: max-content;
-    }
-
-    .team-card {
-        flex: 0 0 220px;
-        width: 220px;
-    }
-
-    .products-row {
-        gap: 32px;
-    }
-
-    .product-card {
+        margin-left: 0;
         width: 100%;
     }
 
-    .news-box {
-        padding: 24px 32px;
-    }
-
-    .news-cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        justify-content: center;
-        column-gap: 24px;
-        row-gap: 30px;
-    }
-
-    .news-card {
-        width: 100%;
-    }
-
-    .contact-guest-container {
-        gap: 24px;
-    }
-
-    .form-card {
-        padding: 32px 28px 20px;
-    }
-
-    .form-row-2 {
-        gap: 24px;
+    .team-viewmore {
+        position: static;
+        margin: 24px auto 0;
     }
 }
