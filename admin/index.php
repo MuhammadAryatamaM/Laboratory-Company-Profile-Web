@@ -1,6 +1,12 @@
 <?php
 session_start();
 include '../config/koneksi.php';
+
+if (!isset($_SESSION['status']) || $_SESSION['status'] != "login") {
+  header("location:login.php");
+  exit();
+}
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 $page_title = '';
 ?>
