@@ -169,8 +169,27 @@ if (isset($_POST['login'])) {
 
       <div class="mb-3">
         <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+        <div class="input-group">
+          <input type="password" class="form-control mb-0" id="password" name="password" placeholder="Enter your password" required>
+          <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+            <i class="fas fa-eye"></i>
+          </button>
+        </div>
       </div>
+
+      <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function(e) {
+          // toggle the type attribute
+          const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+          password.setAttribute('type', type);
+          // toggle the eye slash icon
+          this.querySelector('i').classList.toggle('fa-eye-slash');
+          this.querySelector('i').classList.toggle('fa-eye');
+        });
+      </script>
 
       <button type="submit" name="login" class="btn btn-login btn-primary w-100">
         <i class="fas fa-sign-in-alt"></i> Login
