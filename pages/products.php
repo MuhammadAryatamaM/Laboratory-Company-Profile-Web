@@ -18,7 +18,7 @@
             [
                 'logo_type' => 'viat',
                 'logo_text' => 'VIAT-map',
-                'image' => 'assets/img/prodct1.png', 
+                'image' => 'assets/img/produk/prodct1.png', 
                 'title' => 'Viat Map Application',
                 'description' => 'VIAT-map (Visual Arguments Toulmin) Application to help Reding Comprehension by using Toulmin Arguments Concept. We are trying to emphasise the logic behind a written text by adding the claim, ground and warrant following the Toulmin Argument Concept.',
                 'features' => [
@@ -31,7 +31,7 @@
             [
                 'logo_type' => 'pseudo',
                 'logo_text' => 'PseudoLearn',
-                'image' => 'assets/img/prodct2.png', 
+                'image' => 'assets/img/produk/prodct2.png', 
                 'title' => 'PseudoLearn Application',
                 'description' => 'Sebuah media pembelajaran rekonstruksi algoritma pseudocode dengan menggunakan pendekatan Element Fill-in-Blank Problems di dalam pemrograman java.',
                 'features' => [
@@ -44,7 +44,7 @@
             [
                 'logo_type' => 'codeasy',
                 'logo_text' => 'Codeasy',
-                'image' => 'assets/img/prodct3.png', 
+                'image' => 'assets/img/produk/prodct3.png', 
                 'title' => 'Codeasy',
                 'description' => 'Codeasy adalah platform belajar Data Science berbasis Machine Learning yang membantu kamu menguasai Python dan Business Intelligence melalui sistem penilaian otomatis dan analisis kognitif cerdas berbasis Taksonomi Bloom',
                 'features' => [
@@ -71,15 +71,13 @@
                 $html .= '<div class="bracket-icon">⬛</div>';
                 $html .= '<div class="text">' . htmlspecialchars($text) . '</div>';
             } elseif ($type === 'codeasy') {
-                // ... kode codeasy tetap sama
             }
         }
         
         $html .= '</div>';
         return $html;
-         }
-
-        // Fungsi untuk generate features - DIHAPUS IKON
+        }
+        
         function generateFeatures($features) {
             $html = '<div class="product-features">';
             foreach ($features as $feature) {
@@ -91,7 +89,7 @@
             return $html;
         }
 
-        // Fungsi untuk generate product card - TAMBAHKAN PARAMETER $image
+        // Fungsi untuk generate product card
         function generateProductCard($product) {
             $html = '<div class="product-card">';
             // Pass image ke fungsi generateLogo
