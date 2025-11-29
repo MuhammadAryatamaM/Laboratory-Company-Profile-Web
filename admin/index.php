@@ -28,16 +28,32 @@ $page_title = '';
           include 'module/dashboard/index.php';
           break;
         case 'news':
-          include 'module/news/index.php';
-          break;
-        case 'news-add':
-          include 'module/news/create.php';
+          $act = isset($_GET['act']) ? $_GET['act'] : 'index';
+          switch ($act) {
+            case 'create':
+              include 'module/news/create.php';
+              break;
+            case 'edit':
+              include 'module/news/edit.php';
+              break;
+            default:
+              include 'module/news/index.php';
+              break;
+          }
           break;
         case 'product':
-          include 'module/products/index.php';
-          break;
-        case 'product-add':
-          include 'module/products/create.php';
+          $act = isset($_GET['act']) ? $_GET['act'] : 'index';
+          switch ($act) {
+            case 'create':
+              include 'module/products/create.php';
+              break;
+            case 'edit':
+              include 'module/products/edit.php';
+              break;
+            default:
+              include 'module/products/index.php';
+              break;
+          }
           break;
         case 'teams':
           $act = isset($_GET['act']) ? $_GET['act'] : 'index';
@@ -54,7 +70,18 @@ $page_title = '';
           }
           break;
         case 'gallery':
-          include 'module/gallery/index.php';
+          $act = isset($_GET['act']) ? $_GET['act'] : 'index';
+          switch ($act) {
+            case 'create':
+              include 'module/gallery/create.php';
+              break;
+            case 'edit':
+              include 'module/gallery/edit.php';
+              break;
+            default:
+              include 'module/gallery/index.php';
+              break;
+          }
           break;
         case 'message':
           include 'module/message/index.php';
