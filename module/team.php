@@ -11,7 +11,7 @@
                 <h3 class="team-subtitle team-subtitle-left">Head of Laboratory</h3>
                 <div class="team-card head-card">
                     <div class="team-photo">
-                        <img src="<?php echo $root; ?>assets/img/home/Teams/Banni.jpeg"
+                        <img src="<?php echo $root; ?>assets/img/home/Teams/banni.jpeg"
                             alt="Dr. Eng. Banni Satria Andoko">
                     </div>
                     <p class="team-name head-name">
@@ -19,9 +19,9 @@
                         S.Kom., M.MSI.
                     </p>
                     <div class="team-social">
-                        <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Twitter.png" alt="Twitter"></a>
-                        <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Instagram.png" alt="Instagram"></a>
+                        <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
+                        <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
                     </div>
                 </div>
             </div>
@@ -41,9 +41,9 @@
                                 S.Pd., M.Kom.
                             </p>
                             <div class="team-social">
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Twitter.png" alt="Twitter"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Facebook.png" alt="Facebook"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Instagram.png" alt="Instagram"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
                             </div>
                         </div>
 
@@ -57,9 +57,9 @@
                                 M.MKom.
                             </p>
                             <div class="team-social">
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Twitter.png" alt="Twitter"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Facebook.png" alt="Facebook"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Instagram.png" alt="Instagram"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
                             </div>
                         </div>
 
@@ -73,9 +73,9 @@
                                 S.Kom., M.Kom
                             </p>
                             <div class="team-social">
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Twitter.png" alt="Twitter"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Facebook.png" alt="Facebook"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Instagram.png" alt="Instagram"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
                             </div>
                         </div>
 
@@ -89,9 +89,9 @@
                                 ST., M.MT.
                             </p>
                             <div class="team-social">
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Twitter.png" alt="Twitter"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Facebook.png" alt="Facebook"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Instagram.png" alt="Instagram"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
                             </div>
                         </div>
 
@@ -105,9 +105,9 @@
                                 S.Kom., M.T.
                             </p>
                             <div class="team-social">
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Twitter.png" alt="Twitter"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Facebook.png" alt="Facebook"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Instagram.png" alt="Instagram"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
                             </div>
                         </div>
 
@@ -121,9 +121,9 @@
                                 Pramudhita,S.T., M.T.
                             </p>
                             <div class="team-social">
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Twitter.png" alt="Twitter"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Facebook.png" alt="Facebook"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/Instagram.png" alt="Instagram"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
+                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
                             </div>
                         </div>
                     </div>

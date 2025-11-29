@@ -1,5 +1,5 @@
 <section class="hero-inlet" id="hero">
-    <img src="<?php echo $root; ?>assets/img/home/Hero1.png" class="hero-bg" alt="InLET">
+    <img src="<?php echo $root; ?>assets/img/home/hero.png" class="hero-bg" alt="InLET">
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <h1>Information & Learning<br>Engineering Laboratory<br>(InLET)</h1>

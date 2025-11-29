@@ -16,7 +16,7 @@
                     </p>
                 </div>
                 <div class="research-card-icon">
-                    <img src="<?php echo $root; ?>assets/img/home/icon/AI.png" alt="AI &amp; Learning Analytics icon">
+                    <img src="<?php echo $root; ?>assets/img/home/icon/ai.png" alt="AI &amp; Learning Analytics icon">
                 </div>
             </article>
             <article class="research-card reveal" data-reveal-delay="100">
@@ -49,7 +49,7 @@
                     </p>
                 </div>
                 <div class="research-card-icon">
-                    <img src="<?php echo $root; ?>assets/img/home/icon/E_learning.png" alt="E-Learning Development icon">
+                    <img src="<?php echo $root; ?>assets/img/home/icon/e_learning.png" alt="E-Learning Development icon">
                 </div>
             </article>
         </div>

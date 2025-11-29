@@ -22,7 +22,7 @@
             <a href="#research-focus" class="about-btn">View Research Focus</a>
         </div>
         <div class="about-right reveal reveal-from-right" data-reveal-delay="100">
-            <img src="<?php echo $root; ?>assets/img/home/aboutIMG.png" alt="About Photo" class="about-img">
+            <img src="<?php echo $root; ?>assets/img/home/about_img.png" alt="About Photo" class="about-img">
         </div>
     </div>
 </section>
