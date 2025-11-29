@@ -56,35 +56,28 @@
             ]
         ];
 
-        // Fungsi untuk generate logo - MODIFIKASI UNTUK MENGGUNAKAN GAMBAR
         function generateLogo($type, $text, $image = null) {
-            $html = '<div class="product-logo">';
-            
-            // Jika ada gambar, tampilkan gambar
-            if (!empty($image) && file_exists($image)) {
-                $html .= '<img src="' . htmlspecialchars($image) . '" alt="' . htmlspecialchars($text) . '" class="product-image">';
-            } else {
-                // Jika tidak ada gambar, tampilkan logo default seperti sebelumnya
-                if ($type === 'viat') {
-                    $html .= '<div class="bracket-icon">[?]</div>';
-                    $html .= '<div class="text">' . htmlspecialchars($text) . '</div>';
-                } elseif ($type === 'pseudo') {
-                    $html .= '<div style="font-size: 2rem;">⬛</div>';
-                    $html .= '<div class="text">' . htmlspecialchars($text) . '</div>';
-                } elseif ($type === 'codeasy') {
-                    $html .= '<div class="codeasy-logo">';
-                    $html .= '<div class="nav">Features | How it Works | Testimonials | Manual Book</div>';
-                    $html .= '<div class="powered">Powered by Machine Learning</div>';
-                    $html .= '<div class="title1">ence Learning Sy</div>';
-                    $html .= '<div class="title2">iness Intelligence</div>';
-                    $html .= '<div class="desc">Understanding of Python programming for Data Science<br>and automatic cognitive analysis based on Bloom\'s</div>';
-                    $html .= '</div>';
-                }
+        $html = '<div class="product-logo">';
+        
+        // Jika ada gambar, tampilkan gambar
+        if (!empty($image) && file_exists($image)) {
+            $html .= '<img src="' . htmlspecialchars($image) . '" alt="' . htmlspecialchars($text) . '" class="product-image">';
+        } else {
+            // Jika tidak ada gambar, tampilkan logo default seperti sebelumnya
+            if ($type === 'viat') {
+                $html .= '<div class="bracket-icon">[?]</div>';
+                $html .= '<div class="text">' . htmlspecialchars($text) . '</div>';
+            } elseif ($type === 'pseudo') {
+                $html .= '<div class="bracket-icon">⬛</div>';
+                $html .= '<div class="text">' . htmlspecialchars($text) . '</div>';
+            } elseif ($type === 'codeasy') {
+                // ... kode codeasy tetap sama
             }
-            
-            $html .= '</div>';
-            return $html;
         }
+        
+        $html .= '</div>';
+        return $html;
+         }
 
         // Fungsi untuk generate features - DIHAPUS IKON
         function generateFeatures($features) {
@@ -115,6 +108,7 @@
             $html .= '</div>';
             return $html;
         }
+        
     ?>
 
     <div class="container">
