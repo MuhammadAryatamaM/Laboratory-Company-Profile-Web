@@ -1,0 +1,2 @@
+- [x] Update assets/css/gallery.css to add CSS grid layout for 2-column arrangement of images
+- [x] Adjust .gallery-item and .gallery-img styles for responsiveness

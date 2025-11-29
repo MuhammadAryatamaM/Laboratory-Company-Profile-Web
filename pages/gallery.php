@@ -3,6 +3,7 @@
 <body>
     <?php include '../layouts/header.php'; ?>
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/header.css">
+    <link rel="stylesheet" href="<?php echo $root; ?>assets/css/gallery.css">
 
     <!-- Gallery Section -->
     <section class="gallery-section">
