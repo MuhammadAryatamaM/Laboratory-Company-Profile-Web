@@ -121,6 +121,7 @@ body {
     margin-bottom: 15px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
+    position: relative;
 }
 
 .recent-item:last-child {
@@ -157,8 +158,9 @@ body {
     font-size: 0.6rem;
     color: #000000;
     text-decoration: none;
-    display: block;
-    margin-bottom: 5px;
+    position: absolute;
+    top: -10px;
+    right: 0;
 }
 
 .recent-view-more:hover {
