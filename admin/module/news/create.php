@@ -1,4 +1,18 @@
-<?php $page_title = 'Create News'; ?>
+<?php
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
+  echo "<script>alert('You do not have permission to access this page.'); window.location.href = 'index.php?page=news';</script>";
+  exit();
+}
+$page_title = 'Create News';
+
+// Fetch team members for author dropdown
+try {
+  $stmt = $pdo->query("SELECT member_id, full_name FROM team_member ORDER BY full_name ASC");
+  $authors = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  $authors = [];
+}
+?>
 <main class="main-content">
   <div class="container-fluid">
     <div class="d-flex align-items-center mb-4">
@@ -17,7 +31,7 @@
           <div class="card-body">
             <h5 class="card-title mb-4">News Details</h5>
 
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" action="module/news/aksi.php?module=news&act=input" enctype="multipart/form-data">
               <div class="mb-4">
                 <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Enter news title" required>
@@ -30,11 +44,12 @@
 
               <div class="mb-4">
                 <label for="image" class="form-label">Image</label>
-                <div class="upload-area border-2 border-dashed rounded-3 p-5 text-center" style="cursor: pointer; border-color: #e0e0e0; transition: all 0.3s;">
+                <div class="upload-area-news border-2 border-dashed rounded-3 p-5 text-center" style="cursor: pointer; border-color: #e0e0e0; transition: all 0.3s;">
                   <i class="fas fa-cloud-upload-alt fs-1 text-muted mb-3 d-block"></i>
                   <p class="mb-2">Drag & drop your image here or</p>
                   <button type="button" class="btn btn-sm btn-outline-primary">Upload Image</button>
-                  <input type="file" class="form-control d-none" id="image" name="image" accept="image/*">
+                  <input type="file" class="form-control d-none" id="news-image" name="image_url" accept="image/*">
+                  <span id="file-name-display" class="text-muted mt-2 d-block"></span>
                 </div>
               </div>
 
@@ -42,13 +57,18 @@
                 <div class="col-md-6">
                   <div class="mb-4">
                     <label for="author" class="form-label">Author <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="author" name="author" placeholder="Enter author name" required>
+                    <select class="form-select" id="author" name="author_id" required>
+                      <option value="">Select Author</option>
+                      <?php foreach ($authors as $author) : ?>
+                        <option value="<?php echo $author['member_id']; ?>"><?php echo htmlspecialchars($author['full_name']); ?></option>
+                      <?php endforeach; ?>
+                    </select>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="mb-4">
                     <label for="date" class="form-label">Date <span class="text-danger">*</span></label>
-                    <input type="date" class="form-control" id="date" name="date" required>
+                    <input type="date" class="form-control" id="date" name="publish_date" required>
                   </div>
                 </div>
               </div>
@@ -68,13 +88,12 @@
 </main>
 
 <script>
-  document.querySelector('.upload-area').addEventListener('click', function() {
-    document.getElementById('image').click();
+  document.querySelector('.upload-area-news').addEventListener('click', function() {
+    document.getElementById('news-image').click();
   });
 
-  document.getElementById('image').addEventListener('change', function(e) {
-    if (e.target.files[0]) {
-      alert('Image selected: ' + e.target.files[0].name);
-    }
+  document.getElementById('news-image').addEventListener('change', function() {
+    const fileName = this.files.length > 0 ? this.files[0].name : 'No file chosen';
+    document.getElementById('file-name-display').textContent = 'Selected: ' + fileName;
   });
 </script>
