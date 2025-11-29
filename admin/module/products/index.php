@@ -1,4 +1,16 @@
-<?php $page_title = 'Product Management'; ?>
+<?php
+$page_title = 'Product Management';
+
+// Fetch all products
+try {
+  // Changed to product table
+  $stmt = $pdo->query("SELECT * FROM product ORDER BY created_at DESC");
+  $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  echo "Error: " . $e->getMessage();
+  $products = [];
+}
+?>
 <main class="main-content">
   <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -6,150 +18,61 @@
         <h1 class="mb-2">Product Management</h1>
         <p class="text-muted">Create and manage products</p>
       </div>
-      <a href="?page=product-add" class="btn btn-primary">
-        <i class="fas fa-plus me-2"></i>Create New Product
-      </a>
+      <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Kepala Laboratorium') : ?>
+        <a href="?page=products&act=create" class="btn btn-primary">
+          <i class="fas fa-plus me-2"></i>Create New Product
+        </a>
+      <?php endif; ?>
     </div>
 
-    <!-- Fixed card alignment with equal heights -->
     <div class="row">
-      <div class="col-md-4 mb-4">
-        <!-- Removed inline transition style, using CSS-only styling -->
-        <div class="card product-card h-100">
-          <div class="product-image"></div>
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Premium Wireless Headphones</h5>
-            <div class="mb-2">
-              <span class="badge bg-light text-dark">Electronics</span>
-              <span class="badge bg-light text-dark">Audio</span>
+      <?php foreach ($products as $item) : ?>
+        <div class="col-md-4 mb-4">
+          <div class="card product-card h-100">
+            <div class="product-image" style="height: 200px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <?php if (!empty($item['image_url'])) : ?>
+                <img src="../assets/uploads/<?php echo htmlspecialchars($item['image_url']); ?>" alt="<?php echo htmlspecialchars($item['product_name']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+              <?php else : ?>
+                <i class="fas fa-box text-muted" style="font-size: 40px;"></i>
+              <?php endif; ?>
             </div>
-            <p class="card-text text-muted small flex-grow-1">High-quality wireless headphones with noise cancellation and...</p>
-            <a href="#" class="text-primary text-decoration-none mb-3 d-block">View Product</a>
-            <div class="d-flex gap-2">
-              <button class="btn btn-outline-primary btn-sm flex-grow-1" data-bs-toggle="modal" data-bs-target="#productModal">
-                <i class="fas fa-edit me-1"></i>Edit
-              </button>
-              <button class="btn btn-outline-danger btn-sm flex-grow-1" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                <i class="fas fa-trash me-1"></i>Delete
-              </button>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title"><?php echo htmlspecialchars($item['product_name']); ?></h5>
+              <div class="mb-2">
+                <?php
+                if (!empty($item['categories'])) {
+                  $cats = explode(',', $item['categories']);
+                  foreach ($cats as $cat) {
+                    echo '<span class="badge bg-light text-dark me-1">' . htmlspecialchars(trim($cat)) . '</span>';
+                  }
+                }
+                ?>
+              </div>
+              <p class="card-text text-muted small flex-grow-1"><?php echo substr(htmlspecialchars($item['description']), 0, 100) . '...'; ?></p>
+              <a href="<?php echo htmlspecialchars($item['link_url']); ?>" class="text-primary text-decoration-none mb-3 d-block" target="_blank">View Product</a>
+              
+              <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Kepala Laboratorium') : ?>
+                <div class="d-flex gap-2">
+                  <a href="?page=products&act=edit&id=<?php echo $item['product_id']; ?>" class="btn btn-outline-primary btn-sm flex-grow-1">
+                    <i class="fas fa-edit me-1"></i>Edit
+                  </a>
+                  <a href="module/products/aksi.php?module=products&act=delete&id=<?php echo $item['product_id']; ?>" class="btn btn-outline-danger btn-sm flex-grow-1" onclick="return confirm('Are you sure you want to delete this product?');">
+                    <i class="fas fa-trash me-1"></i>Delete
+                  </a>
+                </div>
+              <?php endif; ?>
             </div>
           </div>
         </div>
-      </div>
+      <?php endforeach; ?>
 
-      <div class="col-md-4 mb-4">
-        <div class="card product-card h-100">
-          <div class="product-image"></div>
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Smart Fitness Watch</h5>
-            <div class="mb-2">
-              <span class="badge bg-light text-dark">Wearables</span>
-              <span class="badge bg-light text-dark">Fitness</span>
-            </div>
-            <p class="card-text text-muted small flex-grow-1">Track your fitness goals with advanced health monitoring...</p>
-            <a href="#" class="text-primary text-decoration-none mb-3 d-block">View Product</a>
-            <div class="d-flex gap-2">
-              <button class="btn btn-outline-primary btn-sm flex-grow-1" data-bs-toggle="modal" data-bs-target="#productModal">
-                <i class="fas fa-edit me-1"></i>Edit
-              </button>
-              <button class="btn btn-outline-danger btn-sm flex-grow-1" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                <i class="fas fa-trash me-1"></i>Delete
-              </button>
-            </div>
+      <?php if (empty($products)) : ?>
+        <div class="col-12">
+          <div class="alert alert-info text-center" role="alert">
+            No products found.
           </div>
         </div>
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <div class="card product-card h-100">
-          <div class="product-image"></div>
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Ergonomic Office Chair</h5>
-            <div class="mb-2">
-              <span class="badge bg-light text-dark">Furniture</span>
-              <span class="badge bg-light text-dark">Office</span>
-            </div>
-            <p class="card-text text-muted small flex-grow-1">Comfortable office chair designed for long working hours</p>
-            <a href="#" class="text-primary text-decoration-none mb-3 d-block">View Product</a>
-            <div class="d-flex gap-2">
-              <button class="btn btn-outline-primary btn-sm flex-grow-1" data-bs-toggle="modal" data-bs-target="#productModal">
-                <i class="fas fa-edit me-1"></i>Edit
-              </button>
-              <button class="btn btn-outline-danger btn-sm flex-grow-1" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                <i class="fas fa-trash me-1"></i>Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php endif; ?>
     </div>
   </div>
 </main>
-
-<!-- Product Modal - Edit Only -->
-<div class="modal fade" id="productModal" tabindex="-1">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <!-- Changed title to "Edit Product" since it's only for editing -->
-        <h5 class="modal-title">Edit Product</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <form>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Product Name <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" placeholder="Enter product name" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Description <span class="text-danger">*</span></label>
-            <textarea class="form-control" rows="4" placeholder="Enter product description" required></textarea>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Link <span class="text-danger">*</span></label>
-              <input type="url" class="form-control" placeholder="https://example.com" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Image Upload</label>
-              <div class="upload-area border-2 border-dashed rounded-3 p-3 text-center" style="cursor: pointer; border-color: #e0e0e0;">
-                <i class="fas fa-image text-muted mb-2 d-block"></i>
-                <p class="mb-0 small">Upload Image</p>
-                <input type="file" class="form-control d-none" accept="image/*">
-              </div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Categories (Up to 4)</label>
-            <div class="input-group mb-2">
-              <input type="text" class="form-control" placeholder="Enter category" />
-              <button class="btn btn-outline-primary" type="button">Add</button>
-            </div>
-            <div id="categories-list-modal"></div>
-            <small class="text-muted d-block mt-2"><span id="category-count-modal">0</span>/4 categories added</small>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Changes</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- Delete Confirmation Modal -->
-<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-body text-center pt-5">
-        <h5 class="mb-3">Are you sure?</h5>
-        <p class="text-muted mb-4">This action cannot be undone. This will permanently delete the product.</p>
-        <div class="d-flex gap-2 justify-content-center">
-          <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger px-4">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
