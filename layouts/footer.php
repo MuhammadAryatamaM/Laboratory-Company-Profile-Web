@@ -30,15 +30,15 @@
                 <ul>
                     <li><a href="<?php echo $root; ?>index.php#hero">Home</a></li>
                     <li><a href="<?php echo $root; ?>index.php#about-section">About</a></li>
-                    <li><a href="<?php echo $root; ?>index.php#research-section">Research</a></li>
+                    <li><a href="<?php echo $root; ?>index.php#research-focus">Research</a></li>
                     <li><a href="<?php echo $root; ?>index.php#team-section">Teams</a></li>
                     <li><a href="<?php echo $root; ?>index.php#products">Products</a></li>
                 </ul>
                 <ul>
                     <li><a href="<?php echo $root; ?>index.php#news-home">News</a></li>
                     <li><a href="<?php echo $root; ?>index.php#gallery">Gallery</a></li>
-                    <li><a href="<?php echo $root; ?>index.php#contact">Contact</a></li>
-                    <li><a href="<?php echo $root; ?>index.php#guest">Guest Book</a></li>
+                    <li><a href="<?php echo $root; ?>index.php#contact-guest-section">Contact</a></li>
+                    <li><a href="<?php echo $root; ?>index.php#contact-guest-section">Guest Book</a></li>
                 </ul>
             </div>
         </div>

@@ -49,8 +49,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php echo ($page === 'contact') ? 'active' : ''; ?>"
-                        href="<?php echo $root; ?>index.php?page=contact">
+                    <a class="nav-link" href="<?php echo $root; ?>index.php?page=home#contact-guest-section">
                         Contact
                     </a>
                 </li>
