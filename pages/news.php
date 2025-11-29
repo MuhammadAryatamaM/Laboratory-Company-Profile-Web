@@ -48,7 +48,7 @@ $recentItems = [
     [
         'title' => 'Best Overall Paper Award',
         'image' => '../assets/img/news/gallery5.png',
-        'location' => 'Jaoan',
+        'location' => 'Japan',
         'date' => 'November 2023'
     ],
     [
