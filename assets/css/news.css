@@ -93,6 +93,7 @@ body {
     height: 180px;
     overflow-y: auto;
     padding-right: 5px;
+    position: relative;
 }
 
 /* Custom Scrollbar */
@@ -101,17 +102,16 @@ body {
 }
 
 .recent-items::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 5px;
+    background: transparent;
 }
 
 .recent-items::-webkit-scrollbar-thumb {
-    background: #000000;
+    background: transparent;
     border-radius: 5px;
 }
 
 .recent-items::-webkit-scrollbar-thumb:hover {
-    background: #000000;
+    background: transparent;
 }
 
 /* Recent Item Card */
@@ -120,8 +120,21 @@ body {
     gap: 10px;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
     position: relative;
+}
+.recent-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);  
+    width: 150px;  
+    height: 1px; 
+    background: #000000;  
+}
+
+.recent-item:last-child::after {
+    display: none;  
 }
 
 .recent-item:last-child {
@@ -164,5 +177,5 @@ body {
 }
 
 .recent-view-more:hover {
-    text-decoration: underline;
+    text-decoration: transparent;
 }
