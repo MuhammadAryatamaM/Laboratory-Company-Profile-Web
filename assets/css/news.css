@@ -69,7 +69,19 @@ body {
     align-items: center;
     margin-bottom: 10px;
     padding-bottom: 5px;
-    border-bottom: 2px solid #000000;
+    border-bottom: 1px solid #000000;  /* Garis bawah (abu-abu terang) */
+    position: relative;
+}
+
+.sidebar-header::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;  /* Posisi tepat di atas garis abu-abu */
+    left: 0;
+    width: 30%;  /* Panjang garis hitam (50% dari lebar, sesuaikan sesuai kebutuhan) */
+    height: 5px;  /* Ketebalan sama dengan border-bottom */
+    background: #72b6dd;  /* Warna hitam untuk garis atas */
+    border-radius: 10px;
 }
 
 .sidebar-title {
