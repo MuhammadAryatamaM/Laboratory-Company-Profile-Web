@@ -155,12 +155,12 @@ body {
 }
 
 .recent-view-more {
-    font-size: 0.6rem;
-    color: #000000;
+    display: block;
+    text-align: right;
+    font-size: 11px;
+    color: #000;
     text-decoration: none;
-    position: absolute;
-    top: -10px;
-    right: 0;
+    margin-top: 5px;
 }
 
 .recent-view-more:hover {
