@@ -23,10 +23,10 @@
                 'title' => 'Viat Map Application',
                 'description' => 'VIAT-map (Visual Arguments Toulmin) Application to help Reding Comprehension by using Toulmin Arguments Concept. We are trying to emphasise the logic behind a written text by adding the claim, ground and warrant following the Toulmin Argument Concept.',
                 'features' => [
-                    ['icon' => '📊', 'text' => 'Visual Argument Mapping'],
-                    ['icon' => '🧠', 'text' => 'Toulmin Model Integration'],
-                    ['icon' => '📖', 'text' => 'Reading Comprehension Support'],
-                    ['icon' => '📈', 'text' => 'Data Visualization']
+                    ['text' => 'Visual Argument Mapping'],
+                    ['text' => 'Toulmin Model Integration'],
+                    ['text' => 'Reading Comprehension Support'],
+                    ['text' => 'Data Visualization']
                 ]
             ],
             [
@@ -36,10 +36,10 @@
                 'title' => 'PseudoLearn Application',
                 'description' => 'Sebuah media pembelajaran rekonstruksi algoritma pseudocode dengan menggunakan pendekatan Element Fill-in-Blank Problems di dalam pemrograman java.',
                 'features' => [
-                    ['icon' => '📋', 'text' => 'Algorithm Learning'],
-                    ['icon' => '🔧', 'text' => 'Pseudocode Reconstruction'],
-                    ['icon' => '☕', 'text' => 'Java Programming'],
-                    ['icon' => '🎮', 'text' => 'Gamified Learning']
+                    ['text' => 'Algorithm Learning'],
+                    ['text' => 'Pseudocode Reconstruction'],
+                    ['text' => 'Java Programming'],
+                    ['text' => 'Gamified Learning']
                 ]
             ],
             [
@@ -49,10 +49,10 @@
                 'title' => 'Codeasy',
                 'description' => 'Codeasy adalah platform belajar Data Science berbasis Machine Learning yang membantu kamu menguasai Python dan Business Intelligence melalui sistem penilaian otomatis dan analisis kognitif cerdas berbasis Taksonomi Bloom',
                 'features' => [
-                    ['icon' => '⚙', 'text' => 'Machine Learning Based'],
-                    ['icon' => '🐍', 'text' => 'Python Modules'],
-                    ['icon' => '💼', 'text' => 'Business Intelligence'],
-                    ['icon' => '📝', 'text' => 'Bloom Taxonomy Assessment']
+                    ['text' => 'Machine Learning Based'],
+                    ['text' => 'Python Modules'],
+                    ['text' => 'Business Intelligence'],
+                    ['text' => 'Bloom Taxonomy Assessment']
                 ]
             ]
         ];
@@ -87,12 +87,11 @@
             return $html;
         }
 
-        // Fungsi untuk generate features
+        // Fungsi untuk generate features - DIHAPUS IKON
         function generateFeatures($features) {
             $html = '<div class="product-features">';
             foreach ($features as $feature) {
                 $html .= '<div class="feature-item">';
-                $html .= '<span class="feature-icon">' . htmlspecialchars($feature['icon']) . '</span>';
                 $html .= '<span>' . htmlspecialchars($feature['text']) . '</span>';
                 $html .= '</div>';
             }
