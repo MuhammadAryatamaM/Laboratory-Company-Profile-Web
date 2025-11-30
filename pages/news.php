@@ -15,7 +15,9 @@
 $mainNews = [
     'title' => 'ICCE 2023, Full Paper Presentation',
     'image' => 'assets/img/news/gallery7.png',
-    'description' => 'Kegiatan pemaparan makalah di ICCE 2023 di Matsue, Jepang merupakan ajang ilmiah internasional yang mempertemukan peneliti, pengajar, dan mahasiswa untuk mempresentasikan hasil penelitian di bidang teknologi pendidikan. Peserta yang lolos seleksi menyampaikan temuan mereka di hadapan para ahli, disertai sesi tanya jawab untuk memperoleh masukan. Melalui kegiatan ini, peneliti dapat memperkenalkan karya mereka secara global, membangun kolaborasi, dan meningkatkan kualitas penelitian di masa depan.'
+    'description' => 'Kegiatan pemaparan makalah di ICCE 2023 di Matsue, Jepang merupakan ajang ilmiah internasional yang mempertemukan peneliti, pengajar, dan mahasiswa untuk mempresentasikan hasil penelitian di bidang teknologi',
+    'additional_description' => 'pendidikan. Peserta yang lolos seleksi menyampaikan temuan mereka di hadapan para ahli, disertai sesi tanya jawab untuk memperoleh masukan. Melalui kegiatan ini, peneliti dapat memperkenalkan karya mereka secara global, membangun kolaborasi, dan meningkatkan kualitas penelitian di masa depan.'
+
 ];
 
 // Data Recent Items (untuk scroll)
@@ -113,11 +115,14 @@ function generateRecentItems($items) {
         <div class="news-section">
             <!-- Main Content - Left Side -->
             <div class="main-content">
-                <img src="<?php echo $mainNews['image']; ?>" alt="<?php echo $mainNews['title']; ?>" class="main-image">
-                <div class="main-text">
-                    <h2 class="main-title"><?php echo $mainNews['title']; ?></h2>
-                    <p class="main-description"><?php echo $mainNews['description']; ?></p>
+                <div class="content-top">
+                    <img src="<?php echo $mainNews['image']; ?>" alt="<?php echo $mainNews['title']; ?>" class="main-image">
+                    <div class="main-text">
+                        <h2 class="main-title"><?php echo $mainNews['title']; ?></h2>
+                        <p class="main-description"><?php echo $mainNews['description']; ?></p>
+                    </div>
                 </div>
+                <p class="main-description additional-text"><?php echo $mainNews['additional_description']; ?></p>
             </div>
 
             <!-- Sidebar - Right Side (Scrollable) -->
