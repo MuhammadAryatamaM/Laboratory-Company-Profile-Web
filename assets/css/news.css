@@ -8,7 +8,6 @@ body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background: #ffffff;
     min-height: 100vh;
-    padding: 20px;
     overflow-y: auto;
 }
 
