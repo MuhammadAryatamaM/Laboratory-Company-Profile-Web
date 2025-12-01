@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Detail - InLET Laboratory</title>
-    <link rel="stylesheet" href="../assets/css/news.css">
-</head>
-<body>
-    <!-- Header -->
-    <link rel="stylesheet" href="<?php echo $root; ?>assets/css/header.css">
-
-    <?php
+<?php
 // Data Berita Utama
 $mainNews = [
     'title' => 'ICCE 2023, Full Paper Presentation',
     'image' => 'assets/img/news/gallery7.png',
     'description' => 'Kegiatan pemaparan makalah di ICCE 2023 di Matsue, Jepang merupakan ajang ilmiah internasional yang mempertemukan peneliti, pengajar, dan mahasiswa untuk mempresentasikan hasil penelitian di bidang teknologi',
     'additional_description' => 'pendidikan. Peserta yang lolos seleksi menyampaikan temuan mereka di hadapan para ahli, disertai sesi tanya jawab untuk memperoleh masukan. Melalui kegiatan ini, peneliti dapat memperkenalkan karya mereka secara global, membangun kolaborasi, dan meningkatkan kualitas penelitian di masa depan.'
-
 ];
 
 // Data Recent Items (untuk scroll)
@@ -76,17 +63,16 @@ $recentItems = [
         'location' => 'Austria',
         'date' => 'November 2023'
     ]
-
 ];
 
 // Fungsi untuk generate recent item
 function generateRecentItem($item) {
     $html = '<a href="#" class="recent-view-more">View More →</a>';
     $html .= '<div class="recent-item">';
-    $html .= '<img src="' . $item['image'] . '" alt="' . $item['title'] . '" class="recent-image">';
+    $html .= '<img src="' . htmlspecialchars($item['image']) . '" alt="' . htmlspecialchars($item['title']) . '" class="recent-image">';
     $html .= '<div class="recent-info">';
-    $html .= '<div class="recent-item-title">' . $item['title'] . '</div>';
-    $html .= '<div class="recent-meta">' . $item['location'] . ' | ' . $item['date'] . '</div>';
+    $html .= '<div class="recent-item-title">' . htmlspecialchars($item['title']) . '</div>';
+    $html .= '<div class="recent-meta">' . htmlspecialchars($item['location']) . ' | ' . htmlspecialchars($item['date']) . '</div>';
     $html .= '</div>';
     $html .= '</div>';
     return $html;
@@ -102,45 +88,30 @@ function generateRecentItems($items) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Section</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="news-section">
-            <!-- Main Content - Left Side -->
-            <div class="main-content">
-                <div class="content-top">
-                    <img src="<?php echo $mainNews['image']; ?>" alt="<?php echo $mainNews['title']; ?>" class="main-image">
-                    <div class="main-text">
-                        <h2 class="main-title"><?php echo $mainNews['title']; ?></h2>
-                        <p class="main-description"><?php echo $mainNews['description']; ?></p>
-                    </div>
+<div class="container">
+    <div class="news-section">
+        <!-- Main Content - Left Side -->
+        <div class="main-content">
+            <div class="content-top">
+                <img src="<?php echo htmlspecialchars($mainNews['image']); ?>" alt="<?php echo htmlspecialchars($mainNews['title']); ?>" class="main-image">
+                <div class="main-text">
+                    <h2 class="main-title"><?php echo htmlspecialchars($mainNews['title']); ?></h2>
+                    <p class="main-description"><?php echo htmlspecialchars($mainNews['description']); ?></p>
                 </div>
-                <p class="main-description additional-text"><?php echo $mainNews['additional_description']; ?></p>
             </div>
+            <p class="main-description additional-text"><?php echo htmlspecialchars($mainNews['additional_description']); ?></p>
+        </div>
 
-            <!-- Sidebar - Right Side (Scrollable) -->
-            <div class="sidebar">
-                <div class="sidebar-header">
-                    <span class="sidebar-title">Recent</span>
-                </div>
-                <div class="recent-items">
-                    <?php echo generateRecentItems($recentItems); ?>
-                </div>
+        <!-- Sidebar - Right Side (Scrollable) -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <span class="sidebar-title">Recent</span>
+            </div>
+            <div class="recent-items">
+                <?php echo generateRecentItems($recentItems); ?>
             </div>
         </div>
     </div>
-</body>
-</html>
+</div>
 
-    <link rel="stylesheet" href="<?php echo $root; ?>assets/css/footer.css">
-    
-    <script src="../js/news.js"></script>
-</body>
-</html>
+<script src="<?php echo $root; ?>assets/js/news.js"></script>
