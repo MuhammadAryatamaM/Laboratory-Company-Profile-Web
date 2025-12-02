@@ -71,6 +71,7 @@ elseif ($module == 'teams' && $act == 'input') {
   $facebook_url = $_POST['facebook_url'];
   $instagram_url = $_POST['instagram_url'];
   $google_scholar_url = $_POST['google_scholar_url'];
+  $detail_url = $_POST['detail_url'];
   $photo_url = '';
 
   // Hash password
@@ -94,29 +95,36 @@ elseif ($module == 'teams' && $act == 'input') {
 
   $pdo->beginTransaction();
   try {
-    // 1. Insert into admin table
-    $stmt_admin = $pdo->prepare("INSERT INTO admin (username, password_hash) VALUES (:username, :password_hash)");
-    $stmt_admin->bindParam(':username', $username);
-    $stmt_admin->bindParam(':password_hash', $password_hash);
-    $stmt_admin->execute();
-    $admin_id = $pdo->lastInsertId();
+    // Call the stored procedure
+    $stmt = $pdo->prepare("CALL sp_create_team_member(
+        :username, 
+        :password_hash, 
+        :full_name, 
+        :nip, 
+        :phone_number, 
+        :email, 
+        :position, 
+        :facebook_url, 
+        :instagram_url, 
+        :google_scholar_url, 
+        :detail_url, 
+        :photo_url
+    )");
 
-    // 2. Insert into team_member table
-    $stmt_member = $pdo->prepare(
-      "INSERT INTO team_member (admin_id, full_name, nip, phone_number, email, position, facebook_url, instagram_url, google_scholar_url, photo_url, created_at, updated_at)
-             VALUES (:admin_id, :full_name, :nip, :phone_number, :email, :position, :facebook_url, :instagram_url, :google_scholar_url, :photo_url, NOW(), NOW())"
-    );
-    $stmt_member->bindParam(':admin_id', $admin_id, PDO::PARAM_INT);
-    $stmt_member->bindParam(':full_name', $full_name);
-    $stmt_member->bindParam(':nip', $nip);
-    $stmt_member->bindParam(':phone_number', $phone_number);
-    $stmt_member->bindParam(':email', $email);
-    $stmt_member->bindParam(':position', $position);
-    $stmt_member->bindParam(':facebook_url', $facebook_url);
-    $stmt_member->bindParam(':instagram_url', $instagram_url);
-    $stmt_member->bindParam(':google_scholar_url', $google_scholar_url);
-    $stmt_member->bindParam(':photo_url', $photo_url);
-    $stmt_member->execute();
+    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':password_hash', $password_hash);
+    $stmt->bindParam(':full_name', $full_name);
+    $stmt->bindParam(':nip', $nip);
+    $stmt->bindParam(':phone_number', $phone_number);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':position', $position);
+    $stmt->bindParam(':facebook_url', $facebook_url);
+    $stmt->bindParam(':instagram_url', $instagram_url);
+    $stmt->bindParam(':google_scholar_url', $google_scholar_url);
+    $stmt->bindParam(':detail_url', $detail_url);
+    $stmt->bindParam(':photo_url', $photo_url);
+    
+    $stmt->execute();
 
     $pdo->commit();
     echo "<script>alert('Anggota tim berhasil ditambahkan.'); window.location='../../index.php?page=teams';</script>";
@@ -148,6 +156,7 @@ elseif ($module == 'teams' && $act == 'update') {
   $facebook_url = $_POST['facebook_url'];
   $instagram_url = $_POST['instagram_url'];
   $google_scholar_url = $_POST['google_scholar_url'];
+  $detail_url = $_POST['detail_url'];
 
   $photo_url = '';
   $update_photo = false;
@@ -210,15 +219,16 @@ elseif ($module == 'teams' && $act == 'update') {
 
     // Update team_member table
     $sql = "UPDATE team_member SET 
-                full_name = :full_name, 
-                nip = :nip, 
-                phone_number = :phone_number, 
-                email = :email, 
-                position = :position,
-                facebook_url = :facebook_url,
-                instagram_url = :instagram_url,
-                google_scholar_url = :google_scholar_url,
-                updated_at = NOW()";
+                  full_name = :full_name, 
+                  nip = :nip, 
+                  phone_number = :phone_number, 
+                  email = :email, 
+                  position = :position,
+                  facebook_url = :facebook_url,
+                  instagram_url = :instagram_url,
+                  google_scholar_url = :google_scholar_url,
+                  detail_url = :detail_url,
+                  updated_at = NOW()";
 
     if ($update_photo) {
       $sql .= ", photo_url = :photo_url";
@@ -236,13 +246,13 @@ elseif ($module == 'teams' && $act == 'update') {
     $stmt->bindParam(':facebook_url', $facebook_url, PDO::PARAM_STR);
     $stmt->bindParam(':instagram_url', $instagram_url, PDO::PARAM_STR);
     $stmt->bindParam(':google_scholar_url', $google_scholar_url, PDO::PARAM_STR);
+    $stmt->bindParam(':detail_url', $detail_url, PDO::PARAM_STR);
     $stmt->bindParam(':member_id', $member_id, PDO::PARAM_INT);
     if ($update_photo) {
       $stmt->bindParam(':photo_url', $photo_url, PDO::PARAM_STR);
     }
 
     $stmt->execute();
-
     $pdo->commit();
     echo "<script>alert('Data anggota tim berhasil diubah.'); window.location='../../index.php?page=teams';</script>";
   } catch (PDOException $e) {
@@ -250,4 +260,3 @@ elseif ($module == 'teams' && $act == 'update') {
     echo "<script>alert('Gagal memperbarui anggota tim: " . $e->getMessage() . "'); window.location='../../index.php?page=teams&act=edit&id=$member_id';</script>";
   }
 }
-
