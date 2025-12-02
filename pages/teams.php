@@ -20,14 +20,14 @@ try {
   echo "Database error: " . $e->getMessage();
 }
 ?>
-<!DOCTYPE html>
+
 <!-- Hero Banner -->
 <section class="hero-banner">
   <img src="assets/img/gallery14.png" alt="InLET Laboratory Team">
 </section>
 
 <!-- Main Content -->
-<main class="teams-container">
+<div class="teams-container">
   <!-- Page Title -->
   <h1 class="page-title">Our Teams</h1>
 
@@ -35,38 +35,38 @@ try {
     <!-- Head of Laboratory Section -->
     <section class="head-section">
       <h2 class="section-title">Head of Laboratory</h2>
-      <div class="profile-card head-card">
-        <div class="profile-photo">
-          <img src="assets/uploads/<?php echo $head_of_lab['photo_url']; ?>" alt="<?php echo $head_of_lab['full_name']; ?>">
+      <a href="<?php echo !empty($head_of_lab['detail_url']) ? htmlspecialchars($head_of_lab['detail_url']) : '#'; ?>" class="profile-link" target="_blank">
+        <div class="profile-card head-card">
+          <div class="profile-photo">
+            <img src="assets/uploads/<?php echo $head_of_lab['photo_url']; ?>" alt="<?php echo $head_of_lab['full_name']; ?>">
+          </div>
+          <div class="profile-info">
+            <h3 class="member-name"><?php echo htmlspecialchars($head_of_lab['full_name']); ?></h3>
+            <p class="member-nip">NIP: <?php echo htmlspecialchars($head_of_lab['nip']); ?></p>
+            
+            <div class="contact-info">
+              <div class="profile-contact-item">
+                <i class="far fa-envelope"></i>
+                <span><?php echo htmlspecialchars($head_of_lab['email']); ?></span>
+              </div>
+              <?php if ($head_of_lab['phone_number']) : ?>
+              <div class="profile-contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <span><?php echo htmlspecialchars($head_of_lab['phone_number']); ?></span>
+              </div>
+              <?php endif; ?>
+            </div>
+
+            <?php if ($head_of_lab['facebook_url'] || $head_of_lab['instagram_url'] || $head_of_lab['google_scholar_url']) : ?>
+            <div class="social-links mt-2">
+              <?php if ($head_of_lab['facebook_url']) : ?><object><a href="<?php echo htmlspecialchars($head_of_lab['facebook_url']); ?>" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a></object><?php endif; ?>
+              <?php if ($head_of_lab['instagram_url']) : ?><object><a href="<?php echo htmlspecialchars($head_of_lab['instagram_url']); ?>" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a></object><?php endif; ?>
+              <?php if ($head_of_lab['google_scholar_url']) : ?><object><a href="<?php echo htmlspecialchars($head_of_lab['google_scholar_url']); ?>" target="_blank" class="social-icon"><i class="fas fa-graduation-cap"></i></a></object><?php endif; ?>
+            </div>
+            <?php endif; ?>
+          </div>
         </div>
-        <div class="profile-info">
-          <div class="info-item">
-            <span class="info-label">Nama</span>
-            <span class="info-value"><?php echo htmlspecialchars($head_of_lab['full_name']); ?></span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Posisi</span>
-            <span class="info-value"><?php echo htmlspecialchars($head_of_lab['position']); ?></span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">NIP</span>
-            <span class="info-value"><?php echo htmlspecialchars($head_of_lab['nip']); ?></span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Email</span>
-            <span class="info-value"><?php echo htmlspecialchars($head_of_lab['email']); ?></span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">No. HP</span>
-            <span class="info-value"><?php echo htmlspecialchars($head_of_lab['phone_number']); ?></span>
-          </div>
-          <div class="info-item social-links">
-            <?php if ($head_of_lab['facebook_url']) : ?><a href="<?php echo htmlspecialchars($head_of_lab['facebook_url']); ?>" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a><?php endif; ?>
-            <?php if ($head_of_lab['instagram_url']) : ?><a href="<?php echo htmlspecialchars($head_of_lab['instagram_url']); ?>" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a><?php endif; ?>
-            <?php if ($head_of_lab['google_scholar_url']) : ?><a href="<?php echo htmlspecialchars($head_of_lab['google_scholar_url']); ?>" target="_blank" class="social-icon"><i class="fas fa-graduation-cap"></i></a><?php endif; ?>
-          </div>
-        </div>
-      </div>
+      </a>
     </section>
   <?php endif; ?>
 
@@ -76,45 +76,42 @@ try {
     <div class="team-grid">
       <?php if (!empty($team_members)) : ?>
         <?php foreach ($team_members as $member) : ?>
-          <div class="profile-card">
-            <div class="profile-photo">
-              <img src="assets/uploads/<?php echo $member['photo_url']; ?>" alt="<?php echo $member['full_name']; ?>">
+          <a href="<?php echo !empty($member['detail_url']) ? htmlspecialchars($member['detail_url']) : '#'; ?>" class="profile-link" target="_blank">
+            <div class="profile-card">
+              <div class="profile-photo">
+                <img src="assets/uploads/<?php echo $member['photo_url']; ?>" alt="<?php echo $member['full_name']; ?>">
+              </div>
+              <div class="profile-info">
+                <h3 class="member-name"><?php echo htmlspecialchars($member['full_name']); ?></h3>
+                <p class="member-nip">NIP: <?php echo htmlspecialchars($member['nip']); ?></p>
+                
+                <div class="contact-info">
+                  <div class="profile-contact-item">
+                    <i class="far fa-envelope"></i>
+                    <span><?php echo htmlspecialchars($member['email']); ?></span>
+                  </div>
+                  <?php if ($member['phone_number']) : ?>
+                  <div class="profile-contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span><?php echo htmlspecialchars($member['phone_number']); ?></span>
+                  </div>
+                  <?php endif; ?>
+                </div>
+
+                <?php if ($member['facebook_url'] || $member['instagram_url'] || $member['google_scholar_url']) : ?>
+                <div class="social-links mt-2">
+                  <?php if ($member['facebook_url']) : ?><object><a href="<?php echo htmlspecialchars($member['facebook_url']); ?>" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a></object><?php endif; ?>
+                  <?php if ($member['instagram_url']) : ?><object><a href="<?php echo htmlspecialchars($member['instagram_url']); ?>" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a></object><?php endif; ?>
+                  <?php if ($member['google_scholar_url']) : ?><object><a href="<?php echo htmlspecialchars($member['google_scholar_url']); ?>" target="_blank" class="social-icon"><i class="fas fa-graduation-cap"></i></a></object><?php endif; ?>
+                </div>
+                <?php endif; ?>
+              </div>
             </div>
-            <div class="profile-info">
-              <div class="info-item">
-                <span class="info-label">Nama</span>
-                <span class="info-value"><?php echo htmlspecialchars($member['full_name']); ?></span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Posisi</span>
-                <span class="info-value"><?php echo htmlspecialchars($member['position']); ?></span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">NIP</span>
-                <span class="info-value"><?php echo htmlspecialchars($member['nip']); ?></span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Email</span>
-                <span class="info-value"><?php echo htmlspecialchars($member['email']); ?></span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">No. HP</span>
-                <span class="info-value"><?php echo htmlspecialchars($member['phone_number']); ?></span>
-              </div>
-              <div class="info-item social-links">
-                <?php if ($member['facebook_url']) : ?><a href="<?php echo htmlspecialchars($member['facebook_url']); ?>" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a><?php endif; ?>
-                <?php if ($member['instagram_url']) : ?><a href="<?php echo htmlspecialchars($member['instagram_url']); ?>" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a><?php endif; ?>
-                <?php if ($member['google_scholar_url']) : ?><a href="<?php echo htmlspecialchars($member['google_scholar_url']); ?>" target="_blank" class="social-icon"><i class="fas fa-graduation-cap"></i></a><?php endif; ?>
-              </div>
-            </div>
-          </div>
+          </a>
         <?php endforeach; ?>
       <?php else : ?>
         <p>No other team members found.</p>
       <?php endif; ?>
     </div>
   </section>
-</main>
-</body>
-
-</html>
+</div>

@@ -31,7 +31,7 @@ $page_title = 'Add Team Member';
 
               <div class="row mb-4">
                 <div class="col-md-6">
-                  <label for="nip" class="form-label">NIP (Employee ID) <span class="text-danger">*</span></label>
+                  <label for="nip" class="form-label">NIP<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="nip" name="nip" placeholder="EMP001" required>
                 </div>
                 <div class="col-md-6">
@@ -85,6 +85,11 @@ $page_title = 'Add Team Member';
               <div class="mb-4">
                 <label for="scholar" class="form-label">Google Scholar URL</label>
                 <input type="url" class="form-control" id="scholar" name="google_scholar_url" placeholder="https://scholar.google.com/citations?user=username">
+              </div>
+
+              <div class="mb-4">
+                <label for="detail_url" class="form-label">Data Polinema URL</label>
+                <input type="text" class="form-control" id="detail_url" name="detail_url" placeholder="https://jti.polinema.ac.id/name">
               </div>
 
               <div class="mb-4">

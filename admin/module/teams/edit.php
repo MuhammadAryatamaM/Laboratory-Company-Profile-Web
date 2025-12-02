@@ -132,6 +132,11 @@ if (!$can_edit) {
               </div>
 
               <div class="mb-4">
+                <label for="detail_url" class="form-label">Data Polinema URL</label>
+                <input type="text" class="form-control" id="detail_url" name="detail_url" placeholder="https://jti.polinema.ac.id/name" value="<?php echo htmlspecialchars($member['detail_url'] ?? ''); ?>">
+              </div>
+
+              <div class="mb-4">
                 <label class="form-label">Photo</label>
                 <div class="upload-area-member border-2 border-dashed rounded-3 p-5 text-center" style="cursor: pointer; border-color: #e0e0e0;">
                   <i class="fas fa-cloud-upload-alt fs-1 text-muted mb-3 d-block"></i>
