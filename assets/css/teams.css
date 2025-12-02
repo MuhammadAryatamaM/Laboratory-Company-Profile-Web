@@ -1,17 +1,12 @@
 /* ========================================
    RESET & GLOBAL STYLES
 ======================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #e6f4f9;
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+    color: #334155;
+    background-color: #f0f9ff; /* Light blue background */
 }
 
 /* ========================================
@@ -41,33 +36,35 @@ body {
 }
 
 .page-title {
-    font-size: 42px;
+    font-size: 36px;
     font-weight: 700;
     color: #1e293b;
-    text-align: left;
-    margin-bottom: 50px;
-    font-family: 'Georgia', serif;
+    text-align: center;
+    margin-bottom: 20px;
+    display: none; /* Hidden in reference design, usually part of hero or implicit */
 }
 
 .section-title {
-    font-size: 28px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 700;
     color: #1e293b;
     text-align: center;
     margin-bottom: 40px;
-    font-family: 'Georgia', serif;
 }
 
 /* ========================================
    HEAD OF LABORATORY SECTION
 ======================================== */
 .head-section {
-    margin-bottom: 80px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .head-card {
-    max-width: 700px;
-    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
 }
 
 /* ========================================
@@ -75,61 +72,77 @@ body {
 ======================================== */
 .profile-card {
     background: white;
-    border: 1px solid #cbd5e1;
-    border-radius: 12px;
-    padding: 30px;
+    border: 1px solid #bae6fd; /* Light blue border */
+    border-radius: 8px;
+    padding: 20px;
     display: flex;
-    align-items: center;
-    gap: 30px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
+    gap: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    align-items: flex-start;
 }
 
 .profile-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    border-color: #7dd3fc;
 }
 
 .profile-photo {
-    flex: 1;
-    max-width: 200px; /* Add a max-width to prevent image from becoming too large */
-    height: 200px;
     flex-shrink: 0;
+    width: 140px;
+    height: 160px;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .profile-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px;
-    border: 3px solid #e2e8f0;
 }
 
 .profile-info {
-    flex: 2;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    justify-content: center;
+    align-items: flex-start; /* Ensure left alignment */
 }
 
-.info-item {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 15px;
-    align-items: start;
-}
-
-.info-label {
+.member-name {
+    font-size: 16px;
     font-weight: 700;
-    color: #1e293b;
-    font-size: 15px;
-    font-family: 'Georgia', serif;
+    color: #0f172a;
+    margin-bottom: 4px;
+    line-height: 1.4;
 }
 
-.info-value {
+.member-nip {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 16px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
     color: #475569;
-    font-size: 15px;
-    line-height: 1.5;
+}
+
+.profile-contact-item i {
+    color: #3b82f6; /* Blue icon color */
+    width: 16px;
+    text-align: center;
 }
 
 /* ========================================
@@ -145,94 +158,67 @@ body {
     gap: 30px;
 }
 
-.single-card {
-    grid-column: 1 / -1;
-    max-width: 700px;
-    margin: 0 auto;
-    width: 100%;
+/* Social Links (Optional/Subtle) */
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon {
+    color: #94a3b8;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.social-icon:hover {
+    color: #3b82f6;
 }
 
 /* ========================================
    RESPONSIVE DESIGN
 ======================================== */
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
     .team-grid {
         grid-template-columns: 1fr;
     }
-
-    .footer-container {
-        grid-template-columns: 1fr 1fr;
+    
+    .profile-card {
+        max-width: 100%;
     }
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        display: none;
-    }
-
-    .hero-banner {
-        height: 250px;
-    }
-
-    .page-title {
-        font-size: 32px;
-        text-align: center;
-    }
-
-    .section-title {
-        font-size: 24px;
-    }
-
+@media (max-width: 576px) {
     .profile-card {
         flex-direction: column;
-        text-align: center;
+        align-items: center;
     }
 
     .profile-photo {
-        margin: 0 auto 20px;
+        width: 140px;
+        height: 140px;
+        border-radius: 50%; /* Circle on mobile usually looks better centered */
+        margin-bottom: 15px;
     }
 
-    .info-item {
-        grid-template-columns: 1fr;
-        gap: 5px;
-        text-align: center;
+    .profile-info {
+        /* Only center on small mobile screens if needed by other rules */
     }
 
-    .footer-container {
-        grid-template-columns: 1fr;
+    .profile-contact-item {
+        justify-content: center;
     }
 }
 
-@media (max-width: 480px) {
-    .teams-container {
-        padding: 40px 15px;
-    }
-
-    .hero-banner {
-        height: 200px;
-    }
-
-    .page-title {
-        font-size: 28px;
-        margin-bottom: 30px;
-    }
-
-    .section-title {
-        font-size: 22px;
-        margin-bottom: 30px;
-    }
-
-    .profile-card {
-        padding: 20px;
-    }
-
-    .profile-photo {
-        width: 150px;
-        height: 150px;
-    }
-
-    .info-label,
-    .info-value {
-        font-size: 14px;
-    }
+/* Fix for contact info color */
+.profile-contact-item span {
+    color: #475569; /* Explicitly set dark gray color */
 }
+
+/* Profile Card Link Wrapper */
+.profile-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
