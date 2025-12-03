@@ -1,69 +1,43 @@
 <?php
-// Data Berita Utama
-$mainNews = [
-    'title' => 'ICCE 2023, Full Paper Presentation',
-    'image' => 'assets/img/news/gallery7.png',
-    'description' => 'Kegiatan pemaparan makalah di ICCE 2023 di Matsue, Jepang merupakan ajang ilmiah internasional yang mempertemukan peneliti, pengajar, dan mahasiswa untuk mempresentasikan hasil penelitian di bidang teknologi',
-    'additional_description' => 'pendidikan. Peserta yang lolos seleksi menyampaikan temuan mereka di hadapan para ahli, disertai sesi tanya jawab untuk memperoleh masukan. Melalui kegiatan ini, peneliti dapat memperkenalkan karya mereka secara global, membangun kolaborasi, dan meningkatkan kualitas penelitian di masa depan.'
-];
+include "config/koneksi.php";
 
-// Data Recent Items (untuk scroll)
-$recentItems = [
-    [
-        'title' => 'Visiting Scientist Program',
-        'image' => 'assets/img/news/gallery8.png',
-        'location' => 'Japan',
-        'date' => 'November 2023'
-    ],
-    [
-        'title' => 'Monthly Research Discussion',
-        'image' => 'assets/img/news/gallery9.png',
-        'location' => 'Polinema',
-        'date' => 'Januari 2024'
-    ],
-    [
-        'title' => 'International Research Discussion Program',
-        'image' => 'assets/img/news/gallery10.png',
-        'location' => 'Japan',
-        'date' => 'Desember 2023'
-    ],
-    [
-        'title' => 'ICCE 2023, Full Paper Presentation',
-        'image' => 'assets/img/news/gallery6.png',
-        'location' => 'Japan',
-        'date' => 'November 2023'
-    ],
-    [
-        'title' => 'Best Overall Paper Award',
-        'image' => 'assets/img/news/gallery5.png',
-        'location' => 'Japan',
-        'date' => 'November 2023'
-    ],
-    [
-        'title' => 'POLINEMA Research EXPO 2024',
-        'image' => 'assets/img/news/gallery4.png',
-        'location' => 'Polinema',
-        'date' => 'November 2023'
-    ],
-    [
-        'title' => 'ICAST 2024 Bandung',
-        'image' => 'assets/img/news/gallery3.png',
-        'location' => 'Indonesia',
-        'date' => 'November 2023'
-    ],
-    [
-        'title' => 'ICCE 2024 Atteneo University',
-        'image' => 'assets/img/news/gallery2.png',
-        'location' => 'Phillipines',
-        'date' => 'November 2023'
-    ],
-    [
-        'title' => 'ECTEL 2024 Krems',
-        'image' => 'assets/img/news/gallery1.png',
-        'location' => 'Austria',
-        'date' => 'November 2023'
-    ]
-];
+$news_items = [];
+$mainNews = null;
+$recentItems = [];
+
+try {
+    $stmt = $pdo->query("
+        SELECT n.*, t.full_name as author_name 
+        FROM news n 
+        LEFT JOIN team_member t ON n.author_id = t.member_id 
+        ORDER BY n.publish_date DESC
+    ");
+    $news_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if (!empty($news_items)) {
+        // berita pertama untuk main news
+        $first = array_shift($news_items);
+        $mainNews = [
+            'title' => $first['title'],
+            'image' => 'assets/uploads/' . $first['image_url'],
+            'description' => $first['description'],
+            'date' => date('d F Y', strtotime($first['publish_date'])),
+            'author' => $first['author_name']
+        ];
+
+        // recent items
+        foreach ($news_items as $item) {
+            $recentItems[] = [
+                'title' => $item['title'],
+                'image' => 'assets/uploads/' . $item['image_url'],
+                'location' => 'InLET Lab', 
+                'date' => date('F Y', strtotime($item['publish_date']))
+            ];
+        }
+    }
+} catch (PDOException $e) {
+    echo "Database error: " . $e->getMessage();
+}
 
 // Fungsi untuk generate recent item
 function generateRecentItem($item) {
@@ -90,19 +64,29 @@ function generateRecentItems($items) {
 
 <div class="container">
     <div class="news-section">
-        <!-- Main Content - Left Side -->
+        <?php if ($mainNews): ?>
+        <!-- News utama - Left Side -->
         <div class="main-content">
             <div class="content-top">
                 <img src="<?php echo htmlspecialchars($mainNews['image']); ?>" alt="<?php echo htmlspecialchars($mainNews['title']); ?>" class="main-image">
                 <div class="main-text">
                     <h2 class="main-title"><?php echo htmlspecialchars($mainNews['title']); ?></h2>
-                    <p class="main-description"><?php echo htmlspecialchars($mainNews['description']); ?></p>
+                    <p class="main-description"><?php echo nl2br(htmlspecialchars($mainNews['description'])); ?></p>
+                    <p class="text-muted small mt-2">
+                        <i class="fas fa-user me-1"></i> <?php echo htmlspecialchars($mainNews['author'] ?? 'Admin'); ?> | 
+                        <i class="fas fa-calendar-alt me-1"></i> <?php echo htmlspecialchars($mainNews['date']); ?>
+                    </p>
                 </div>
             </div>
-            <p class="main-description additional-text"><?php echo htmlspecialchars($mainNews['additional_description']); ?></p>
-        </div>
 
-        <!-- Sidebar - Right Side (Scrollable) -->
+        </div>
+        <?php else: ?>
+            <div class="main-content">
+                <p>No news available.</p>
+            </div>
+        <?php endif; ?>
+
+        <!-- Sidebar(recent news) - Right Side (Scroll) -->
         <div class="sidebar">
             <div class="sidebar-header">
                 <span class="sidebar-title">Recent</span>
