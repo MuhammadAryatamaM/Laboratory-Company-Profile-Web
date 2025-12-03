@@ -1,60 +1,47 @@
 <?php
-    $products = [
-        [
-            'logo_type' => 'viat',
-            'logo_text' => 'VIAT-map',
-            'image' => 'assets/img/produk/prodct1.png', 
-            'title' => 'Viat Map Application',
-            'description' => 'VIAT-map (Visual Arguments Toulmin) Application to help Reding Comprehension by using Toulmin Arguments Concept. We are trying to emphasise the logic behind a written text by adding the claim, ground and warrant following the Toulmin Argument Concept.',
-            'features' => [
-                ['text' => 'Visual Argument Mapping'],
-                ['text' => 'Toulmin Model Integration'],
-                ['text' => 'Reading Comprehension Support'],
-                ['text' => 'Data Visualization']
-            ]
-        ],
-        [
-            'logo_type' => 'pseudo',
-            'logo_text' => 'PseudoLearn',
-            'image' => 'assets/img/produk/prodct2.png', 
-            'title' => 'PseudoLearn Application',
-            'description' => 'Sebuah media pembelajaran rekonstruksi algoritma pseudocode dengan menggunakan pendekatan Element Fill-in-Blank Problems di dalam pemrograman java.',
-            'features' => [
-                ['text' => 'Algorithm Learning'],
-                ['text' => 'Pseudocode Reconstruction'],
-                ['text' => 'Java Programming'],
-                ['text' => 'Gamified Learning']
-            ]
-        ],
-        [
-            'logo_type' => 'codeasy',
-            'logo_text' => 'Codeasy',
-            'image' => 'assets/img/produk/prodct3.png', 
-            'title' => 'Codeasy',
-            'description' => 'Codeasy adalah platform belajar Data Science berbasis Machine Learning yang membantu kamu menguasai Python dan Business Intelligence melalui sistem penilaian otomatis dan analisis kognitif cerdas berbasis Taksonomi Bloom',
-            'features' => [
-                ['text' => 'Machine Learning Based'],
-                ['text' => 'Python Modules'],
-                ['text' => 'Business Intelligence'],
-                ['text' => 'Bloom Taxonomy Assessment']
-            ]
-        ]
-    ];
+    include_once __DIR__ . '/../config/koneksi.php';
+
+    try {
+        $stmt = $pdo->query("SELECT * FROM product ORDER BY created_at DESC");
+        $db_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        $db_products = [];
+    }
+
+    $products = [];
+    foreach ($db_products as $item) {
+        // Parse PostgreSQL array format {"item1","item2"}
+        $features = [];
+        if (!empty($item['categories'])) {
+            $cat_str = trim($item['categories'], '{}');
+            if (!empty($cat_str)) {
+                $cat_array = str_getcsv($cat_str);
+                foreach ($cat_array as $cat) {
+                    $features[] = ['text' => trim($cat)];
+                }
+            }
+        }
+
+        $products[] = [
+            'logo_type' => 'custom', 
+            'logo_text' => $item['product_name'],
+            'image' => !empty($item['image_url']) ? 'assets/uploads/' . $item['image_url'] : null,
+            'title' => $item['product_name'],
+            'description' => $item['description'],
+            'features' => $features,
+            'link_url' => $item['link_url']
+        ];
+    }
 
     function generateLogo($type, $text, $image = null) {
         $html = '<div class="product-logo">';
         
-        if (!empty($image) && file_exists($image)) {
+        if (!empty($image) && file_exists(__DIR__ . '/../' . $image)) {
             $html .= '<img src="' . htmlspecialchars($image) . '" alt="' . htmlspecialchars($text) . '" class="product-image">';
         } else {
-            if ($type === 'viat') {
-                $html .= '<div class="bracket-icon">[?]</div>';
-                $html .= '<div class="text">' . htmlspecialchars($text) . '</div>';
-            } elseif ($type === 'pseudo') {
-                $html .= '<div class="bracket-icon">⬛</div>';
-                $html .= '<div class="text">' . htmlspecialchars($text) . '</div>';
-            } elseif ($type === 'codeasy') {
-            }
+            // Fallback if no image or file not found
+            $html .= '<div class="bracket-icon">?</div>';
+            $html .= '<div class="text">' . htmlspecialchars($text) . '</div>';
         }
         
         $html .= '</div>';
@@ -82,7 +69,13 @@
         $html .= '</div>';
         $html .= '<div class="product-right">';
         $html .= generateFeatures($product['features']);
-        $html .= '<button class="try-now-btn">Try Now →</button>';
+        
+        if (!empty($product['link_url'])) {
+            $html .= '<a href="' . htmlspecialchars($product['link_url']) . '" class="try-now-btn" target="_blank" style="text-decoration:none; display:inline-block;">Try Now →</a>';
+        } else {
+            $html .= '<button class="try-now-btn">Try Now →</button>';
+        }
+        
         $html .= '</div>';
         $html .= '</div>';
         return $html;
@@ -93,8 +86,12 @@
     <h1>Products</h1>
     
     <?php
-    foreach ($products as $product) {
-        echo generateProductCard($product);
+    if (empty($products)) {
+        echo '<p class="text-center">Belum ada produk yang tersedia.</p>';
+    } else {
+        foreach ($products as $product) {
+            echo generateProductCard($product);
+        }
     }
     ?>
 </div>
