@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-  echo "<script>alert('You do not have permission to access this page.'); window.location.href = 'index.php?page=products';</script>";
+  echo "<script>alert('You do not have permission to access this page.'); window.location.href = 'index.php?page=product';</script>";
   exit();
 }
 $page_title = 'Create Product';
@@ -8,7 +8,7 @@ $page_title = 'Create Product';
 <main class="main-content">
   <div class="container-fluid">
     <div class="d-flex align-items-center mb-4">
-      <a href="?page=products" class="btn btn-link text-dark p-0 me-3">
+      <a href="?page=product" class="btn btn-link text-dark p-0 me-3">
         <i class="fas fa-arrow-left"></i>
       </a>
       <div>
@@ -62,7 +62,7 @@ $page_title = 'Create Product';
               </div>
 
               <div class="d-grid gap-2 d-sm-flex">
-                <a href="?page=products" class="btn btn-light border">Cancel</a>
+                <a href="?page=product" class="btn btn-light border">Cancel</a>
                 <button type="submit" class="btn btn-primary">
                   <i class="fas fa-save"></i> Create Product
                 </button>

@@ -13,7 +13,7 @@ $act = $_GET['act'];
 // HAPUS
 if ($module == 'products' && $act == 'delete') {
   if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=products';</script>";
+    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=product';</script>";
     exit();
   }
 
@@ -37,16 +37,16 @@ if ($module == 'products' && $act == 'delete') {
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
 
-    echo "<script>alert('Produk berhasil dihapus.'); window.location='../../index.php?page=products';</script>";
+    echo "<script>alert('Produk berhasil dihapus.'); window.location='../../index.php?page=product';</script>";
   } catch (PDOException $e) {
-    echo "<script>alert('Gagal menghapus produk: " . $e->getMessage() . "'); window.location='../../index.php?page=products';</script>";
+    echo "<script>alert('Gagal menghapus produk: " . $e->getMessage() . "'); window.location='../../index.php?page=product';</script>";
   }
 }
 
 // TAMBAH
 elseif ($module == 'products' && $act == 'input') {
   if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=products';</script>";
+    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=product';</script>";
     exit();
   }
 
@@ -66,7 +66,7 @@ elseif ($module == 'products' && $act == 'input') {
     if (move_uploaded_file($lokasi_file, $folder . $nama_file_unik)) {
       $image_url = $nama_file_unik;
     } else {
-      echo "<script>alert('Gagal mengunggah gambar.'); window.location='../../index.php?page=products&act=create';</script>";
+      echo "<script>alert('Gagal mengunggah gambar.'); window.location='../../index.php?page=product&act=create';</script>";
       exit();
     }
   }
@@ -81,16 +81,16 @@ elseif ($module == 'products' && $act == 'input') {
     $stmt->bindParam(':image_url', $image_url);
     $stmt->execute();
 
-    echo "<script>alert('Produk berhasil ditambahkan.'); window.location='../../index.php?page=products';</script>";
+    echo "<script>alert('Produk berhasil ditambahkan.'); window.location='../../index.php?page=product';</script>";
   } catch (PDOException $e) {
-    echo "<script>alert('Gagal menambahkan produk: " . $e->getMessage() . "'); window.location='../../index.php?page=products&act=create';</script>";
+    echo "<script>alert('Gagal menambahkan produk: " . $e->getMessage() . "'); window.location='../../index.php?page=product&act=create';</script>";
   }
 }
 
 // UPDATE
 elseif ($module == 'products' && $act == 'update') {
   if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=products';</script>";
+    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=product';</script>";
     exit();
   }
 
@@ -114,7 +114,7 @@ elseif ($module == 'products' && $act == 'update') {
       $image_url = $nama_file_unik;
       $update_image = true;
     } else {
-      echo "<script>alert('Gagal mengunggah gambar baru.'); window.location='../../index.php?page=products&act=edit&id=$id';</script>";
+      echo "<script>alert('Gagal mengunggah gambar baru.'); window.location='../../index.php?page=product&act=edit&id=$id';</script>";
       exit();
     }
   }
@@ -141,8 +141,8 @@ elseif ($module == 'products' && $act == 'update') {
 
     $stmt->execute();
 
-    echo "<script>alert('Produk berhasil diperbarui.'); window.location='../../index.php?page=products';</script>";
+    echo "<script>alert('Produk berhasil diperbarui.'); window.location='../../index.php?page=product';</script>";
   } catch (PDOException $e) {
-    echo "<script>alert('Gagal memperbarui produk: " . $e->getMessage() . "'); window.location='../../index.php?page=products&act=edit&id=$id';</script>";
+    echo "<script>alert('Gagal memperbarui produk: " . $e->getMessage() . "'); window.location='../../index.php?page=product&act=edit&id=$id';</script>";
   }
 }

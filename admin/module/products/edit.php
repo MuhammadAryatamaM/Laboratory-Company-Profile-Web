@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-  echo "<script>alert('You do not have permission to access this page.'); window.location.href = 'index.php?page=products';</script>";
+  echo "<script>alert('You do not have permission to access this page.'); window.location.href = 'index.php?page=product';</script>";
   exit();
 }
 $page_title = 'Edit Product';
@@ -21,7 +21,7 @@ if ($id > 0) {
 }
 
 if (!$item) {
-  echo "<script>alert('Product not found.'); window.location='index.php?page=products';</script>";
+  echo "<script>alert('Product not found.'); window.location='index.php?page=product';</script>";
   exit();
 }
 
@@ -31,7 +31,7 @@ $current_categories = !empty($item['categories']) ? explode(',', $item['categori
 <main class="main-content">
   <div class="container-fluid">
     <div class="d-flex align-items-center mb-4">
-      <a href="?page=products" class="btn btn-link text-dark p-0 me-3">
+      <a href="?page=product" class="btn btn-link text-dark p-0 me-3">
         <i class="fas fa-arrow-left"></i>
       </a>
       <div>
@@ -98,7 +98,7 @@ $current_categories = !empty($item['categories']) ? explode(',', $item['categori
               </div>
 
               <div class="d-grid gap-2 d-sm-flex">
-                <a href="?page=products" class="btn btn-light border">Cancel</a>
+                <a href="?page=product" class="btn btn-light border">Cancel</a>
                 <button type="submit" class="btn btn-primary">
                   <i class="fas fa-save"></i> Update Product
                 </button>
