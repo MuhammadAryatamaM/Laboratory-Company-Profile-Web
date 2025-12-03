@@ -1,3 +1,15 @@
+<?php
+include_once "config/koneksi.php";
+
+$home_gallery = [];
+try {
+    $stmt = $pdo->query("SELECT * FROM gallery_item ORDER BY created_at DESC LIMIT 6");
+    $home_gallery = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    // Silent fail
+}
+?>
+
 <section id="gallery" class="gallery-section">
     <div class="gallery-container">
         <div class="gallery-heading reveal reveal-fade">
@@ -6,29 +18,15 @@
         </div>
 
         <div class="gallery-grid">
-            <div class="gallery-item reveal reveal-fade">
-                <img src="assets/img/home/gallery/g1.png" alt="Gallery 1">
-            </div>
-
-            <div class="gallery-item">
-                <img src="assets/img/home/gallery/g2.png" alt="Gallery 2">
-            </div>
-
-            <div class="gallery-item">
-                <img src="assets/img/home/gallery/g3.png" alt="Gallery 3">
-            </div>
-
-            <div class="gallery-item">
-                <img src="assets/img/home/gallery/g4.png" alt="Gallery 4">
-            </div>
-
-            <div class="gallery-item">
-                <img src="assets/img/home/gallery/g5.png" alt="Gallery 5">
-            </div>
-
-            <div class="gallery-item">
-                <img src="assets/img/home/gallery/g6.png" alt="Gallery 6">
-            </div>
+            <?php if (!empty($home_gallery)) : ?>
+                <?php foreach ($home_gallery as $item) : ?>
+                    <div class="gallery-item reveal reveal-fade">
+                        <img src="assets/uploads/<?php echo htmlspecialchars($item['image_url']); ?>" alt="<?php echo htmlspecialchars($item['title']); ?>">
+                    </div>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <p>No gallery items.</p>
+            <?php endif; ?>
         </div>
         <div class="gallery-more-wrapper reveal reveal-fade" data-reveal-delay="220">
             <a href="<?php echo $root; ?>pages/gallery.php" class="gallery-more-btn">
