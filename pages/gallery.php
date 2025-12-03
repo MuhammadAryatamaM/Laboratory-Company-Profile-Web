@@ -3,13 +3,12 @@
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/gallery.css">
 
-    <!-- Gallery Section -->
     <section class="gallery-section">
         <div class="container">
             <h2 class="section-title">Gallery</h2>
             <div class="gallery-grid">
                 <?php
-                // Array gambar gallery
+                
                 $gallery = [
                     'assets/img/gallery1.png',
                     'assets/img/gallery2.png',
@@ -27,7 +26,6 @@
                     'assets/img/gallery14.png'
                 ];
 
-                // Loop untuk menampilkan setiap gambar
                 foreach ($gallery as $image) {
                     echo '<div class="gallery-item">';
                     echo '<img src="' . $image . '" alt="Gallery Image" class="gallery-img">';
@@ -40,6 +38,5 @@
 
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/footer.css">
 
-    <script src="../assets/js/script.js"></script>
 </body>
 </html>

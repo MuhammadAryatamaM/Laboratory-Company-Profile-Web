@@ -113,5 +113,3 @@ function generateRecentItems($items) {
         </div>
     </div>
 </div>
-
-<script src="<?php echo $root; ?>assets/js/news.js"></script>
