@@ -54,6 +54,16 @@ elseif ($module == 'products' && $act == 'input') {
   $description = $_POST['description'];
   $link_url = $_POST['link_url'];
   $categories = $_POST['categories'];
+  
+  if (!empty($categories)) {
+      $cat_array = explode(',', $categories);
+      $formatted_categories = '{' . implode(',', array_map(function($item) {
+          return '"' . str_replace('"', '\"', trim($item)) . '"';
+      }, $cat_array)) . '}';
+  } else {
+      $formatted_categories = '{}';
+  }
+
   $image_url = '';
 
   if (!empty($_FILES['image_url']['name'])) {
@@ -77,7 +87,7 @@ elseif ($module == 'products' && $act == 'input') {
     $stmt->bindParam(':product_name', $product_name);
     $stmt->bindParam(':description', $description);
     $stmt->bindParam(':link_url', $link_url);
-    $stmt->bindParam(':categories', $categories);
+    $stmt->bindParam(':categories', $formatted_categories);
     $stmt->bindParam(':image_url', $image_url);
     $stmt->execute();
 
@@ -99,6 +109,16 @@ elseif ($module == 'products' && $act == 'update') {
   $description = $_POST['description'];
   $link_url = $_POST['link_url'];
   $categories = $_POST['categories'];
+  
+  // Convert comma-separated string to PostgreSQL array format
+  if (!empty($categories)) {
+      $cat_array = explode(',', $categories);
+      $formatted_categories = '{' . implode(',', array_map(function($item) {
+          return '"' . str_replace('"', '\"', trim($item)) . '"';
+      }, $cat_array)) . '}';
+  } else {
+      $formatted_categories = '{}';
+  }
   
   $image_url = '';
   $update_image = false;
@@ -132,7 +152,7 @@ elseif ($module == 'products' && $act == 'update') {
     $stmt->bindParam(':product_name', $product_name);
     $stmt->bindParam(':description', $description);
     $stmt->bindParam(':link_url', $link_url);
-    $stmt->bindParam(':categories', $categories);
+    $stmt->bindParam(':categories', $formatted_categories);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     
     if ($update_image) {
