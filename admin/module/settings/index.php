@@ -4,7 +4,7 @@ $page_title = 'Settings';
 // Fetch settings from site_settings table
 $settings = [];
 try {
-  $stmt = $pdo->query("SELECT * FROM site_settings");
+  $stmt = $pdo->query("SELECT * FROM settings");
   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $settings[$row['setting_key']] = $row['setting_value'];
   }
@@ -13,7 +13,8 @@ try {
 }
 
 // Helper function to get setting safely
-function get_setting($key, $settings) {
+function get_setting($key, $settings)
+{
   return isset($settings[$key]) ? htmlspecialchars($settings[$key]) : '';
 }
 ?>

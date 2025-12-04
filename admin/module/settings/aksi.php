@@ -30,7 +30,7 @@ if ($module == 'settings' && $act == 'update') {
     $pdo->beginTransaction();
 
     // Changed to site_settings
-    $stmt = $pdo->prepare("INSERT INTO site_settings (setting_key, setting_value) VALUES (:key, :value) ON CONFLICT (setting_key) DO UPDATE SET setting_value = :value");
+    $stmt = $pdo->prepare("INSERT INTO settings (setting_key, setting_value) VALUES (:key, :value) ON CONFLICT (setting_key) DO UPDATE SET setting_value = :value");
 
     foreach ($settings as $key => $value) {
       $stmt->execute([':key' => $key, ':value' => $value]);
