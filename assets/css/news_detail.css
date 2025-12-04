@@ -1,96 +1,88 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: #ffffff;
-    min-height: 100vh;
-    padding: 20px;
-    overflow-y: auto;
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+.news-detail-container {
+    padding: 60px;
 }
 
 .news-section {
     display: flex;
-    gap: 20px;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 5px;
+    gap: 32px;
+    align-items: flex-start;
 }
 
-/* Main Content - Left Side */
-/* Main Content - Left Side */
 .main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 16px;
 }
 
 .content-top {
     display: flex;
-    gap: 15px;
+    gap: 24px;
+    align-items: flex-start;
 }
 
 .main-image {
-    width: 300px;
-    height: 225px;
+    width: 320px;
+    height: 240px;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 8px;
     flex-shrink: 0;
 }
 
-.main-text {
+.main-header {
     flex: 1;
-    margin-top: 10px
-    ;
-}
-
-.additional-text {
-    margin-top: -20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .main-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 10px;
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
     line-height: 1.3;
 }
 
-.main-description {
-    font-size: 1.2rem;
-    color: #000000;
-    line-height: 1.7;
+.main-intro {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #111827;
     text-align: justify;
+    margin: 0;
 }
 
-.large-text {
-    font-size: 2.9rem;
+.main-description {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #111827;
+    text-align: justify;
+    margin: 0;
 }
 
+.main-meta {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 4px;
+}
 
-/* Sidebar - Right Side */
 .sidebar {
-    width: 250px;
+    width: 260px;
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #000000;  
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #000000;
     position: relative;
 }
 
@@ -99,37 +91,26 @@ body {
     position: absolute;
     bottom: -3px;
     left: 0;
-    width: 30%; 
-    height: 5px;  
-    background: #72b6dd;  
+    width: 30%;
+    height: 4px;
+    background: #72b6dd;
     border-radius: 10px;
 }
 
 .sidebar-title {
-    font-size: 1.6rem;
-    font-weight: bold;
+    font-family: "Playfair Display", serif;
+    font-size: 20px;
+    font-weight: 600;
     color: #000000;
 }
 
-.view-more {
-    font-size: 1rem;
-    color: #000000;
-    text-decoration: none;
-}
-
-.view-more:hover {
-    text-decoration: underline;
-}
-
-/* Scrollable Recent Items */
 .recent-items {
-    height: 300px;
+    flex: 1;
     overflow-y: auto;
-    padding-right: 5px;
-    position: relative;
+    padding-right: 4px;
+    min-height: 0;
 }
 
-/* Custom Scrollbar */
 .recent-items::-webkit-scrollbar {
     width: 5px;
 }
@@ -140,75 +121,130 @@ body {
 
 .recent-items::-webkit-scrollbar-thumb {
     background: transparent;
-    border-radius: 5px;
 }
 
-.recent-items::-webkit-scrollbar-thumb:hover {
-    background: transparent;
-}
-
-/* Recent Item Card */
 .recent-item {
     display: flex;
+    align-items: stretch;
     gap: 10px;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
+    margin-bottom: 14px;
+    padding: 8px 4px 14px 0;
     position: relative;
+    border-radius: 8px;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
+
 .recent-item::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translateX(-50%);  
-    width: 150px;  
-    height: 1px; 
-    background: #000000;  
+    transform: translateX(-50%);
+    width: 150px;
+    height: 1px;
+    background: #000000;
 }
 
 .recent-item:last-child::after {
-    display: none;  
+    display: none;
 }
 
-.recent-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
+.recent-item:hover {
+    background-color: #f1f7fb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .recent-image {
-    width: 60px;
-    height: 45px;
+    width: 92px;
     object-fit: cover;
-    border-radius: 3px;
+    border-radius: 4px;
     flex-shrink: 0;
 }
 
 .recent-info {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.recent-top-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.recent-view-more {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    color: #000000;
+    text-decoration: none;
+    white-space: nowrap;
+    margin: 0;
+    transition: letter-spacing 0.2s ease, transform 0.2s ease;
+}
+
+.recent-item:hover .recent-view-more {
+    letter-spacing: 0.02em;
+    transform: translateX(2px);
 }
 
 .recent-item-title {
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
     color: #000000;
-    margin-bottom: 3px;
+    margin: 2px 0 0;
     line-height: 1.3;
 }
 
 .recent-meta {
-    font-size: 0.8rem;
-    color: #040404;
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    color: #4b5563;
+    margin-top: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.recent-view-more {
-    display: block;
-    text-align: right;
-    font-size: 16px;
-    color: #000;
-    text-decoration: none;
-    margin-top: 5px;
+/* Responsif */
+
+@media (max-width: 992px) {
+    .news-detail-container {
+        padding: 32px 20px 48px;
+    }
+
+    .news-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sidebar {
+        width: 100%;
+        max-height: none !important;
+    }
+
+    .recent-items {
+        max-height: 320px;
+    }
 }
 
-.recent-view-more:hover {
-    text-decoration: transparent;
+@media (max-width: 768px) {
+    .content-top {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .main-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .main-title {
+        font-size: 24px;
+    }
 }
