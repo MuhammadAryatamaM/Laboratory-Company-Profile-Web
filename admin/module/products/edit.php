@@ -1,8 +1,4 @@
 <?php
-if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-  echo "<script>alert('You do not have permission to access this page.'); window.location.href = 'index.php?page=product';</script>";
-  exit();
-}
 $page_title = 'Edit Product';
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
@@ -151,7 +147,7 @@ $current_categories = !empty($item['categories']) ? explode(',', $item['categori
   document.getElementById('add-category').addEventListener('click', function() {
     const input = document.getElementById('category-input');
     const value = input.value.trim();
-    
+
     if (value && categoryCount < 4) {
       categories.push(value);
       updateHiddenInput();
@@ -160,7 +156,7 @@ $current_categories = !empty($item['categories']) ? explode(',', $item['categori
       tag.className = 'badge bg-primary me-2 mb-2 category-tag';
       tag.setAttribute('data-value', value);
       tag.innerHTML = value + ' <i class="fas fa-times ms-1" style="cursor:pointer;"></i>';
-      
+
       tag.querySelector('i').addEventListener('click', function() {
         const index = categories.indexOf(value);
         if (index > -1) {

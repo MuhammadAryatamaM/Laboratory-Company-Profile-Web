@@ -18,11 +18,9 @@ try {
         <h1 class="mb-2">Product Management</h1>
         <p class="text-muted">Create and manage products</p>
       </div>
-      <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Kepala Laboratorium') : ?>
-        <a href="?page=product&act=create" class="btn btn-primary">
-          <i class="fas fa-plus me-2"></i>Create New Product
-        </a>
-      <?php endif; ?>
+      <a href="?page=product&act=create" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i>Create New Product
+      </a>
     </div>
 
     <div class="row">
@@ -50,17 +48,15 @@ try {
               </div>
               <p class="card-text text-muted small flex-grow-1"><?php echo substr(htmlspecialchars($item['description']), 0, 100) . '...'; ?></p>
               <a href="<?php echo htmlspecialchars($item['link_url']); ?>" class="text-primary text-decoration-none mb-3 d-block" target="_blank">View Product</a>
-              
-              <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Kepala Laboratorium') : ?>
-                <div class="d-flex gap-2">
-                  <a href="?page=product&act=edit&id=<?php echo $item['product_id']; ?>" class="btn btn-outline-primary btn-sm flex-grow-1">
-                    <i class="fas fa-edit me-1"></i>Edit
-                  </a>
-                  <a href="module/products/aksi.php?module=products&act=delete&id=<?php echo $item['product_id']; ?>" class="btn btn-outline-danger btn-sm flex-grow-1" onclick="return confirm('Are you sure you want to delete this product?');">
-                    <i class="fas fa-trash me-1"></i>Delete
-                  </a>
-                </div>
-              <?php endif; ?>
+
+              <div class="d-flex gap-2">
+                <a href="?page=product&act=edit&id=<?php echo $item['product_id']; ?>" class="btn btn-outline-primary btn-sm flex-grow-1">
+                  <i class="fas fa-edit me-1"></i>Edit
+                </a>
+                <a href="module/products/aksi.php?module=products&act=delete&id=<?php echo $item['product_id']; ?>" class="btn btn-outline-danger btn-sm flex-grow-1" onclick="return confirm('Are you sure you want to delete this product?');">
+                  <i class="fas fa-trash me-1"></i>Delete
+                </a>
+              </div>
             </div>
           </div>
         </div>

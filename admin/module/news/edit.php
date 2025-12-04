@@ -1,8 +1,4 @@
 <?php
-if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-  echo "<script>alert('You do not have permission to access this page.'); window.location.href = 'index.php?page=news';</script>";
-  exit();
-}
 $page_title = 'Edit News';
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;

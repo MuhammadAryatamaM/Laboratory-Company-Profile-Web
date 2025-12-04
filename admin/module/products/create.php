@@ -1,8 +1,4 @@
 <?php
-if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-  echo "<script>alert('You do not have permission to access this page.'); window.location.href = 'index.php?page=product';</script>";
-  exit();
-}
 $page_title = 'Create Product';
 ?>
 <main class="main-content">
@@ -99,7 +95,7 @@ $page_title = 'Create Product';
   document.getElementById('add-category').addEventListener('click', function() {
     const input = document.getElementById('category-input');
     const value = input.value.trim();
-    
+
     if (value && categoryCount < 4) {
       categories.push(value);
       updateHiddenInput();
@@ -107,7 +103,7 @@ $page_title = 'Create Product';
       const tag = document.createElement('span');
       tag.className = 'badge bg-primary me-2 mb-2';
       tag.innerHTML = value + ' <i class="fas fa-times ms-1" style="cursor:pointer;"></i>';
-      
+
       tag.querySelector('i').addEventListener('click', function() {
         const index = categories.indexOf(value);
         if (index > -1) {

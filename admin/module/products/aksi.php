@@ -12,11 +12,6 @@ $act = $_GET['act'];
 
 // HAPUS
 if ($module == 'products' && $act == 'delete') {
-  if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=product';</script>";
-    exit();
-  }
-
   $id = $_GET['id'];
 
   try {
@@ -45,23 +40,18 @@ if ($module == 'products' && $act == 'delete') {
 
 // TAMBAH
 elseif ($module == 'products' && $act == 'input') {
-  if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=product';</script>";
-    exit();
-  }
-
   $product_name = $_POST['product_name'];
   $description = $_POST['description'];
   $link_url = $_POST['link_url'];
   $categories = $_POST['categories'];
-  
+
   if (!empty($categories)) {
-      $cat_array = explode(',', $categories);
-      $formatted_categories = '{' . implode(',', array_map(function($item) {
-          return '"' . str_replace('"', '\"', trim($item)) . '"';
-      }, $cat_array)) . '}';
+    $cat_array = explode(',', $categories);
+    $formatted_categories = '{' . implode(',', array_map(function ($item) {
+      return '"' . str_replace('"', '\"', trim($item)) . '"';
+    }, $cat_array)) . '}';
   } else {
-      $formatted_categories = '{}';
+    $formatted_categories = '{}';
   }
 
   $image_url = '';
@@ -99,27 +89,22 @@ elseif ($module == 'products' && $act == 'input') {
 
 // UPDATE
 elseif ($module == 'products' && $act == 'update') {
-  if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=product';</script>";
-    exit();
-  }
-
   $id = $_POST['id'];
   $product_name = $_POST['product_name'];
   $description = $_POST['description'];
   $link_url = $_POST['link_url'];
   $categories = $_POST['categories'];
-  
+
   // Convert comma-separated string to PostgreSQL array format
   if (!empty($categories)) {
-      $cat_array = explode(',', $categories);
-      $formatted_categories = '{' . implode(',', array_map(function($item) {
-          return '"' . str_replace('"', '\"', trim($item)) . '"';
-      }, $cat_array)) . '}';
+    $cat_array = explode(',', $categories);
+    $formatted_categories = '{' . implode(',', array_map(function ($item) {
+      return '"' . str_replace('"', '\"', trim($item)) . '"';
+    }, $cat_array)) . '}';
   } else {
-      $formatted_categories = '{}';
+    $formatted_categories = '{}';
   }
-  
+
   $image_url = '';
   $update_image = false;
 
@@ -141,11 +126,11 @@ elseif ($module == 'products' && $act == 'update') {
 
   try {
     $sql = "UPDATE product SET product_name = :product_name, description = :description, link_url = :link_url, categories = :categories, updated_at = NOW()";
-    
+
     if ($update_image) {
       $sql .= ", image_url = :image_url";
     }
-    
+
     $sql .= " WHERE product_id = :id";
 
     $stmt = $pdo->prepare($sql);
@@ -154,7 +139,7 @@ elseif ($module == 'products' && $act == 'update') {
     $stmt->bindParam(':link_url', $link_url);
     $stmt->bindParam(':categories', $formatted_categories);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    
+
     if ($update_image) {
       $stmt->bindParam(':image_url', $image_url);
     }
@@ -166,3 +151,4 @@ elseif ($module == 'products' && $act == 'update') {
     echo "<script>alert('Gagal memperbarui produk: " . $e->getMessage() . "'); window.location='../../index.php?page=product&act=edit&id=$id';</script>";
   }
 }
+

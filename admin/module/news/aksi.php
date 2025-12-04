@@ -12,11 +12,6 @@ $act = $_GET['act'];
 
 // HAPUS
 if ($module == 'news' && $act == 'delete') {
-  if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=news';</script>";
-    exit();
-  }
-
   $id = $_GET['id'];
 
   try {
@@ -45,11 +40,6 @@ if ($module == 'news' && $act == 'delete') {
 
 // TAMBAH
 elseif ($module == 'news' && $act == 'input') {
-  if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=news';</script>";
-    exit();
-  }
-
   $title = $_POST['title'];
   $description = $_POST['description'];
   $author_id = $_POST['author_id'];
@@ -89,17 +79,12 @@ elseif ($module == 'news' && $act == 'input') {
 
 // UPDATE
 elseif ($module == 'news' && $act == 'update') {
-  if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=news';</script>";
-    exit();
-  }
-
   $id = $_POST['id'];
   $title = $_POST['title'];
   $description = $_POST['description'];
   $author_id = $_POST['author_id'];
   $publish_date = $_POST['publish_date'];
-  
+
   $image_url = '';
   $update_image = false;
 
@@ -121,11 +106,11 @@ elseif ($module == 'news' && $act == 'update') {
 
   try {
     $sql = "UPDATE news SET title = :title, description = :description, author_id = :author_id, publish_date = :publish_date, updated_at = NOW()";
-    
+
     if ($update_image) {
       $sql .= ", image_url = :image_url";
     }
-    
+
     $sql .= " WHERE news_id = :id";
 
     $stmt = $pdo->prepare($sql);
@@ -134,7 +119,7 @@ elseif ($module == 'news' && $act == 'update') {
     $stmt->bindParam(':author_id', $author_id);
     $stmt->bindParam(':publish_date', $publish_date);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    
+
     if ($update_image) {
       $stmt->bindParam(':image_url', $image_url);
     }

@@ -12,11 +12,6 @@ $act = $_GET['act'];
 
 // HAPUS
 if ($module == 'gallery' && $act == 'delete') {
-  if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=gallery';</script>";
-    exit();
-  }
-
   $id = $_GET['id'];
 
   try {
@@ -45,11 +40,6 @@ if ($module == 'gallery' && $act == 'delete') {
 
 // TAMBAH
 elseif ($module == 'gallery' && $act == 'input') {
-  if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=gallery';</script>";
-    exit();
-  }
-
   $title = $_POST['title'];
   $image_url = '';
 
@@ -83,14 +73,9 @@ elseif ($module == 'gallery' && $act == 'input') {
 
 // UPDATE
 elseif ($module == 'gallery' && $act == 'update') {
-  if (!isset($_SESSION['role']) || $_SESSION['role'] != 'Kepala Laboratorium') {
-    echo "<script>alert('Anda tidak memiliki izin untuk melakukan aksi ini.'); window.location='../../index.php?page=gallery';</script>";
-    exit();
-  }
-
   $id = $_POST['id'];
   $title = $_POST['title'];
-  
+
   $image_url = '';
   $update_image = false;
 
@@ -112,17 +97,17 @@ elseif ($module == 'gallery' && $act == 'update') {
 
   try {
     $sql = "UPDATE gallery_item SET title = :title";
-    
+
     if ($update_image) {
       $sql .= ", image_url = :image_url";
     }
-    
+
     $sql .= " WHERE item_id = :id";
 
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':title', $title);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    
+
     if ($update_image) {
       $stmt->bindParam(':image_url', $image_url);
     }

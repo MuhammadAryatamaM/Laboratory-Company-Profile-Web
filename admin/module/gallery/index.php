@@ -18,11 +18,9 @@ try {
         <h1 class="mb-2">Gallery</h1>
         <p class="text-muted">Upload and manage your photos</p>
       </div>
-      <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Kepala Laboratorium') : ?>
-        <a href="?page=gallery&act=create" class="btn btn-primary">
-          <i class="fas fa-cloud-upload-alt me-2"></i>Upload Photos
-        </a>
-      <?php endif; ?>
+      <a href="?page=gallery&act=create" class="btn btn-primary">
+        <i class="fas fa-cloud-upload-alt me-2"></i>Upload Photos
+      </a>
     </div>
 
     <div class="row">
@@ -38,16 +36,14 @@ try {
             </div>
             <h6 class="mb-2"><?php echo htmlspecialchars($item['title']); ?></h6>
             <p class="text-muted small mb-3"><?php echo date('d/m/Y', strtotime($item['created_at'])); ?></p>
-            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Kepala Laboratorium') : ?>
-              <div class="d-flex gap-2">
-                <a href="?page=gallery&act=edit&id=<?php echo $item['item_id']; ?>" class="btn btn-sm btn-outline-primary flex-grow-1">
-                  <i class="fas fa-edit"></i> Edit
-                </a>
-                <a href="module/gallery/aksi.php?module=gallery&act=delete&id=<?php echo $item['item_id']; ?>" class="btn btn-sm btn-outline-danger flex-grow-1" onclick="return confirm('Are you sure you want to delete this photo?');">
-                  <i class="fas fa-trash"></i> Delete
-                </a>
-              </div>
-            <?php endif; ?>
+            <div class="d-flex gap-2">
+              <a href="?page=gallery&act=edit&id=<?php echo $item['item_id']; ?>" class="btn btn-sm btn-outline-primary flex-grow-1">
+                <i class="fas fa-edit"></i> Edit
+              </a>
+              <a href="module/gallery/aksi.php?module=gallery&act=delete&id=<?php echo $item['item_id']; ?>" class="btn btn-sm btn-outline-danger flex-grow-1" onclick="return confirm('Are you sure you want to delete this photo?');">
+                <i class="fas fa-trash"></i> Delete
+              </a>
+            </div>
           </div>
         </div>
       <?php endforeach; ?>
