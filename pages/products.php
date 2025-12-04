@@ -15,7 +15,7 @@
         if (!empty($item['categories'])) {
             $cat_str = trim($item['categories'], '{}');
             if (!empty($cat_str)) {
-                $cat_array = str_getcsv($cat_str);
+                $cat_array = str_getcsv($cat_str, ",", "\"", "\\");
                 foreach ($cat_array as $cat) {
                     $features[] = ['text' => trim($cat)];
                 }
