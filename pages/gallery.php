@@ -12,18 +12,31 @@ try {
 ?>
 
 <section class="gallery-section">
-    <div class="container">
+    <div class="gallery-container">
         <h2 class="section-title">Gallery</h2>
-        <div class="gallery-grid">
-            <?php if (!empty($gallery_items)) : ?>
+
+        <?php if (!empty($gallery_items)) : ?>
+            <div class="gallery-grid">
                 <?php foreach ($gallery_items as $item) : ?>
-                    <div class="gallery-item">
-                        <img src="assets/uploads/<?php echo htmlspecialchars($item['image_url']); ?>" alt="<?php echo htmlspecialchars($item['title']); ?>" class="gallery-img">
-                    </div>
+                    <article class="gallery-card">
+                        <div class="gallery-img-wrapper">
+                            <img
+                                src="assets/uploads/<?php echo htmlspecialchars($item['image_url']); ?>"
+                                alt="<?php echo htmlspecialchars($item['title']); ?>"
+                                class="gallery-img"
+                                loading="lazy"
+                            >
+                            <div class="gallery-overlay">
+                                <h3 class="gallery-title">
+                                    <?php echo htmlspecialchars($item['title']); ?>
+                                </h3>
+                            </div>
+                        </div>
+                    </article>
                 <?php endforeach; ?>
-            <?php else : ?>
-                <p>No photos in gallery.</p>
-            <?php endif; ?>
-        </div>
+            </div>
+        <?php else : ?>
+            <p class="gallery-empty">No photos in gallery.</p>
+        <?php endif; ?>
     </div>
 </section>

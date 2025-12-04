@@ -25,20 +25,20 @@ if (!in_array($page, $valid_pages)) $page = 'home';
     <?php if ($page === 'home'): ?>
         <link rel="stylesheet" href="<?php echo $root; ?>assets/css/home.css">
 
-    <?php elseif ($page === 'gallery'): ?>
-        <link rel="stylesheet" href="<?php echo $root; ?>assets/css/gallery.css">
-
-    <?php elseif ($page === 'news'): ?>
-        <link rel="stylesheet" href="<?php echo $root; ?>assets/css/news.css">
-
-    <?php elseif ($page === 'news_detail'): ?>
-        <link rel="stylesheet" href="<?php echo $root; ?>assets/css/news_detail.css">
+    <?php elseif ($page === 'teams'): ?>
+        <link rel="stylesheet" href="<?php echo $root; ?>assets/css/teams.css">
 
     <?php elseif ($page === 'products'): ?>
         <link rel="stylesheet" href="<?php echo $root; ?>assets/css/produk.css">
 
-    <?php elseif ($page === 'teams'): ?>
-        <link rel="stylesheet" href="<?php echo $root; ?>assets/css/teams.css">
+    <?php elseif ($page === 'news'): ?>
+        <link rel="stylesheet" href="<?php echo $root; ?>assets/css/news.css">
+
+    <?php elseif ($page === 'gallery'): ?>
+        <link rel="stylesheet" href="<?php echo $root; ?>assets/css/gallery.css">
+
+    <?php elseif ($page === 'news_detail'): ?>
+        <link rel="stylesheet" href="<?php echo $root; ?>assets/css/news_detail.css">
     <?php endif; ?>
 
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/global.css">

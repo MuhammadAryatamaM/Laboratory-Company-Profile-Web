@@ -37,7 +37,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php echo ($page === 'news' && 'news_detail') ? 'active' : ''; ?>"
+                    <a class="nav-link <?php echo ($page === 'news' || $page === 'news_detail') ? 'active' : ''; ?>"
                         href="<?php echo $root; ?>index.php?page=news">
                         News
                     </a>
