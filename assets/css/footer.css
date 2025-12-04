@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* ========== BASE DESKTOP ========== */
+
 .inlet-footer {
     font-family: 'Inter', sans-serif;
     background-color: #5C7084;
@@ -25,6 +27,8 @@
     color: #F8F4C7;
 }
 
+/* ABOUT */
+
 .footer-logo-wrapper {
     margin-bottom: 16px;
 }
@@ -40,6 +44,8 @@
     line-height: 1.5;
     max-width: 530px;
 }
+
+/* QUICK LINKS */
 
 .footer-links-grid {
     display: flex;
@@ -64,6 +70,8 @@
 .footer-links ul li a:hover {
     opacity: .7;
 }
+
+/* CONTACT */
 
 .footer-contact-grid {
     display: grid;
@@ -105,6 +113,8 @@
     line-height: 1.4;
 }
 
+/* DIVIDER & COPYRIGHT */
+
 .footer-divider {
     height: 2px;
     background-color: #E9D9A6;
@@ -124,7 +134,69 @@
     margin-bottom: 10px;
 }
 
+/* ========== ≥ 1200px: garis diturunin dikit biar gak nimpuk teks ========== */
+
+@media (min-width: 1200px) {
+    .footer-divider {
+        margin-top: -20px; /* dari -40px */
+    }
+}
+
+/* ========== 1320–993px: Contact turun ke baris kedua ========== */
+
+@media (max-width: 1320px) and (min-width: 993px) {
+
+    .inlet-footer-inner {
+        flex-wrap: wrap;
+        gap: 24px 40px;           /* jarak antar kolom/baris */
+    }
+
+    /* baris pertama: About + Quick Links */
+    .footer-about {
+        flex: 0 0 48%;
+    }
+
+    .footer-links {
+        flex: 0 0 48%;
+    }
+
+    /* baris kedua: Contact full width */
+    .footer-contact {
+        flex: 0 0 100%;
+    }
+
+    .footer-contact-grid {
+        grid-template-columns: auto minmax(0, 1fr);
+        column-gap: 16px;
+    }
+
+    .contact-address span {
+        max-width: 100%;
+        display: block;
+        word-break: break-word;
+    }
+
+    /* garis & copyright ikut turun, jangan nimpuk teks */
+    .footer-divider {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 16px;
+        margin-bottom: 8px;
+    }
+
+    .footer-copy {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 4px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+}
+
+/* ========== ≤ 992px: responsif asli kamu ========== */
+
 @media (max-width: 992px) {
+
     .inlet-footer {
         padding: 24px 20px 12px;
     }

@@ -101,3 +101,83 @@
     background-color: #213448;
     color: #EEFBFF;
 }
+
+/* ===================== RESPONSIVE NEWS ===================== */
+
+/* Layar 1200–1300-an: tetap 3 kolom, tapi fleksibel */
+@media (max-width: 1300px) {
+    .news-box {
+        padding: 28px 32px 28px;
+        box-sizing: border-box;
+    }
+
+    .news-cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: 32px;
+        justify-content: center;
+    }
+
+    .news-card {
+        width: auto;
+    }
+}
+
+/* Tablet landscape / laptop kecil: 2 kolom */
+@media (max-width: 1024px) {
+    .news-box {
+        padding: 24px 24px 28px;
+    }
+
+    .news-heading {
+        font-size: 38px;
+        margin-bottom: 24px;
+    }
+
+    .news-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 24px;
+        row-gap: 32px;
+        justify-content: center;
+    }
+
+    .news-heading-block {
+        height: auto;
+    }
+}
+
+/* Tablet portrait: 2 kolom rapat / bisa jadi 1 kolom kalau sempit */
+@media (max-width: 768px) {
+    .news-box {
+        padding: 20px 18px 24px;
+        border-width: 3px;
+    }
+
+    .news-heading {
+        font-size: 32px;
+    }
+
+    .news-cards {
+        grid-template-columns: 1fr;
+        row-gap: 24px;
+    }
+
+    .news-card {
+        width: 100%;
+    }
+
+    .news-text {
+        font-size: 14px;
+    }
+}
+
+/* HP kecil: 1 kolom full width */
+@media (max-width: 576px) {
+    .news-heading {
+        font-size: 28px;
+    }
+
+    .news-more-btn {
+        width: 100%;
+        padding: 10px 0;
+    }
+}

@@ -20,13 +20,10 @@ if (!in_array($page, $valid_pages)) $page = 'home';
     <!-- CSS global -->
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/header.css">
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/footer.css">
-    <link rel="stylesheet" href="<?php echo $root; ?>assets/css/home/home_responsif.css">
 
     <!-- CSS per halaman -->
     <?php if ($page === 'home'): ?>
         <link rel="stylesheet" href="<?php echo $root; ?>assets/css/home.css">
-        <link rel="stylesheet" href="<?php echo $root; ?>assets/css/home/home_responsif.css">
-
     <?php elseif ($page === 'gallery'): ?>
         <link rel="stylesheet" href="<?php echo $root; ?>assets/css/gallery.css">
     <?php elseif ($page === 'news'): ?>

@@ -186,29 +186,59 @@
     flex: 0 0 220px;
 }
 
-/* ========== Breakpoint sederhana (tablet & bawah) ========== */
-@media (max-width: 992px) {
-    .team-layout {
+/* ========== About Section: ≤ 895px (tablet & mobile portrait) ========== */
+@media (max-width: 895px) {
+
+    .about-section {
+        padding: 50px 0;
+    }
+
+    .about-container {
         flex-direction: column;
         align-items: center;
-        gap: 32px;
+        gap: 28px;
+        padding: 0 24px;
     }
 
-    .team-head {
-        text-align: center;
-    }
-
-    .team-subtitle-left {
-        text-align: center;
-    }
-
-    .team-lab {
-        margin-left: 0;
+    .about-left {
         width: 100%;
+        text-align: left; /* kalau mau center: ganti "left" -> "center" */
     }
 
-    .team-viewmore {
-        position: static;
-        margin: 24px auto 0;
+    .about-title {
+        font-size: 36px;
+        line-height: 1.2;
+        margin-bottom: 18px;
+    }
+
+    .about-text,
+    .about-list {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    .about-right {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-img {
+        max-width: 90%;
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+    }
+}
+
+/* ========== About Section: 769–895px (tablet landscape) ========== */
+@media (min-width: 769px) and (max-width: 895px) {
+
+    .about-container {
+        padding: 0 40px;
+    }
+
+    .about-img {
+        max-width: 80%; /* sedikit lebih kecil biar seimbang */
     }
 }
