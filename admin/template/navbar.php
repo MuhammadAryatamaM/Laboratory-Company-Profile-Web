@@ -31,7 +31,11 @@ if (isset($pdo)) {
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="profileDropdown">
           <li><a class="dropdown-item" href="?page=profile"><i class="fas fa-user me-2"></i> Profile</a></li>
-          <li><a class="dropdown-item" href="?page=settings"><i class="fas fa-cog me-2"></i> Settings</a></li>
+          <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Kepala Laboratorium') : ?>
+
+            <li><a class="dropdown-item" href="?page=settings"><i class="fas fa-cog me-2"></i> Settings</a></li>
+          <?php endif; ?>
+
           <li>
             <hr class="dropdown-divider">
           </li>
