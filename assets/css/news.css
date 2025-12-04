@@ -1,190 +1,178 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 60px;
 }
 
-.news-section {
-    display: flex;
-    gap: 20px;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 5px;
-}
-
-/* Main Content - Left Side */
-.main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.content-top {
-    display: flex;
-    gap: 15px;
-}
-
-.main-image {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 5px;
-    flex-shrink: 0;
-}
-
-.main-text {
-    flex: 1;
-    margin-top: -15px;
-}
-
-.additional-text {
-    margin-top: -20px;
-}
-
-.main-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 10px;
-    line-height: 1.3;
-}
-
-.main-description {
-    font-size: 1.2rem;
-    color: #000000;
-    line-height: 1.7;
-    text-align: justify;
-}
-
-/* Sidebar - Right Side */
-.sidebar {
-    width: 250px;
-    flex-shrink: 0;
-}
-
-.sidebar-header {
+.news-list-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #000000;
-    position: relative;
+    align-items: flex-end;
+    margin-bottom: 28px;
+    gap: 16px;
 }
 
-.sidebar-header::after {
-    content: "";
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 30%;
-    height: 5px;
-    background: #72b6dd;
+.news-list-title {
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+    color: #213448;
+    margin: 0 0 4px;
+}
+
+.news-sort {
+    display: inline-flex;
+    gap: 8px;
+}
+
+.sort-btn {
+    padding: 8px 16px;
     border-radius: 10px;
+    border: 1px solid #d1d5db;
+    background: #f3f4f6;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.sidebar-title {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #000000;
+.sort-btn.is-active {
+    background: #213448;
+    color: #ffffff;
+    border-color: #213448;
 }
 
-/* Scrollable Recent Items */
-.recent-items {
-    height: 300px;
-    overflow-y: auto;
-    padding-right: 5px;
-    position: relative;
+/* Card */
+
+.news-card {
+    margin-bottom: 20px;
+    border-radius: 16px;
+    padding: 16px 20px;
+    background-color: #ecfaff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 30px rgba(13, 21, 38, 0.04);
 }
 
-/* Custom Scrollbar */
-.recent-items::-webkit-scrollbar {
-    width: 5px;
-}
-
-.recent-items::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.recent-items::-webkit-scrollbar-thumb {
-    background: transparent;
-    border-radius: 5px;
-}
-
-.recent-items::-webkit-scrollbar-thumb:hover {
-    background: transparent;
-}
-
-/* Recent Item Card */
-.recent-item {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    position: relative;
-}
-
-.recent-item::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 1px;
-    background: #000000;
-}
-
-.recent-item:last-child::after {
-    display: none;
-}
-
-.recent-item:last-child {
-    border-bottom: none;
+.news-card:last-child {
     margin-bottom: 0;
 }
 
-.recent-image {
-    width: 60px;
-    height: 45px;
+.news-card-link {
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.news-card-image {
+    width: 260px;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
-    border-radius: 3px;
     flex-shrink: 0;
 }
 
-.recent-info {
+.news-card-body {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2px 0;
 }
 
-.recent-item-title {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 3px;
-    line-height: 1.3;
+.news-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background-color: #E0EDF3;
+    color: #335976;
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 8px;
 }
 
-.recent-meta {
-    font-size: 0.8rem;
-    color: #040404;
+.news-card-title {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 4px;
 }
 
-.recent-view-more {
-    display: block;
-    text-align: right;
-    font-size: 16px;
-    color: #000;
+.news-card-excerpt {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4b5563;
+    margin: 0;
+}
+
+.news-card-meta {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    color: #6b7280;
+    margin: 6px 0 0;
+}
+
+.news-card-readmore {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #336b87;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.news-card-link:hover .news-card-title {
+    color: #336b87;
     text-decoration: none;
-    margin-top: 5px;
 }
 
-.recent-view-more:hover {
-    text-decoration: transparent;
+.news-card-link:hover .news-card-readmore {
+    transform: translateX(4px);
+    color: #213448;
+}
+
+/* Responsif */
+
+@media (max-width: 768px) {
+    .news-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .news-list-title {
+        font-size: 32px;
+    }
+
+    .news-card-link {
+        gap: 12px;
+    }
+
+    .news-card {
+        padding: 12px 14px;
+        border-radius: 12px;
+    }
+
+    .news-card-image {
+        width: 110px;
+        aspect-ratio: 4 / 3;
+        border-radius: 10px;
+    }
+
+    .news-card-title {
+        font-size: 16px;
+    }
+
+    .news-card-meta {
+        font-size: 12px;
+    }
+
+    .news-card-excerpt {
+        font-size: 13px;
+    }
+
+    .news-card-readmore {
+        font-size: 12px;
+    }
 }
