@@ -43,7 +43,7 @@ function get_setting($key, $settings)
               </div>
               <div class="mb-3">
                 <label class="form-label"><strong>Mission</strong></label>
-                <textarea class="form-control" name="mission" rows="3" placeholder="Enter your company mission"><?php echo get_setting('mission', $settings); ?></textarea>
+                <textarea class="form-control summernote" name="mission" rows="3" placeholder="Enter your company mission"><?php echo get_setting('mission', $settings); ?></textarea>
               </div>
             </div>
           </div>

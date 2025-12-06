@@ -35,7 +35,7 @@ try {
 
               <div class="mb-4">
                 <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
-                <textarea class="form-control" id="description" name="description" rows="6" placeholder="Enter news description" required></textarea>
+                <textarea class="form-control summernote" id="description" name="description" rows="6" placeholder="Enter news description" required></textarea>
               </div>
 
               <div class="mb-4">

@@ -57,7 +57,7 @@ try {
 
               <div class="mb-4">
                 <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
-                <textarea class="form-control" id="description" name="description" rows="6" placeholder="Enter news description" required><?php echo htmlspecialchars($item['description']); ?></textarea>
+                <textarea class="form-control summernote" id="description" name="description" rows="6" placeholder="Enter news description" required><?php echo htmlspecialchars($item['description']); ?></textarea>
               </div>
 
               <div class="mb-4">
