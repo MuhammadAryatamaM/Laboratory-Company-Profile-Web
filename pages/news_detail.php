@@ -5,48 +5,59 @@ $news_items  = [];
 $mainNews    = null;
 $recentItems = [];
 
-try {
-    $stmt = $pdo->query("
-        SELECT n.*, t.full_name as author_name
-        FROM news n
-        LEFT JOIN team_member t ON n.author_id = t.member_id
-        ORDER BY n.publish_date DESC
-    ");
-    $news_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$id = $_GET['id'] ?? 0;
+    
+    // Fetch main news
+    try {
+        $stmt = $pdo->prepare("
+            SELECT n.*, t.full_name as author_name 
+            FROM news n
+            LEFT JOIN team_member t ON n.author_id = t.member_id 
+            WHERE n.news_id = :id
+        ");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $first = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!empty($news_items)) {
-        // berita pertama untuk main news
-        $first = array_shift($news_items);
+        if ($first) {
+            $description = $first['description'] ?? '';
+            
+            // Bagi deskripsi jadi paragraf (dipisah dengan 1+ baris kosong)
+            $paragraphs = preg_split('/\r?\n\r?\n+/', trim($description));
+            $introParagraph = $paragraphs ? array_shift($paragraphs) : '';
+            $restParagraphs = $paragraphs ? implode("\n\n", $paragraphs) : '';
 
-        $description = $first['description'] ?? '';
+            $mainNews = [
+                'title'  => $first['title'],
+                'image'  => 'assets/uploads/' . $first['image_url'],
+                'intro'  => $introParagraph,
+                'rest'   => $restParagraphs,
+                'date'   => date('d F Y', strtotime($first['publish_date'])),
+                'tag'    => $first['tag'] ?? 'General',
+                'place'  => $first['place'] ?? '',
+                'author' => $first['author_name'] ?? 'Admin'
+            ];
+        }
 
-        // Bagi deskripsi jadi paragraf (dipisah dengan 1+ baris kosong)
-        $paragraphs = preg_split('/\r?\n\r?\n+/', trim($description));
-        $introParagraph = $paragraphs ? array_shift($paragraphs) : '';
-        $restParagraphs = $paragraphs ? implode("\n\n", $paragraphs) : '';
+        // Fetch recent items (exclude current)
+        $stmt = $pdo->prepare("SELECT * FROM news WHERE news_id != :id ORDER BY publish_date DESC LIMIT 5");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $recent_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $mainNews = [
-            'title'  => $first['title'],
-            'image'  => 'assets/uploads/' . $first['image_url'],
-            'intro'  => $introParagraph,
-            'rest'   => $restParagraphs,
-            'date'   => date('d F Y', strtotime($first['publish_date'])),
-            'author' => $first['author_name']
-        ];
-
-        // recent items (sidebar)
-        foreach ($news_items as $item) {
+        foreach ($recent_items as $item) {
             $recentItems[] = [
+                'id'       => $item['news_id'],
                 'title'    => $item['title'],
                 'image'    => 'assets/uploads/' . $item['image_url'],
-                'location' => 'InLET Lab',
+                'location' => $item['place'] ?? 'InLET Lab',
                 'date'     => date('F Y', strtotime($item['publish_date']))
             ];
         }
+
+    } catch (PDOException $e) {
+        echo "Database error: " . $e->getMessage();
     }
-} catch (PDOException $e) {
-    echo "Database error: " . $e->getMessage();
-}
 
 // Fungsi untuk generate recent item
 function generateRecentItem($item) {
@@ -54,7 +65,7 @@ function generateRecentItem($item) {
     $html .= '  <img src="' . htmlspecialchars($item['image']) . '" alt="' . htmlspecialchars($item['title']) . '" class="recent-image">';
     $html .= '  <div class="recent-info">';
     $html .= '      <div class="recent-top-row">';
-    $html .= '          <a href="#" class="recent-view-more">View More →</a>';
+    $html .= '          <a href="?page=news_detail&id=' . htmlspecialchars($item['id']) . '" class="recent-view-more">View More →</a>';
     $html .= '      </div>';
     $html .= '      <div class="recent-item-title">' . htmlspecialchars($item['title']) . '</div>';
     $html .= '      <div class="recent-meta">' . htmlspecialchars($item['location']) . ' | ' . htmlspecialchars($item['date']) . '</div>';
@@ -104,9 +115,14 @@ function generateRecentItems($items) {
                 <?php endif; ?>
 
                 <p class="main-meta">
-                    <i class="fas fa-user me-1"></i>
-                    <?php echo htmlspecialchars($mainNews['author'] ?? 'Admin'); ?>
+                    <span class="badge bg-primary me-2"><?php echo htmlspecialchars($mainNews['tag']); ?></span>
+                    <i class="fas fa-user me-1"></i> <?php echo htmlspecialchars($mainNews['author']); ?> 
                     &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <?php if(!empty($mainNews['place'])): ?>
+                    <i class="fas fa-map-marker-alt me-1"></i>
+                    <?php echo htmlspecialchars($mainNews['place']); ?>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <?php endif; ?>
                     <i class="fas fa-calendar-alt me-1"></i>
                     <?php echo htmlspecialchars($mainNews['date']); ?>
                 </p>

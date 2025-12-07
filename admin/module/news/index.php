@@ -41,7 +41,9 @@ try {
             <div class="card-body d-flex flex-column">
               <h5 class="card-title"><?php echo htmlspecialchars($item['title']); ?></h5>
               <p class="card-text text-muted small mb-2">
+                <span class="badge bg-primary me-2"><?php echo htmlspecialchars($item['tag'] ?? 'General'); ?></span>
                 <i class="fas fa-user me-1"></i> <?php echo htmlspecialchars($item['author_name'] ?? 'Unknown'); ?> &bull;
+                <i class="fas fa-map-marker-alt ms-1 me-1"></i> <?php echo htmlspecialchars($item['place'] ?? 'Unknown'); ?> &bull;
                 <i class="fas fa-calendar-alt ms-1 me-1"></i> <?php echo date('d M Y', strtotime($item['publish_date'])); ?>
               </p>
               <p class="card-text flex-grow-1"><?php echo substr(htmlspecialchars($item['description']), 0, 100) . '...'; ?></p>

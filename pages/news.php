@@ -1,102 +1,62 @@
 <div class="container">
+    <?php
+    include_once "config/koneksi.php";
+
+    $view = $_GET['view'] ?? 'latest'; // default to latest
+    $news_items = [];
+
+    try {
+        if ($view === 'oldest') {
+            // Fetch everything AFTER the first 4, oldest means "older items"
+            // Use a large limit to get "the rest"
+            $stmt = $pdo->query("SELECT * FROM news ORDER BY publish_date DESC LIMIT 1000 OFFSET 4");
+        } else {
+            // Default: Fetch top 4 (newest)
+            $stmt = $pdo->query("SELECT * FROM news ORDER BY publish_date DESC LIMIT 4");
+        }
+        $news_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        $news_items = [];
+    }
+    ?>
+
     <section class="news-list-section">
 
         <div class="news-list-header">
             <h1 class="news-list-title">News</h1>
 
             <div class="news-sort">
-                <button class="sort-btn is-active" type="button">Terbaru</button>
-                <button class="sort-btn" type="button">Terlama</button>
+                <a href="?page=news&view=latest" class="sort-btn <?php echo ($view !== 'oldest') ? 'is-active' : ''; ?>">Terbaru</a>
+                <a href="?page=news&view=oldest" class="sort-btn <?php echo ($view === 'oldest') ? 'is-active' : ''; ?>">Terlama</a>
             </div>
         </div>
 
-        <article class="news-card">
-            <a href="#" class="news-card-link">
-                <img src="assets/img/gallery2.png" alt="ICCE 2023, Full Paper Presentation" class="news-card-image">
-                <div class="news-card-body">
-                    <div class="news-card-top">
-                        <span class="news-tag">Conference</span>
-                        <h2 class="news-card-title">
-                            ICCE 2023, Full Paper Presentation
-                        </h2>
-                        <p class="news-card-excerpt">
-                            Kegiatan pemaparan makalah internasional yang membahas inovasi
-                            teknologi pembelajaran dan kolaborasi riset lintas institusi.
-                        </p>
-                        <p class="news-card-meta">
-                            Japan · 12 November 2024
-                        </p>
-                    </div>
-                    <span class="news-card-readmore">Read more →</span>
-                </div>
-            </a>
-        </article>
-
-        <article class="news-card">
-            <a href="#" class="news-card-link">
-                <img src="assets/img/gallery10.png" alt="Visiting Scientist Program" class="news-card-image">
-                <div class="news-card-body">
-                    <div class="news-card-top">
-                        <span class="news-tag">Visiting Program</span>
-                        <h2 class="news-card-title">
-                            Visiting Scientist Program
-                        </h2>
-                        <p class="news-card-excerpt">
-                            Program kunjungan ilmiah untuk berbagi pengalaman, diskusi,
-                            dan membuka peluang kerja sama penelitian jangka panjang.
-                        </p>
-                        <p class="news-card-meta">
-                            Japan · November 2023
-                        </p>
-                    </div>
-                    <span class="news-card-readmore">Read more →</span>
-                </div>
-            </a>
-        </article>
-
-        <article class="news-card">
-            <a href="#" class="news-card-link">
-                <img src="assets/img/gallery9.png" alt="Monthly Research Discussion" class="news-card-image">
-                <div class="news-card-body">
-                    <div class="news-card-top">
-                        <span class="news-tag">Internal Event</span>
-                        <h2 class="news-card-title">
-                            Monthly Research Discussion
-                        </h2>
-                        <p class="news-card-excerpt">
-                            Forum diskusi rutin yang membahas progres penelitian,
-                            tantangan teknis, dan rencana publikasi dari tim InLET.
-                        </p>
-                        <p class="news-card-meta">
-                            Polinema · Januari 2024
-                        </p>
-                    </div>
-                    <span class="news-card-readmore">Read more →</span>
-                </div>
-            </a>
-        </article>
-
-        <article class="news-card">
-            <a href="#" class="news-card-link">
-                <img src="assets/img/gallery11.png" alt="International Research Collaboration" class="news-card-image">
-                <div class="news-card-body">
-                    <div class="news-card-top">
-                        <span class="news-tag">Collaboration</span>
-                        <h2 class="news-card-title">
-                            International Research Collaboration
-                        </h2>
-                        <p class="news-card-excerpt">
-                            Kolaborasi riset internasional di bidang teknologi pembelajaran
-                            digital dan pengembangan sistem cerdas berbasis AI.
-                        </p>
-                        <p class="news-card-meta">
-                            Singapore · Oktober 2024
-                        </p>
-                    </div>
-                    <span class="news-card-readmore">Read more →</span>
-                </div>
-            </a>
-        </article>
+        <?php if (!empty($news_items)) : ?>
+            <?php foreach ($news_items as $news) : ?>
+                <article class="news-card">
+                    <a href="?page=news_detail&id=<?php echo $news['news_id']; ?>" class="news-card-link">
+                         <img src="assets/uploads/<?php echo htmlspecialchars($news['image_url']); ?>" alt="<?php echo htmlspecialchars($news['title']); ?>" class="news-card-image" style="object-fit: cover;">
+                        <div class="news-card-body">
+                            <div class="news-card-top">
+                                <span class="news-tag"><?php echo htmlspecialchars($news['tag'] ?? 'General'); ?></span>
+                                <h2 class="news-card-title">
+                                    <?php echo htmlspecialchars($news['title']); ?>
+                                </h2>
+                                <p class="news-card-excerpt">
+                                    <?php echo substr(htmlspecialchars(strip_tags($news['description'])), 0, 150) . '...'; ?>
+                                </p>
+                                <p class="news-card-meta">
+                                    <?php echo htmlspecialchars($news['place'] ?? ''); ?> · <?php echo date('d F Y', strtotime($news['publish_date'])); ?>
+                                </p>
+                            </div>
+                            <span class="news-card-readmore">Read more →</span>
+                        </div>
+                    </a>
+                </article>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <div class="alert alert-info">Belum ada berita.</div>
+        <?php endif; ?>
 
     </section>
 </div>
