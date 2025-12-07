@@ -84,7 +84,15 @@ $page_title = '';
           }
           break;
         case 'message':
-          include 'module/message/index.php';
+          $act = isset($_GET['act']) ? $_GET['act'] : 'index';
+          switch ($act) {
+            case 'reply':
+              include 'module/message/reply.php';
+              break;
+            default:
+              include 'module/message/index.php';
+              break;
+          }
           break;
         case 'settings':
           include 'module/settings/index.php';

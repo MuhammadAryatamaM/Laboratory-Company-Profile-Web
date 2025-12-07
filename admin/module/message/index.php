@@ -126,6 +126,9 @@ try {
       </div>
       <div class="modal-footer border-0">
         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <a href="#" id="replyMessageBtn" class="btn btn-primary">
+          <i class="fas fa-reply me-2"></i> Reply
+        </a>
         <a href="#" id="deleteMessageBtn" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this message?');">
           <i class="fas fa-trash me-2"></i> Delete
         </a>
@@ -154,8 +157,11 @@ try {
     document.getElementById('modalMessageText').textContent = messageText;
     document.getElementById('modalMessageType').textContent = messageType === 'guestbook' ? 'Guestbook' : 'Contact Us';
     
-    // Set delete link
+    // delete 
     document.getElementById('deleteMessageBtn').href = 'module/message/aksi.php?module=message&act=delete&id=' + id + '&type=' + messageType;
+    
+    // reply 
+    document.getElementById('replyMessageBtn').href = '?page=message&act=reply&id=' + id + '&type=' + messageType;
 
     // Show/hide guestbook fields
     const guestbookFields = document.getElementById('guestbookFields');
@@ -168,21 +174,18 @@ try {
     }
 
     if (!isRead) {
-      // Mark as read via AJAX
-      fetch('module/message/aksi.php?module=message&act=mark_read&id=' + id + '&type=' + messageType)
+      fetch('module/message/aksi.php?module=message&act=mark_read&id=' + id + '&type=' + messageType + '&t=' + new Date().getTime())
         .then(response => {
           if (response.ok) {
             trigger.classList.remove('message-unread');
             trigger.classList.add('message-read');
             trigger.setAttribute('data-is-read', 'true');
 
-            // Remove New badge
             const newBadge = trigger.querySelector('.new-badge');
             if (newBadge) {
               newBadge.remove();
             }
 
-            // Change text color
             const h5 = trigger.querySelector('h5');
             if (h5) {
               h5.classList.remove('text-danger');
