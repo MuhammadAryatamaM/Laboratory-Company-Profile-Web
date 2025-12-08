@@ -141,6 +141,11 @@
       font-size: 1.2rem; /* Larger numbers for badges */
     }
 
+    /* Fix for email overflow in modal */
+    #modalMessageEmail {
+      word-break: break-word;
+    }
+
     /* Global Card Styles */
     .card {
       transition: all 0.3s ease;
