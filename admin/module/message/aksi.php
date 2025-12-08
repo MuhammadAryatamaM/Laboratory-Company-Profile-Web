@@ -43,17 +43,32 @@ elseif ($module == 'message' && $act == 'mark_read') {
 
   try {
     if ($type == 'contact') {
-      $stmt = $pdo->prepare("UPDATE contact_message SET is_read = 1 WHERE message_id = :id");
+      $stmt = $pdo->prepare("UPDATE contact_message SET is_read = TRUE WHERE message_id = :id");
     } else {
-      $stmt = $pdo->prepare("UPDATE guestbook_message SET is_read = 1 WHERE message_id = :id");
+      $stmt = $pdo->prepare("UPDATE guestbook_message SET is_read = TRUE WHERE message_id = :id");
     }
     
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
-    http_response_code(200);
+
+    // Get updated count from view or manual count
+    $stmtCount = $pdo->query("SELECT 
+        (SELECT COUNT(*) FROM contact_message WHERE is_read = FALSE) + 
+        (SELECT COUNT(*) FROM guestbook_message WHERE is_read = FALSE) as total_unread");
+    $rowCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
+    $new_count = $rowCount['total_unread'] ? $rowCount['total_unread'] : 0;
+
+    header('Content-Type: application/json');
+    echo json_encode(['status' => 'success', 'unread_count' => $new_count]);
+    exit();
+
   } catch (PDOException $e) {
     http_response_code(500);
+    echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+    exit();
   }
+} // Correctly closed the elseif block
+
 // SEND REPLY
 elseif ($module == 'message' && $act == 'send_reply') {
     $to = $_POST['email'];

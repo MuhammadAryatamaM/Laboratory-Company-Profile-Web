@@ -21,7 +21,7 @@ if (isset($pdo)) {
         <button class="btn btn-link position-relative text-dark">
           <i class="fas fa-bell"></i>
           <?php if ($unread_count > 0) : ?>
-            <span class="badge bg-danger position-absolute notification-badge" style="top: -5px; right: -8px;"><?php echo $unread_count; ?></span>
+            <span class="badge bg-danger position-absolute notification-badge" id="unread-badge" style="top: -5px; right: -8px;"><?php echo $unread_count; ?></span>
           <?php endif; ?>
         </button>
       </div>

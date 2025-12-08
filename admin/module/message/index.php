@@ -175,24 +175,35 @@ try {
 
     if (!isRead) {
       fetch('module/message/aksi.php?module=message&act=mark_read&id=' + id + '&type=' + messageType + '&t=' + new Date().getTime())
-        .then(response => {
-          if (response.ok) {
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
             trigger.classList.remove('message-unread');
             trigger.classList.add('message-read');
             trigger.setAttribute('data-is-read', 'true');
 
+            // Update card styling
             const newBadge = trigger.querySelector('.new-badge');
-            if (newBadge) {
-              newBadge.remove();
-            }
+            if (newBadge) newBadge.remove();
 
             const h5 = trigger.querySelector('h5');
             if (h5) {
               h5.classList.remove('text-danger');
               h5.classList.add('text-dark');
             }
+
+            // Update navbar badge with accurate count from DB
+            const unreadBadge = document.getElementById('unread-badge');
+            if (unreadBadge) {
+              if (data.unread_count > 0) {
+                unreadBadge.textContent = data.unread_count;
+              } else {
+                unreadBadge.remove();
+              }
+            }
           }
-        });
+        })
+        .catch(error => console.error('Error marking message as read:', error));
     }
   });
 </script>
