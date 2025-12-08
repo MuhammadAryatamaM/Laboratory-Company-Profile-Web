@@ -1,5 +1,7 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 include "../../../config/koneksi.php";
 
 if (!isset($_SESSION['status']) || $_SESSION['status'] != "login") {
@@ -15,7 +17,6 @@ if ($module == 'news' && $act == 'delete') {
   $id = $_GET['id'];
 
   try {
-    // Changed to news_id
     $stmt = $pdo->prepare("SELECT image_url FROM news WHERE news_id = :id");
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
@@ -42,9 +43,7 @@ if ($module == 'news' && $act == 'delete') {
 elseif ($module == 'news' && $act == 'input') {
   $title = $_POST['title'];
   $description = $_POST['description'];
-  $author_id = $_POST['author_id']; // Restored
-  $place = $_POST['place'];
-  $tag = $_POST['tag'];
+  $author_id = $_POST['author_id']; 
   $publish_date = $_POST['publish_date'];
   $image_url = '';
 
@@ -64,13 +63,10 @@ elseif ($module == 'news' && $act == 'input') {
   }
 
   try {
-    // Changed to publish_date, place, tag
     $stmt = $pdo->prepare("INSERT INTO news (title, description, author_id, place, tag, publish_date, image_url, created_at, updated_at) VALUES (:title, :description, :author_id, :place, :tag, :publish_date, :image_url, NOW(), NOW())");
     $stmt->bindParam(':title', $title);
     $stmt->bindParam(':description', $description);
     $stmt->bindParam(':author_id', $author_id);
-    $stmt->bindParam(':place', $place);
-    $stmt->bindParam(':tag', $tag);
     $stmt->bindParam(':publish_date', $publish_date);
     $stmt->bindParam(':image_url', $image_url);
     $stmt->execute();
@@ -81,14 +77,11 @@ elseif ($module == 'news' && $act == 'input') {
   }
 }
 
-// UPDATE
 elseif ($module == 'news' && $act == 'update') {
   $id = $_POST['id'];
   $title = $_POST['title'];
   $description = $_POST['description'];
-  $author_id = $_POST['author_id']; // Restored
-  $place = $_POST['place']; 
-  $tag = $_POST['tag'];
+  $author_id = !empty($_POST['author_id']) ? $_POST['author_id'] : null;
   $publish_date = $_POST['publish_date'];
 
   $image_url = '';
@@ -123,8 +116,6 @@ elseif ($module == 'news' && $act == 'update') {
     $stmt->bindParam(':title', $title);
     $stmt->bindParam(':description', $description);
     $stmt->bindParam(':author_id', $author_id);
-    $stmt->bindParam(':place', $place);
-    $stmt->bindParam(':tag', $tag);
     $stmt->bindParam(':publish_date', $publish_date);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
@@ -136,6 +127,6 @@ elseif ($module == 'news' && $act == 'update') {
 
     echo "<script>alert('Berita berhasil diperbarui.'); window.location='../../index.php?page=news';</script>";
   } catch (PDOException $e) {
-    echo "<script>alert('Gagal memperbarui berita: " . $e->getMessage() . "'); window.location='../../index.php?page=news&act=edit&id=$id';</script>";
+    die("Database Error: " . $e->getMessage());
   }
 }

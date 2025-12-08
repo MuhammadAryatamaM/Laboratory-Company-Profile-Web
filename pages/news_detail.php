@@ -68,7 +68,7 @@ function generateRecentItem($item) {
     $html .= '          <a href="?page=news_detail&id=' . htmlspecialchars($item['id']) . '" class="recent-view-more">View More →</a>';
     $html .= '      </div>';
     $html .= '      <div class="recent-item-title">' . htmlspecialchars($item['title']) . '</div>';
-    $html .= '      <div class="recent-meta">' . htmlspecialchars($item['location']) . ' | ' . htmlspecialchars($item['date']) . '</div>';
+    $html .= '      <div class="recent-meta">' . htmlspecialchars($item['date']) . '</div>';
     $html .= '  </div>';
     $html .= '</div>';
     return $html;
@@ -115,14 +115,8 @@ function generateRecentItems($items) {
                 <?php endif; ?>
 
                 <p class="main-meta">
-                    <span class="badge bg-primary me-2"><?php echo htmlspecialchars($mainNews['tag']); ?></span>
                     <i class="fas fa-user me-1"></i> <?php echo htmlspecialchars($mainNews['author']); ?> 
                     &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <?php if(!empty($mainNews['place'])): ?>
-                    <i class="fas fa-map-marker-alt me-1"></i>
-                    <?php echo htmlspecialchars($mainNews['place']); ?>
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <?php endif; ?>
                     <i class="fas fa-calendar-alt me-1"></i>
                     <?php echo htmlspecialchars($mainNews['date']); ?>
                 </p>

@@ -76,7 +76,7 @@ try {
               </div>
 
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                   <div class="mb-4">
                     <label for="author" class="form-label">Author <span class="text-danger">*</span></label>
                     <select class="form-select" id="author" name="author_id" required>
@@ -89,21 +89,6 @@ try {
                     </select>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="mb-4">
-                    <label for="place" class="form-label">Place (Latar Tempat)</label>
-                    <input type="text" class="form-control" id="place" name="place" placeholder="e.g. Tokyo" value="<?php echo htmlspecialchars($item['place'] ?? ''); ?>">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="mb-4">
-                    <label for="tag" class="form-label">Tag (Category)</label>
-                    <input type="text" class="form-control" id="tag" name="tag" placeholder="e.g. Conference" value="<?php echo htmlspecialchars($item['tag'] ?? 'General'); ?>">
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
                 <div class="col-md-6">
                   <div class="mb-4">
                     <label for="date" class="form-label">Date <span class="text-danger">*</span></label>
