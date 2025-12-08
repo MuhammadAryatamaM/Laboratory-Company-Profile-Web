@@ -16,7 +16,7 @@
     <?php include __DIR__ . '/../module/news_home.php'; ?>
     <?php include __DIR__ . '/../module/gallery_home.php'; ?>
     <?php include __DIR__ . '/../module/partner.php'; ?>
-    <?php include __DIR__ . '/../module/contact_guest.php'; ?>
+    <?php include __DIR__ . '/../module/guest.php'; ?>
 </div>
 
 <!-- JS Home -->

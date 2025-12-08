@@ -107,3 +107,37 @@ $address = $site_settings['address'] ?? 'Jl. Soekarno Hatta No.9, Mojolangu, Kec
     © 2025 InLET Laboratory, Politeknik Negeri Malang — All Rights Reserved.
   </p>
 </footer>
+
+<!-- CONTACT -->
+<div id="contactOverlay" class="contact-overlay">
+    <div class="contact-dialog">
+      <button type="button" class="contact-close" aria-label="Close contact form">
+        &times;
+      </button>
+
+      <h2 class="contact-dialog-title">Contact Us</h2>
+
+      <form class="contact-modal-form" action="<?php echo $root; ?>module/contact_aksi.php" method="post">
+        <input type="hidden" name="type" value="contact">
+        
+        <div class="contact-field">
+          <label for="modal-fullname">Full Name</label>
+          <input type="text" id="modal-fullname" name="full_name" required>
+        </div>
+
+        <div class="contact-field">
+          <label for="modal-email">Email</label>
+          <input type="email" id="modal-email" name="email" required>
+        </div>
+
+        <div class="contact-field">
+          <label for="modal-message">Message</label>
+          <textarea id="modal-message" name="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="contact-submit-btn">
+          Submit <span class="btn-icon">✈</span>
+        </button>
+      </form>
+    </div>
+</div>

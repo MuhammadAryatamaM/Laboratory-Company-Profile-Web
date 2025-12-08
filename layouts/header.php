@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo $root; ?>index.php?page=home#contact-guest-section">
+                    <a class="nav-link contact-trigger" href="#">
                         Contact
                     </a>
                 </li>

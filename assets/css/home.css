@@ -11,7 +11,7 @@
 @import url("home/news_home.css");
 @import url("home/gallery_home.css");
 @import url("home/partner.css");
-@import url("home/contact_guest.css");
+@import url("home/guest.css");
 
 /* Terakhir: khusus responsif */
 @import url("home/home_responsif.css");
