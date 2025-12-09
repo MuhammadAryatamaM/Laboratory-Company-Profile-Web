@@ -21,7 +21,7 @@
     <section class="news-list-section">
 
         <div class="news-list-header">
-            <h1 class="news-list-title">News</h1>
+            <h1 class="news-list-title">Berita</h1>
 
             <div class="news-sort">
                 <a href="?page=news&view=latest" class="sort-btn <?php echo ($view !== 'oldest') ? 'is-active' : ''; ?>">Terbaru</a>
@@ -50,7 +50,7 @@
                                     </span>
                                 </p>
                             </div>
-                            <span class="news-card-readmore">Read more →</span>
+                            <span class="news-card-readmore">Selengkapnya →</span>
                         </div>
                     </a>
                 </article>

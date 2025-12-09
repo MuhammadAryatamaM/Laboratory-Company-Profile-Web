@@ -13,7 +13,7 @@ try {
 
 <section class="gallery-section">
     <div class="gallery-container">
-        <h2 class="section-title">Gallery</h2>
+        <h2 class="section-title">Galeri</h2>
 
         <?php if (!empty($gallery_items)) : ?>
             <div class="gallery-grid">
@@ -36,7 +36,7 @@ try {
                 <?php endforeach; ?>
             </div>
         <?php else : ?>
-            <p class="gallery-empty">No photos in gallery.</p>
+            <p class="gallery-empty">Tidak ada gambar di galeri</p>
         <?php endif; ?>
     </div>
 </section>

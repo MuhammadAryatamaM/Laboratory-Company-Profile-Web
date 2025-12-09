@@ -13,11 +13,7 @@
                 <div class="product-content">
                     <h3 class="product-name">Viat Map Aplikasi</h3>
                     <p class="product-desc">
-                        VIAT-map (Visual Arguments Toulmin) Application 
-                        to help Reding Comprehension by using Toulmin
-                        Arguments Concept. We are trying to emphasise the
-                        logic behind a written text by adding the claim, ground
-                        and warrant following the Toulmin Argument Concept.
+                        Sebuah aplikasi untuk meningkatkan Pemahaman Membaca dengan menggunakan Konsep Argumentasi Toulmin. Kami berupaya menonjolkan logika di balik sebuah teks tertulis dengan menambahkan klaim, landasan (data), dan justifikasi sesuai Konsep Argumentasi Toulmin.
                     </p>
                     <a href="#" class="product-cta">
                         <span>Unduh Sekarang </span>
@@ -31,7 +27,7 @@
                     <img src="<?php echo $root; ?>assets/img/home/pseud.png" alt="">
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">PseudoLearn Application</h3>
+                    <h3 class="product-name">PseudoLearn Aplikasi</h3>
                     <p class="product-desc">
                         Sebuah media pembelajaran rekonstruksi
                         algoritma pseudocode dengan menggunakan pendekatan Element

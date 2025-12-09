@@ -29,12 +29,12 @@ try {
 <!-- Main Content -->
 <div class="teams-container">
   <!-- Page Title -->
-  <h1 class="page-title">Our Teams</h1>
+  <h1 class="page-title">Anggota Tim</h1>
 
   <?php if ($head_of_lab) : ?>
     <!-- Head of Laboratory Section -->
     <section class="head-section">
-      <h2 class="section-title">Head of Laboratory</h2>
+      <h2 class="section-title">Kepala Laboratorium</h2>
       <a href="<?php echo !empty($head_of_lab['detail_url']) ? htmlspecialchars($head_of_lab['detail_url']) : '#'; ?>" class="profile-link" target="_blank">
         <div class="profile-card head-card">
           <div class="profile-photo">
@@ -72,7 +72,7 @@ try {
 
   <!-- Laboratory Team Section -->
   <section class="team-section">
-    <h2 class="section-title">Laboratory Team</h2>
+    <h2 class="section-title">Anggota Tim</h2>
     <div class="team-grid">
       <?php if (!empty($team_members)) : ?>
         <?php foreach ($team_members as $member) : ?>
@@ -110,7 +110,7 @@ try {
           </a>
         <?php endforeach; ?>
       <?php else : ?>
-        <p>No other team members found.</p>
+        <p>Tidak ada anggota tim yang ditemukan.</p>
       <?php endif; ?>
     </div>
   </section>

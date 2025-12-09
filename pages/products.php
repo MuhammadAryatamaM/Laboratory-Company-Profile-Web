@@ -71,7 +71,7 @@
         $html .= generateFeatures($product['features']);
         
         if (!empty($product['link_url'])) {
-            $html .= '<a href="' . htmlspecialchars($product['link_url']) . '" class="try-now-btn" target="_blank" style="text-decoration:none; display:inline-block;">Try Now →</a>';
+            $html .= '<a href="' . htmlspecialchars($product['link_url']) . '" class="try-now-btn" target="_blank" style="text-decoration:none; display:inline-block;">Coba Sekarang →</a>';
         } else {
             $html .= '<button class="try-now-btn">Try Now →</button>';
         }
@@ -83,7 +83,7 @@
 ?>
 
 <div class="container">
-    <h1>Products</h1>
+    <h1>Produk</h1>
     
     <?php
     if (empty($products)) {

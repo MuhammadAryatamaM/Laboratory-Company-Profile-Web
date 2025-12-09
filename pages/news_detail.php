@@ -65,7 +65,7 @@ function generateRecentItem($item) {
     $html .= '  <img src="' . htmlspecialchars($item['image']) . '" alt="' . htmlspecialchars($item['title']) . '" class="recent-image">';
     $html .= '  <div class="recent-info">';
     $html .= '      <div class="recent-top-row">';
-    $html .= '          <a href="?page=news_detail&id=' . htmlspecialchars($item['id']) . '" class="recent-view-more">View More →</a>';
+    $html .= '          <a href="?page=news_detail&id=' . htmlspecialchars($item['id']) . '" class="recent-view-more">Selengkapnya →</a>';
     $html .= '      </div>';
     $html .= '      <div class="recent-item-title">' . htmlspecialchars($item['title']) . '</div>';
     $html .= '      <div class="recent-meta">' . htmlspecialchars($item['date']) . '</div>';
@@ -123,14 +123,14 @@ function generateRecentItems($items) {
             </div>
         <?php else: ?>
             <div class="main-content">
-                <p>No news available.</p>
+                <p>Tidak ada berita.</p>
             </div>
         <?php endif; ?>
 
         <!-- Sidebar (recent news) -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <span class="sidebar-title">Recent</span>
+                <span class="sidebar-title"> Berita terbaru</span>
             </div>
             <div class="recent-items">
                 <?php echo generateRecentItems($recentItems); ?>
