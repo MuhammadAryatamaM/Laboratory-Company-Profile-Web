@@ -1,18 +1,16 @@
 <section id="research-focus" class="research-section">
     <div class="research-container">
-        <h2 class="research-title">Research Focus</h2>
+        <h2 class="research-title">Fokus Penelitian</h2>
         <div class="research-title-underline"></div>
         <p class="research-subtitle">
-            Our research explores how technology, data, and 
-            human-centered design shape the future of learning.
+            Penelitian kami mengeksplorasi bagaimana teknologi, data, dan desain berpusat-manusia membentuk masa depan pembelajaran.
         </p>
         <div class="research-grid">
             <article class="research-card reveal" data-reveal-delay="0">
                 <div class="research-card-text">
-                    <h3 class="research-card-title">AI &amp; Learning Analytics</h3>
+                    <h3 class="research-card-title">AI &amp; Analisis Pembelajaran</h3>
                     <p class="research-card-desc">
-                        Analyzing learning patterns and performance using 
-                        data-driven insights.
+                        Menganalisis pola belajar dan performa dengan berlandaskan pada insight data.
                     </p>
                 </div>
                 <div class="research-card-icon">
@@ -21,9 +19,9 @@
             </article>
             <article class="research-card reveal" data-reveal-delay="100">
                 <div class="research-card-text">
-                    <h3 class="research-card-title">Intelligent Tutoring Systems</h3>
+                    <h3 class="research-card-title">Sistem Bimbingan Cerdas</h3>
                     <p class="research-card-desc">
-                        Developing adaptive and personalized learning technologies.
+                        Mengembangkan teknologi pembelajaran yang mampu menyesuaikan diri dan bersifat personal bagi setiap pengguna.
                     </p>
                 </div>
                 <div class="research-card-icon">
@@ -32,9 +30,9 @@
             </article>
             <article class="research-card reveal" data-reveal-delay="200">
                 <div class="research-card-text">
-                    <h3 class="research-card-title">Human-Computer Interaction (HCI)</h3>
+                    <h3 class="research-card-title">Interaksi Manusia-Komputer (HCI)</h3>
                     <p class="research-card-desc">
-                        Designing interactive interfaces for effective learning experiences.
+                        Fokus pada perancangan antarmuka pengguna yang interaktif guna mewujudkan pengalaman pembelajaran yang optimal.
                     </p>
                 </div>
                 <div class="research-card-icon">
@@ -43,9 +41,9 @@
             </article>
             <article class="research-card reveal" data-reveal-delay="300">
                 <div class="research-card-text">
-                    <h3 class="research-card-title">E-Learning Development</h3>
+                    <h3 class="research-card-title">Pengembangan E-Learning</h3>
                     <p class="research-card-desc">
-                        Building innovative digital learning platforms and simulations.
+                        Menciptakan platform digital dan simulasi pembelajaran yang bersifat inovatif.
                     </p>
                 </div>
                 <div class="research-card-icon">

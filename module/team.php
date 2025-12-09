@@ -1,14 +1,14 @@
 <section id="team-section" class="team-section">
     <div class="team-container">
         <div class="team-heading reveal reveal-fade">
-            <h2 class="team-title">Our Team</h2>
+            <h2 class="team-title">Anggota Team</h2>
             <div class="team-line"></div>
-            <a href="<?php echo $root; ?>pages/teams.php" class="team-viewmore">View More</a>
+            <a href="<?php echo $root; ?>pages/teams.php" class="team-viewmore">Selengkapnya</a>
         </div>
 
         <div class="team-layout">
             <div class="team-head">
-                <h3 class="team-subtitle team-subtitle-left">Head of Laboratory</h3>
+                <h3 class="team-subtitle team-subtitle-left">Kepala Laboratorium InLET</h3>
                 <div class="team-card head-card">
                     <div class="team-photo">
                         <img src="<?php echo $root; ?>assets/img/home/Teams/banni.jpeg"
@@ -27,7 +27,7 @@
             </div>
 
             <div class="team-lab">
-                <h3 class="team-subtitle team-subtitle-center">Laboratory Team</h3>
+                <h3 class="team-subtitle team-subtitle-center">Anggota Tim InLET</h3>
                 <div class="team-lab-scroll">
                     <div class="team-lab-track">
 

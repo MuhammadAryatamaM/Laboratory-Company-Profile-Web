@@ -12,7 +12,7 @@ try {
 
 <section class="news-section" id="news-home">
     <div class="news-box reveal reveal-fade">
-        <h2 class="news-heading">Our News</h2>
+        <h2 class="news-heading">Berita Kami</h2>
 
         <div class="news-cards">
             <?php if (!empty($home_news)) : ?>
@@ -31,13 +31,13 @@ try {
                     </article>
                 <?php endforeach; ?>
             <?php else : ?>
-                <p>No news available.</p>
+                <p>Belum ada berita.</p>
             <?php endif; ?>
         </div>
 
         <div class="news-btn-wrap">
             <a href="<?php echo $root; ?>pages/news.php" class="news-more-btn">
-                Read More
+                Selengkapnya
             </a>
         </div>
     </div>

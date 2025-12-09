@@ -15,11 +15,11 @@
                 melalui solusi berbasis teknologi.
             </p>
             <ul class="about-list">
-                <li>Research &amp; Development</li>
-                <li>Academic Collaboration</li>
-                <li>Innovation in Digital Education</li>
+                <li>Penelitian &amp; Pengembangan</li>
+                <li>Kolaborasi Akademik</li>
+                <li>Inovasi dalam Pendidikan Digital</li>
             </ul>
-            <a href="#research-focus" class="about-btn">View Research Focus</a>
+            <a href="#research-focus" class="about-btn">Tampilkan Fokus Penelitian</a>
         </div>
         <div class="about-right reveal reveal-from-right" data-reveal-delay="100">
             <img src="<?php echo $root; ?>assets/img/home/about_img.png" alt="About Photo" class="about-img">

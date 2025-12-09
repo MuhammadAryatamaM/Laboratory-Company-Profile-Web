@@ -10,19 +10,19 @@
 
                 <div class="form-row-2">
                     <div class="form-group">
-                        <label for="guest-name" class="form-label">Name</label>
+                        <label for="guest-name" class="form-label">Nama</label>
                         <input type="text" id="guest-name" name="name" class="form-input" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="guest-inst" class="form-label">Institution</label>
+                        <label for="guest-inst" class="form-label">Institusi</label>
                         <input type="text" id="guest-inst" name="institution" class="form-input">
                     </div>
                 </div>
 
                 <div class="form-row-2">
                     <div class="form-group">
-                        <label for="guest-phone" class="form-label">Phone Number</label>
+                        <label for="guest-phone" class="form-label">No HP</label>
                         <input type="text" id="guest-phone" name="phone" class="form-input">
                     </div>
 
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="guest-message" class="form-label">Message</label>
+                    <label for="guest-message" class="form-label">Pesan</label>
                     <textarea id="guest-message" name="message" rows="3" class="form-textarea"></textarea>
                 </div>
 

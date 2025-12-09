@@ -13,7 +13,7 @@ try {
 <section id="gallery" class="gallery-section">
     <div class="gallery-container">
         <div class="gallery-heading reveal reveal-fade">
-            <h2 class="gallery-title">Gallery</h2>
+            <h2 class="gallery-title">Galeri</h2>
             <div class="gallery-line"></div>
         </div>
 
@@ -25,12 +25,12 @@ try {
                     </div>
                 <?php endforeach; ?>
             <?php else : ?>
-                <p>No gallery items.</p>
+                <p>Tidak ada galeri</p>
             <?php endif; ?>
         </div>
         <div class="gallery-more-wrapper reveal reveal-fade" data-reveal-delay="220">
             <a href="<?php echo $root; ?>pages/gallery.php" class="gallery-more-btn">
-                <span>View More</span>
+                <span>Selengkapnya</span>
                 <span class="gallery-arrow">→</span>
             </a>
         </div>

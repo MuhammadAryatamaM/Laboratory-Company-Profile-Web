@@ -4,8 +4,8 @@
     <div class="hero-content">
         <h1>Information & Learning<br>Engineering Laboratory<br>(InLET)</h1>
         <p class="subtitle">
-            Advancing Technology-Enhanced Learning<br>
-            through Research, Innovation, and Collaboration.
+            Meningkatkan Pembelajaran Berbasis Teknologi<br>
+            melalui Penelitian, Inovasi, dan Kolaborasi.
         </p>
         <p class="desc">
             Sebagai bagian dari Jurusan Teknologi Informasi
@@ -15,7 +15,7 @@
             pembelajaran untuk meningkatkan kualitas pendidikan digital.
         </p>
         <a href="#about-section" class="more">
-            Explore More <span class="arrow">→</span>
+            Telusuri Lebih Banyak <span class="arrow">→</span>
         </a>
     </div>
 </section>

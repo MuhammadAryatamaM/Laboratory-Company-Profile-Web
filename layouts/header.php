@@ -21,36 +21,36 @@
                 <li class="nav-item">
                     <a class="nav-link <?php echo ($page === 'home') ? 'active' : ''; ?>"
                         href="<?php echo $root; ?>index.php?page=home">
-                        Home
+                        Beranda
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php echo ($page === 'teams') ? 'active' : ''; ?>"
                         href="<?php echo $root; ?>index.php?page=teams">
-                        Teams
+                        Tim
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php echo ($page === 'products') ? 'active' : ''; ?>"
                         href="<?php echo $root; ?>index.php?page=products">
-                        Products
+                        Produk
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php echo ($page === 'news' || $page === 'news_detail') ? 'active' : ''; ?>"
                         href="<?php echo $root; ?>index.php?page=news">
-                        News
+                        Berita
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php echo ($page === 'gallery') ? 'active' : ''; ?>"
                         href="<?php echo $root; ?>index.php?page=gallery">
-                        Gallery
+                        Galeri
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link contact-trigger" href="#">
-                        Contact
+                        Kontak
                     </a>
                 </li>
             </ul>

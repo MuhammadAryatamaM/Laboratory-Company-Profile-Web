@@ -1,7 +1,7 @@
 <section class="partner-section">
     <div class="partner-container">
         <div class="partner-heading reveal reveal-fade">
-            <h2 class="partner-title">Our Partner</h2>
+            <h2 class="partner-title">Partner Kami</h2>
         </div>
         <div class="partner-grid reveal" data-reveal-delay="130">
 

@@ -8,11 +8,11 @@
             >
         </div>
         <div class="roadmap-content reveal reveal-from-right" data-reveal-delay="120">
-            <h2 class="roadmap-title">Our Research Road Map</h2>
+            <h2 class="roadmap-title">Roadmap Penelitian</h2>
             <p class="roadmap-text">
-                We are aiming to build a complete support system based on the learning behavior of students.
-                Starting from the learning applications, learning analytics, multi-modal learning analytics,
-                AI in education, adaptive support system, gamification, and management learning monitoring system.
+                Kami bertujuan untuk membangun sistem pendukung yang komprehensif berbasis perilaku belajar siswa.
+                Dimulai dari aplikasi pembelajaran, analitik pembelajaran, analitik pembelajaran multimodal,
+                kecerdasan buatan dalam pendidikan, sistem pendukung adaptif, gamifikasi, hingga sistem pemantauan manajemen pembelajaran.
             </p>
         </div>
     </div>

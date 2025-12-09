@@ -1,7 +1,7 @@
 <section class="products-section" id="products">
     <div class="products-container">
         <div class="products-heading">
-            <h2 class="products-title">Products</h2>
+            <h2 class="products-title">Produk</h2>
             <div class="products-line"></div>
         </div>
 
@@ -11,7 +11,7 @@
                     <img src="<?php echo $root; ?>assets/img/home/viat.png" alt="">
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">Viat Map Application</h3>
+                    <h3 class="product-name">Viat Map Aplikasi</h3>
                     <p class="product-desc">
                         VIAT-map (Visual Arguments Toulmin) Application 
                         to help Reding Comprehension by using Toulmin
@@ -20,7 +20,7 @@
                         and warrant following the Toulmin Argument Concept.
                     </p>
                     <a href="#" class="product-cta">
-                        <span>Get it Now</span>
+                        <span>Unduh Sekarang </span>
                         <span class="product-cta-arrow">→</span>
                     </a>
                 </div>
@@ -38,7 +38,7 @@
                         Fill-in-Blank Problems di dalam pemrograman java.
                     </p>
                     <a href="#" class="product-cta">
-                        <span>Get it Now</span>
+                        <span>Unduh Sekarang</span>
                         <span class="product-cta-arrow">→</span>
                     </a>
                 </div>
@@ -60,7 +60,7 @@
                         kognitif cerdas berbasis Taksonomi Bloom
                     </p>
                     <a href="#" class="product-cta">
-                        <span>Get it Now</span>
+                        <span>Unduh Sekarang</span>
                         <span class="product-cta-arrow">→</span>
                     </a>
                 </div>
@@ -68,7 +68,7 @@
         </div>
 
         <div class="products-see-more-wrap reveal reveal-fade" data-reveal-delay="260">
-            <a class="products-see-more" href="<?php echo $root; ?>pages/products.php">See More</a>
+            <a class="products-see-more" href="<?php echo $root; ?>pages/products.php">Selengkapnya</a>
         </div>
     </div>
 </section>
