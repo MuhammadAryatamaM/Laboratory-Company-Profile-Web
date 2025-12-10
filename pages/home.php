@@ -15,6 +15,7 @@
     <?php include __DIR__ . '/../module/product.php'; ?>
     <?php include __DIR__ . '/../module/news_home.php'; ?>
     <?php include __DIR__ . '/../module/gallery_home.php'; ?>
+    <?php include __DIR__ . '/../module/video_home.php'; ?>
     <?php include __DIR__ . '/../module/partner.php'; ?>
     <?php include __DIR__ . '/../module/guest.php'; ?>
 </div>
