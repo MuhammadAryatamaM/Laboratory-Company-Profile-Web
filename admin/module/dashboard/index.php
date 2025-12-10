@@ -1,25 +1,19 @@
 <?php
 $page_title = 'Dashboard';
 
-// --- FETCHING DATA ---
 try {
-  // 1. Fetch Dashboard Summary Stats
   $stmt_summary = $pdo->query("SELECT * FROM v_dashboard_summary LIMIT 1");
   $summary = $stmt_summary->fetch(PDO::FETCH_ASSOC);
 
-  // 2. Fetch Visitor Stats
   $stmt_visitors = $pdo->query("SELECT * FROM v_visitor_stats LIMIT 1");
   $visitor_stats = $stmt_visitors->fetch(PDO::FETCH_ASSOC);
 
-  // 3. Fetch Recent News
   $stmt_news = $pdo->query("SELECT * FROM v_recent_news");
   $recent_news = $stmt_news->fetchAll(PDO::FETCH_ASSOC);
 
-  // 4. Fetch Recent Products
   $stmt_products = $pdo->query("SELECT * FROM v_recent_products");
   $recent_products = $stmt_products->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-  // On error, set sensible defaults to avoid breaking the page
   $summary = ['total_news' => 'N/A', 'total_product' => 'N/A', 'total_team_members' => 'N/A', 'total_visitor' => 'N/A'];
   $visitor_stats = ['visitors_last_7_days' => 'N/A', 'visitors_last_28_days' => 'N/A', 'visitors_last_60_days' => 'N/A', 'visitors_last_365_days' => 'N/A'];
   $recent_news = [];
@@ -31,9 +25,7 @@ try {
 <main class="main-content">
   <div class="container-fluid">
     <h1 class="mb-4">Dashboard</h1>
-    <p class="text-muted mb-4">Welcome back! Here's what's happening with your CMS.</p>
 
-    <!-- Stats Cards -->
     <div class="row mb-4">
       <div class="col-md-3 mb-3">
         <a href="?page=news" class="stat-card-link">
@@ -133,7 +125,6 @@ try {
     </div>
   </div>
 
-  <!-- Visitor Stats Modal -->
   <div id="visitor-stats-modal" title="Visitor Statistics">
     <ul class="list-group list-group-flush">
       <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -160,7 +151,6 @@ try {
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <script>
   $(function() {
-    // Initialize the dialog
     $("#visitor-stats-modal").dialog({
       autoOpen: false,
       modal: true,
@@ -173,16 +163,14 @@ try {
         effect: "fade",
         duration: 200
       },
-      closeOnEscape: true // Close on ESC key
+      closeOnEscape: true
     });
 
-    // Open the dialog on click
     $("#visitor-stats-trigger").on("click", function(e) {
       e.preventDefault();
       $("#visitor-stats-modal").dialog("open");
     });
 
-    // Close dialog when clicking outside the modal
     $(document).on('click', '.ui-widget-overlay', function() {
       $("#visitor-stats-modal").dialog('close');
     });

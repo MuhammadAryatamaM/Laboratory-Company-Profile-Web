@@ -1,7 +1,6 @@
 <?php
 $page_title = 'Team Management';
 
-// Fetch current user's profile for the "Your Profile" section
 $current_user_profile = null;
 if (isset($_SESSION['admin_id'])) {
   try {
@@ -13,7 +12,6 @@ if (isset($_SESSION['admin_id'])) {
   }
 }
 
-// Fetch all team members for the list
 try {
   $stmt = $pdo->query("SELECT * FROM team_member ORDER BY position, full_name");
   $team_members = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -27,7 +25,13 @@ try {
     <div class="d-flex justify-content-between align-items-center mb-4">
       <div>
         <h1 class="mb-2">Team Management</h1>
-        <p class="text-muted">Manage your team members</p>
+        <p class="text-muted">
+          <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Kepala Laboratorium') : ?>
+            Manage your team members
+          <?php else : ?>
+            See your other lab members
+          <?php endif; ?>
+        </p>
       </div>
       <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Kepala Laboratorium') : ?>
         <a href="?page=teams&act=create" class="btn btn-primary">
@@ -36,7 +40,6 @@ try {
       <?php endif; ?>
     </div>
 
-    <!-- Your Profile Section -->
     <?php if ($current_user_profile) : ?>
       <div class="card mb-4">
         <div class="card-body">
@@ -89,12 +92,10 @@ try {
       </div>
     <?php endif; ?>
 
-    <!-- Team Members -->
     <h5 class="mb-3">Team Members</h5>
     <div class="row">
       <?php foreach ($team_members as $member) : ?>
         <?php
-        // Skip current user's profile if it's already displayed in "Your Profile" section
         if (isset($_SESSION['member_id']) && $_SESSION['member_id'] == $member['member_id']) {
           continue;
         }

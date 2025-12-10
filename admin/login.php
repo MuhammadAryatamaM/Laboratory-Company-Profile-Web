@@ -15,21 +15,17 @@ if (isset($_POST['login'])) {
   $password = $_POST['password'];
 
   try {
-    // Fetch user from admin table
     $stmt = $pdo->prepare("SELECT * FROM admin WHERE username = :username");
     $stmt->bindParam(':username', $username);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Verify password
     if ($user && password_verify($password, $user['password_hash'])) {
-      // Fetch team member details
       $stmt_member = $pdo->prepare("SELECT member_id, position FROM team_member WHERE admin_id = :admin_id");
       $stmt_member->bindParam(':admin_id', $user['admin_id'], PDO::PARAM_INT);
       $stmt_member->execute();
       $team_member = $stmt_member->fetch(PDO::FETCH_ASSOC);
 
-      // Set session variables
       $_SESSION['admin_id'] = $user['admin_id'];
       $_SESSION['username'] = $user['username'];
 
@@ -63,7 +59,6 @@ if (isset($_POST['login'])) {
   <link rel="stylesheet" href="../assets/css/admin_css.css">
   <style>
     body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -87,14 +82,10 @@ if (isset($_POST['login'])) {
     .logo-box {
       width: 70px;
       height: 70px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-size: 28px;
-      font-weight: bold;
       margin: 0 auto 20px;
     }
 
@@ -125,7 +116,7 @@ if (isset($_POST['login'])) {
     }
 
     .btn-login {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: blue;
       border: none;
       padding: 12px;
       font-size: 16px;
@@ -149,9 +140,10 @@ if (isset($_POST['login'])) {
 <body>
   <div class="login-container">
     <div class="login-logo">
-      <div class="logo-box">CMS</div>
       <h2>Admin Login</h2>
-      <p>Enter your credentials to access the admin panel</p>
+      <div class="logo-box">
+        <img src="../assets/img/logo_partial.png" alt="InLET Logo" style="max-height: 60px; width: auto;">
+      </div>
     </div>
 
     <form method="POST" action="">
@@ -182,10 +174,8 @@ if (isset($_POST['login'])) {
         const password = document.querySelector('#password');
 
         togglePassword.addEventListener('click', function(e) {
-          // toggle the type attribute
           const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
           password.setAttribute('type', type);
-          // toggle the eye slash icon
           this.querySelector('i').classList.toggle('fa-eye-slash');
           this.querySelector('i').classList.toggle('fa-eye');
         });

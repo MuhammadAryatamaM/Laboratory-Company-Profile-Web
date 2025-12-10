@@ -43,7 +43,7 @@ if ($module == 'news' && $act == 'delete') {
 elseif ($module == 'news' && $act == 'input') {
   $title = $_POST['title'];
   $description = $_POST['description'];
-  $author_id = $_POST['author_id']; 
+  $author_id = $_POST['author_id'];
   $publish_date = $_POST['publish_date'];
   $image_url = '';
 
@@ -75,9 +75,7 @@ elseif ($module == 'news' && $act == 'input') {
   } catch (PDOException $e) {
     echo "<script>alert('Gagal menambahkan berita: " . $e->getMessage() . "'); window.location='../../index.php?page=news&act=create';</script>";
   }
-}
-
-elseif ($module == 'news' && $act == 'update') {
+} elseif ($module == 'news' && $act == 'update') {
   $id = $_POST['id'];
   $title = $_POST['title'];
   $description = $_POST['description'];
@@ -104,7 +102,7 @@ elseif ($module == 'news' && $act == 'update') {
   }
 
   try {
-    $sql = "UPDATE news SET title = :title, description = :description, author_id = :author_id, place = :place, tag = :tag, publish_date = :publish_date, updated_at = NOW()";
+    $sql = "UPDATE news SET title = :title, description = :description, author_id = :author_id, publish_date = :publish_date, updated_at = NOW()";
 
     if ($update_image) {
       $sql .= ", image_url = :image_url";

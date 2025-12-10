@@ -6,7 +6,6 @@ $item = null;
 
 if ($id > 0) {
   try {
-    // Changed id to news_id
     $stmt = $pdo->prepare("SELECT * FROM news WHERE news_id = :id");
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
@@ -21,7 +20,6 @@ if (!$item) {
   exit();
 }
 
-// Fetch team members for author dropdown
 try {
   $stmt = $pdo->query("SELECT member_id, full_name FROM team_member ORDER BY full_name ASC");
   $authors = $stmt->fetchAll(PDO::FETCH_ASSOC);
