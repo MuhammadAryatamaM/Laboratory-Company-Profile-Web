@@ -1,134 +1,136 @@
+<?php
+include_once "config/koneksi.php";
+
+$head_lab = null;
+$team_members = [];
+
+try {
+  $stmt = $pdo->query("SELECT * FROM team_member ORDER BY member_id ASC");
+  $all_members = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  foreach ($all_members as $member) {
+    if (stripos($member['position'], 'Kepala') !== false && $head_lab === null) {
+      $head_lab = $member;
+    } else {
+      $team_members[] = $member;
+    }
+  }
+} catch (PDOException $e) {
+}
+?>
+
+<style>
+  .team-name {
+    width: auto !important;
+    margin: 0 auto 6px !important;
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .team-card {
+    text-align: center;
+  }
+
+  .team-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    min-height: 50px;
+    align-items: center;
+  }
+
+  .team-social a {
+    text-decoration: none;
+    color: #213448;
+    font-size: 24px;
+    transition: transform 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f4f8;
+  }
+
+  .team-social a:hover {
+    color: #547792;
+    transform: translateY(-3px);
+    background-color: #e1e8ed;
+  }
+</style>
+
 <section id="team-section" class="team-section">
-    <div class="team-container">
-        <div class="team-heading reveal reveal-fade">
-            <h2 class="team-title">Anggota Team</h2>
-            <div class="team-line"></div>
-            <a href="<?php echo $root; ?>pages/teams.php" class="team-viewmore">Selengkapnya</a>
-        </div>
-
-        <div class="team-layout">
-            <div class="team-head">
-                <h3 class="team-subtitle team-subtitle-left">Kepala Laboratorium InLET</h3>
-                <div class="team-card head-card">
-                    <div class="team-photo">
-                        <img src="<?php echo $root; ?>assets/img/home/Teams/banni.jpeg"
-                            alt="Dr. Eng. Banni Satria Andoko">
-                    </div>
-                    <p class="team-name head-name">
-                        Dr. Eng. Banni Satria Andoko,<br>
-                        S.Kom., M.MSI.
-                    </p>
-                    <div class="team-social">
-                        <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
-                        <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="team-lab">
-                <h3 class="team-subtitle team-subtitle-center">Anggota Tim InLET</h3>
-                <div class="team-lab-scroll">
-                    <div class="team-lab-track">
-
-                        <div class="team-card">
-                            <div class="team-photo">
-                                <img src="<?php echo $root; ?>assets/img/home/Teams/vivin.jpeg"
-                                    alt="Vivin Ayu Lestari">
-                            </div>
-                            <p class="team-name">
-                                Vivin Ayu Lestari,<br>
-                                S.Pd., M.Kom.
-                            </p>
-                            <div class="team-social">
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
-                            </div>
-                        </div>
-
-                        <div class="team-card">
-                            <div class="team-photo">
-                                <img src="<?php echo $root; ?>assets/img/home/Teams/budi.png"
-                                    alt="Budi Harijanto">
-                            </div>
-                            <p class="team-name">
-                                Budi Harijanto, ST.,<br>
-                                M.MKom.
-                            </p>
-                            <div class="team-social">
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
-                            </div>
-                        </div>
-
-                        <div class="team-card">
-                            <div class="team-photo">
-                                <img src="<?php echo $root; ?>assets/img/home/Teams/irsyad.png"
-                                    alt="Irsyad Arif Mashudi">
-                            </div>
-                            <p class="team-name">
-                                Irsyad Arif Mashudi,<br>
-                                S.Kom., M.Kom
-                            </p>
-                            <div class="team-social">
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
-                            </div>
-                        </div>
-
-                        <div class="team-card">
-                            <div class="team-photo">
-                                <img src="<?php echo $root; ?>assets/img/home/Teams/indra.png"
-                                    alt="Dr. Indra Dharma Wijaya">
-                            </div>
-                            <p class="team-name">
-                                Dr. Indra Dharma Wijaya,<br>
-                                ST., M.MT.
-                            </p>
-                            <div class="team-social">
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
-                            </div>
-                        </div>
-
-                        <div class="team-card">
-                            <div class="team-photo">
-                                <img src="<?php echo $root; ?>assets/img/home/Teams/usman.png"
-                                    alt="Usman Nurhasan">
-                            </div>
-                            <p class="team-name">
-                                Usman Nurhasan,<br>
-                                S.Kom., M.T.
-                            </p>
-                            <div class="team-social">
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
-                            </div>
-                        </div>
-
-                        <div class="team-card">
-                            <div class="team-photo">
-                                <img src="<?php echo $root; ?>assets/img/home/Teams/agung.jpeg"
-                                    alt="Agung Nugroho Pramudhita">
-                            </div>
-                            <p class="team-name">
-                                Agung Nugroho<br>
-                                Pramudhita,S.T., M.T.
-                            </p>
-                            <div class="team-social">
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/twitter.png" alt="Twitter"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/facebook.png" alt="Facebook"></a>
-                                <a href="#"><img src="<?php echo $root; ?>assets/img/home/icon/instagram.png" alt="Instagram"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="team-container">
+    <div class="team-heading reveal reveal-fade">
+      <h2 class="team-title">Tim Kami</h2>
+      <div class="team-line"></div>
+      <a href="index.php?page=teams" class="team-viewmore">Selengkapnya</a>
     </div>
+
+    <div class="team-layout">
+      <?php if ($head_lab): ?>
+        <div class="team-head" style="margin-left: 0 !important;">
+          <h3 class="team-subtitle" style="text-align: center; margin-bottom: 28px;">Kepala Lab</h3>
+          <div class="team-card head-card" style="text-align: center;">
+            <div class="team-photo">
+              <img src="assets/uploads/<?php echo htmlspecialchars($head_lab['photo_url'] ?? 'default.jpg'); ?>"
+                alt="<?php echo htmlspecialchars($head_lab['full_name']); ?>">
+            </div>
+            <p class="team-name head-name">
+              <?php echo htmlspecialchars($head_lab['full_name']); ?>
+            </p>
+            <div class="team-social">
+              <?php if (!empty($head_lab['google_scholar_url'])): ?>
+                <a href="<?php echo htmlspecialchars($head_lab['google_scholar_url']); ?>" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+              <?php endif; ?>
+              <?php if (!empty($head_lab['facebook_url'])): ?>
+                <a href="<?php echo htmlspecialchars($head_lab['facebook_url']); ?>" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <?php endif; ?>
+              <?php if (!empty($head_lab['instagram_url'])): ?>
+                <a href="<?php echo htmlspecialchars($head_lab['instagram_url']); ?>" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
+
+      <div class="team-lab">
+        <h3 class="team-subtitle team-subtitle-center">Anggota Lab</h3>
+        <div class="team-lab-scroll">
+          <div class="team-lab-track">
+            <?php if (!empty($team_members)): ?>
+              <?php foreach ($team_members as $member): ?>
+                <div class="team-card" style="text-align: center;">
+                  <div class="team-photo">
+                    <img src="assets/uploads/<?php echo htmlspecialchars($member['photo_url'] ?? 'default.jpg'); ?>"
+                      alt="<?php echo htmlspecialchars($member['full_name']); ?>">
+                  </div>
+                  <p class="team-name">
+                    <?php echo htmlspecialchars($member['full_name']); ?>
+                  </p>
+                  <div class="team-social">
+                    <?php if (!empty($member['google_scholar_url'])): ?>
+                      <a href="<?php echo htmlspecialchars($member['google_scholar_url']); ?>" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <?php endif; ?>
+                    <?php if (!empty($member['facebook_url'])): ?>
+                      <a href="<?php echo htmlspecialchars($member['facebook_url']); ?>" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <?php endif; ?>
+                    <?php if (!empty($member['instagram_url'])): ?>
+                      <a href="<?php echo htmlspecialchars($member['instagram_url']); ?>" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <?php endif; ?>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <p>Belum ada anggota tim.</p>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
