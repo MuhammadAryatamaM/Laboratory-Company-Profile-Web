@@ -99,7 +99,7 @@ try {
       <?php endif; ?>
 
       <div class="team-lab">
-        <h3 class="team-subtitle team-subtitle-center">Anggota Lab</h3>
+        <h3 class="team-subtitle team-subtitle-center">Peneliti</h3>
         <div class="team-lab-scroll">
           <div class="team-lab-track">
             <?php if (!empty($team_members)): ?>
