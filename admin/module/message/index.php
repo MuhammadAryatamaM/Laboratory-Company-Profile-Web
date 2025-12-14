@@ -1,22 +1,17 @@
 <?php
 $page_title = 'Messages';
 
-// Fetch all messages from both tables
 try {
-  // Fetch Contact Messages
   $stmt = $pdo->query("SELECT message_id as id, full_name as name, email, message_text as message, is_read, received_at as created_at, 'contact' as type, NULL as institution, NULL as phone_number FROM contact_message");
   $contact_messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  // Fetch Guestbook Messages
   $stmt = $pdo->query("SELECT message_id as id, full_name as name, email, message_text as message, is_read, received_at as created_at, 'guestbook' as type, institution, phone_number FROM guestbook_message");
   $guestbook_messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  // Merge and Sort
   $messages = array_merge($contact_messages, $guestbook_messages);
-  usort($messages, function($a, $b) {
+  usort($messages, function ($a, $b) {
     return strtotime($b['created_at']) - strtotime($a['created_at']);
   });
-
 } catch (PDOException $e) {
   echo "Error: " . $e->getMessage();
   $messages = [];
@@ -31,25 +26,33 @@ try {
       </div>
     </div>
 
-    <div class="row">
+    <div class="mb-4">
+      <div class="btn-group" role="group" aria-label="Message Filters">
+        <button type="button" class="btn btn-outline-primary active" onclick="filterMessages('all')">All</button>
+        <button type="button" class="btn btn-outline-primary" onclick="filterMessages('contact')">Contact Us</button>
+        <button type="button" class="btn btn-outline-primary" onclick="filterMessages('guestbook')">Guestbook</button>
+      </div>
+    </div>
+
+    <div class="row" id="messageList">
       <?php foreach ($messages as $msg) : ?>
-        <div class="col-md-6 mb-3">
-          <div class="message-card <?php echo $msg['is_read'] ? 'message-read' : 'message-unread'; ?> h-100" 
-               data-bs-toggle="modal" 
-               data-bs-target="#messageModal" 
-               data-id="<?php echo $msg['id']; ?>"
-               data-message-type="<?php echo htmlspecialchars($msg['type']); ?>" 
-               data-message-name="<?php echo htmlspecialchars($msg['name']); ?>" 
-               data-message-email="<?php echo htmlspecialchars($msg['email']); ?>" 
-               data-message-institution="<?php echo htmlspecialchars($msg['institution'] ?? ''); ?>" 
-               data-message-phone="<?php echo htmlspecialchars($msg['phone_number'] ?? ''); ?>" 
-               data-message-date="<?php echo date('d/m/Y', strtotime($msg['created_at'])); ?>" 
-               data-message-text="<?php echo htmlspecialchars($msg['message']); ?>" 
-               data-is-read="<?php echo $msg['is_read'] ? 'true' : 'false'; ?>">
+        <div class="col-md-6 mb-3 message-item" data-type="<?php echo htmlspecialchars($msg['type']); ?>">
+          <div class="message-card <?php echo $msg['is_read'] ? 'message-read' : 'message-unread'; ?> h-100"
+            data-bs-toggle="modal"
+            data-bs-target="#messageModal"
+            data-id="<?php echo $msg['id']; ?>"
+            data-message-type="<?php echo htmlspecialchars($msg['type']); ?>"
+            data-message-name="<?php echo htmlspecialchars($msg['name']); ?>"
+            data-message-email="<?php echo htmlspecialchars($msg['email']); ?>"
+            data-message-institution="<?php echo htmlspecialchars($msg['institution'] ?? ''); ?>"
+            data-message-phone="<?php echo htmlspecialchars($msg['phone_number'] ?? ''); ?>"
+            data-message-date="<?php echo date('d/m/Y', strtotime($msg['created_at'])); ?>"
+            data-message-text="<?php echo htmlspecialchars($msg['message']); ?>"
+            data-is-read="<?php echo $msg['is_read'] ? 'true' : 'false'; ?>">
             <div class="d-flex justify-content-between align-items-start mb-2">
               <div>
                 <h5 class="<?php echo $msg['is_read'] ? 'text-dark' : 'text-danger'; ?>">
-                  <span class="message-name"><?php echo htmlspecialchars($msg['name']); ?></span> 
+                  <span class="message-name"><?php echo htmlspecialchars($msg['name']); ?></span>
                   <?php if (!$msg['is_read']) : ?>
                     <span class="badge bg-danger new-badge">New</span>
                   <?php endif; ?>
@@ -75,7 +78,6 @@ try {
   </div>
 </main>
 
-<!-- Message Details Modal -->
 <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -138,6 +140,28 @@ try {
 </div>
 
 <script>
+  function filterMessages(type) {
+    const items = document.querySelectorAll('.message-item');
+    const buttons = document.querySelectorAll('.btn-group .btn');
+
+    // Update active button state
+    buttons.forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.textContent.toLowerCase().replace(' us', '') === type || (type === 'all' && btn.textContent === 'All')) {
+        btn.classList.add('active');
+      }
+    });
+
+    // Show/Hide items
+    items.forEach(item => {
+      if (type === 'all' || item.getAttribute('data-type') === type) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
   document.getElementById('messageModal').addEventListener('show.bs.modal', function(event) {
     const trigger = event.relatedTarget;
     const id = trigger.getAttribute('data-id');
@@ -156,21 +180,23 @@ try {
     document.getElementById('modalMessageDate').textContent = messageDate;
     document.getElementById('modalMessageText').textContent = messageText;
     document.getElementById('modalMessageType').textContent = messageType === 'guestbook' ? 'Guestbook' : 'Contact Us';
-    
+
     // delete 
     document.getElementById('deleteMessageBtn').href = 'module/message/aksi.php?module=message&act=delete&id=' + id + '&type=' + messageType;
-    
-    // reply 
-    document.getElementById('replyMessageBtn').href = '?page=message&act=reply&id=' + id + '&type=' + messageType;
 
-    // Show/hide guestbook fields
+    // reply 
+    const replyBtn = document.getElementById('replyMessageBtn');
+    replyBtn.href = '?page=message&act=reply&id=' + id + '&type=' + messageType;
+
     const guestbookFields = document.getElementById('guestbookFields');
     if (messageType === 'guestbook') {
       guestbookFields.style.display = 'flex';
+      replyBtn.style.display = 'none';
       document.getElementById('modalMessageInstitution').textContent = messageInstitution || 'N/A';
       document.getElementById('modalMessagePhone').textContent = messagePhone || 'N/A';
     } else {
       guestbookFields.style.display = 'none';
+      replyBtn.style.display = 'inline-block';
     }
 
     if (!isRead) {
@@ -182,7 +208,6 @@ try {
             trigger.classList.add('message-read');
             trigger.setAttribute('data-is-read', 'true');
 
-            // Update card styling
             const newBadge = trigger.querySelector('.new-badge');
             if (newBadge) newBadge.remove();
 
