@@ -63,7 +63,7 @@ elseif ($module == 'news' && $act == 'input') {
   }
 
   try {
-    $stmt = $pdo->prepare("INSERT INTO news (title, description, author_id, place, tag, publish_date, image_url, created_at, updated_at) VALUES (:title, :description, :author_id, :place, :tag, :publish_date, :image_url, NOW(), NOW())");
+    $stmt = $pdo->prepare("INSERT INTO news (title, description, author_id, publish_date, image_url, created_at, updated_at) VALUES (:title, :description, :author_id, :publish_date, :image_url, NOW(), NOW())");
     $stmt->bindParam(':title', $title);
     $stmt->bindParam(':description', $description);
     $stmt->bindParam(':author_id', $author_id);
