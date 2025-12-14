@@ -25,7 +25,7 @@ try {
               <div class="news-title-line"></div>
             </div>
             <p class="news-desc">
-              <?php echo substr(htmlspecialchars($news['description']), 0, 100) . '...'; ?>
+              <?php echo htmlspecialchars(substr(strip_tags($news['description']), 0, 100)) . '...'; ?>
             </p>
           </article>
         <?php endforeach; ?>
