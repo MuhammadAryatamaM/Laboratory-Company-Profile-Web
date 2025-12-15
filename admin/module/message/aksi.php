@@ -51,7 +51,6 @@ elseif ($module == 'message' && $act == 'mark_read') {
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
 
-    // Get updated count from view or manual count
     $stmtCount = $pdo->query("SELECT 
         (SELECT COUNT(*) FROM contact_message WHERE is_read = FALSE) + 
         (SELECT COUNT(*) FROM guestbook_message WHERE is_read = FALSE) as total_unread");
@@ -67,40 +66,41 @@ elseif ($module == 'message' && $act == 'mark_read') {
     echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
     exit();
   }
-} // Correctly closed the elseif block
+} 
 
-// SEND REPLY
+
 elseif ($module == 'message' && $act == 'send_reply') {
     $to = $_POST['email'];
     $name = $_POST['name'];
     $subject = $_POST['subject'];
     $message_body = $_POST['reply_message'];
 
-    // Headers
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From: Admin <no-reply@yourdomain.com>" . "\r\n"; // Customize this
+    // Include SimpleSMTP
+    include_once '../../../helper/smtp.php';
 
-    // HTML Email 
-    $htmlContent = "
+
+    $stmtUser = "echenwijono@gmail.com"; 
+    $stmtPass = "nkui xjxv tspy mtby";
+    
+    $smtp = new SimpleSMTP('smtp.gmail.com', 465, $stmtUser, $stmtPass);
+    
+    $fullMessage = "
     <html>
-    <head>
-    <title>Reply from Admin</title>
-    </head>
-    <body>
-        <h2>Hello $name,</h2>
+    <head><title>Reply</title></head>
+    <body style='font-family: Arial, sans-serif;'>
+        <h3>Hello " . htmlspecialchars($name) . ",</h3>
         <p>Thank you for contacting us. Here is our response:</p>
-        <div style='background-color: #f9f9f9; padding: 15px; border-left: 4px solid #007bff; margin: 20px 0;'>
+        <div style='background-color: #f0f4f8; padding: 15px; border-left: 4px solid #007bff; margin: 20px 0;'>
             $message_body
         </div>
-        <p>Best regards,<br>The Team</p>
+        <p>Best regards,<br><b>Admin Web Profile</b></p>
     </body>
     </html>";
 
-    // Send email
-    if(mail($to, $subject, $htmlContent, $headers)) {
+    if($smtp->send($to, $subject, $fullMessage, "Admin Web Profile")) {
         echo "<script>alert('Balasan berhasil dikirim ke $to.'); window.location='../../index.php?page=message';</script>";
     } else {
-        echo "<script>alert('Gagal mengirim email. Pastikan server email terkonfigurasi (sendmail/SMTP).'); window.location='../../index.php?page=message';</script>";
+        $errorLog = json_encode($smtp->getLog());
+        echo "<script>alert('Gagal mengirim email. Detail Error: ' + $errorLog); window.location='../../index.php?page=message';</script>";
     }
 }
