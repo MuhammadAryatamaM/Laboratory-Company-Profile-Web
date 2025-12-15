@@ -33,7 +33,7 @@ try {
           <?php endif; ?>
         </p>
       </div>
-      <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Kepala Laboratorium') : ?>
+      <?php if (isset($_SESSION['role']) && ($_SESSION['role'] == 'Kepala Laboratorium' || $_SESSION['role'] == 'superadmin')) : ?>
         <a href="?page=teams&act=create" class="btn btn-primary">
           <i class="fas fa-plus me-2"></i>Add New Member
         </a>
@@ -121,12 +121,12 @@ try {
                 <?php if ($member['google_scholar_url']) : ?><a href="<?php echo $member['google_scholar_url']; ?>" class="text-primary text-decoration-none small" target="_blank"><i class="fas fa-graduation-cap"></i> Scholar</a><?php endif; ?>
               </div>
               <div class="d-flex gap-2">
-                <?php if (isset($_SESSION['role']) && ($_SESSION['role'] == 'Kepala Laboratorium' || (isset($_SESSION['member_id']) && $_SESSION['member_id'] == $member['member_id']))) : ?>
+                <?php if (isset($_SESSION['role']) && ($_SESSION['role'] == 'Kepala Laboratorium' || $_SESSION['role'] == 'superadmin' || (isset($_SESSION['member_id']) && $_SESSION['member_id'] == $member['member_id']))) : ?>
                   <a href="?page=teams&act=edit&id=<?php echo $member['member_id']; ?>" class="btn btn-outline-primary btn-sm flex-grow-1">
                     <i class="fas fa-edit"></i> Edit
                   </a>
                 <?php endif; ?>
-                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Kepala Laboratorium') : ?>
+                <?php if (isset($_SESSION['role']) && ($_SESSION['role'] == 'Kepala Laboratorium' || $_SESSION['role'] == 'superadmin')) : ?>
                   <a href="module/teams/aksi.php?module=teams&act=delete&id=<?php echo $member['member_id']; ?>" class="btn btn-outline-danger btn-sm flex-grow-1" onclick="return confirm('Are you sure you want to delete this member?');">
                     <i class="fas fa-trash"></i> Delete
                   </a>
