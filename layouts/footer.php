@@ -62,7 +62,7 @@ $address = $site_settings['address'] ?? 'Jl. Soekarno Hatta No.9, Mojolangu, Kec
         <ul>
           <li><a href="<?php echo $root; ?>index.php#news-home">Berita</a></li>
           <li><a href="<?php echo $root; ?>index.php#gallery">Galeri</a></li>
-          <li><a href="<?php echo $root; ?>index.php#contact-guest-section">Kontak</a></li>
+          <li><a class="contact-trigger" href="<?php echo $root; ?>index.php#contact-guest-section">Kontak</a></li>
           <li><a href="<?php echo $root; ?>index.php#contact-guest-section">Buku Tamu</a></li>
         </ul>
       </div>
@@ -125,7 +125,7 @@ $address = $site_settings['address'] ?? 'Jl. Soekarno Hatta No.9, Mojolangu, Kec
         </div>
 
         <div class="contact-field">
-          <label for="modal-email">e-mail</label>
+          <label for="modal-email">E-mail</label>
           <input type="email" id="modal-email" name="email" required>
         </div>
 

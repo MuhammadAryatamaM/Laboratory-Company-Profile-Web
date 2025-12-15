@@ -78,7 +78,7 @@ try {
     <?php endif; ?>
 
     <div class="products-see-more-wrap reveal reveal-fade" data-reveal-delay="260">
-      <a class="products-see-more" href="<?php echo $root; ?>pages/products.php">Selengkapnya</a>
+      <a class="products-see-more" href="index.php?page=products">Selengkapnya</a>
     </div>
   </div>
 </section>
