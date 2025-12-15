@@ -1,7 +1,7 @@
 <section class="about-section" id="about-section">
     <div class="about-container">
         <div class="about-left reveal reveal-from-left">
-            <h2 class="about-title">About Laboratory</h2>
+            <h2 class="about-title">Tentang Laboratorium</h2>
             <p class="about-text">
                 Laboratorium Teknologi Informasi dan Rekayasa Pembelajaran (InLET) merupakan bagian dari Departemen
                 Teknologi Informasi, Politeknik Negeri Malang. Laboratorium ini berfokus pada penelitian dan

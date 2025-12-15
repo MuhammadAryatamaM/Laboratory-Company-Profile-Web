@@ -2,7 +2,7 @@
     <img src="<?php echo $root; ?>assets/img/home/Hero.png" class="hero-bg" alt="InLET">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1>Information & Learning<br>Engineering Laboratory<br>(InLET)</h1>
+        <h1>Information & Learning<br>Engineering Tecnology<br>(InLET)</h1>
         <p class="subtitle">
             Meningkatkan Pembelajaran Berbasis Teknologi<br>
             melalui Penelitian, Inovasi, dan Kolaborasi.

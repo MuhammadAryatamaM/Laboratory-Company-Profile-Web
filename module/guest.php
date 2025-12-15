@@ -3,7 +3,7 @@
 
         <!-- GUEST BOOK ONLY -->
         <div class="form-column" id="guest">
-            <h2 class="form-heading">Guest Book</h2>
+            <h2 class="form-heading">Buku Tamu</h2>
 
             <form class="form-card guest-form reveal" data-reveal-delay="150" action="module/contact_aksi.php" method="post">
                 <input type="hidden" name="type" value="guestbook">

@@ -40,7 +40,7 @@ try {
                 <?php echo htmlspecialchars($product['description']); ?>
               </p>
               <a href="<?php echo htmlspecialchars($product['link_url']); ?>" class="product-cta">
-                <span>Unduh Sekarang </span>
+                <span>Coba Sekarang </span>
                 <span class="product-cta-arrow">→</span>
               </a>
             </div>
@@ -64,7 +64,7 @@ try {
                   <?php echo htmlspecialchars($product['description']); ?>
                 </p>
                 <a href="<?php echo htmlspecialchars($product['link_url']); ?>" class="product-cta">
-                  <span>Unduh Sekarang</span>
+                  <span>Coba Sekarang</span>
                   <span class="product-cta-arrow">→</span>
                 </a>
               </div>
